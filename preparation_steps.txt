@@ -1,6 +1,0 @@
-Process 1: Github
-	1. Make a github account
-	2. Download github tools (command line tools)
-	3. Create a local folder for your repository
-	4. "git init"
-	5. "git clone https://github.com/dankearney/Volcano"
