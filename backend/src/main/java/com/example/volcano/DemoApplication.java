@@ -15,6 +15,12 @@ public class DemoApplication {
       return "Hello, Volcaneers! 🌋";
     }
 
+    @RequestMapping("/getMessages")
+    @ResponseBody
+    String home2() {
+      return "Messages: None";
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
