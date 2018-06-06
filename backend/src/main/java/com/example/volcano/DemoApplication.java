@@ -11,8 +11,14 @@ public class DemoApplication {
 
     @RequestMapping("/")
     @ResponseBody
-    String home() {
+    String home3() {
       return "Hello, Volcaneers! 🌋";
+    }
+
+    @RequestMapping("/HGFirstChange")
+    @ResponseBody
+    String home() {
+      return "Dan is AWESOME!!!! 🌋";
     }
 
     @RequestMapping("/getMessages")
