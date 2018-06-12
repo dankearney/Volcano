@@ -4,10 +4,14 @@
     <strong>{{chat.sender}}:</strong> {{chat.message}}
   </div>
   <br />
-  <form (ngSubmit)="onSubmit($event)">
-    <div class="form-group">
-      <input type="text" class="form-control" id="message" required>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+    <form #f="ngForm"  
+      (ngSubmit)="onSubmit(f.value)"  
+      class="ui form">
+      <input type="text"  
+ 	    id="message"  
+        name="message" ngModel>  
+      &nbsp;
+      <button type="submit" class="btn btn-sm sendbtn">Send</button>
+  </form>  
+  
 </div>
