@@ -1,3 +1,13 @@
-<p>
-  chat works: {{chat}}
-</p>
+<div class="chat">
+  <h3>Public Chat</h3>
+  <div *ngFor="let chat of chats">
+    <strong>{{chat.sender}}:</strong> {{chat.message}}
+  </div>
+  <br />
+  <form (ngSubmit)="onSubmit($event)">
+    <div class="form-group">
+      <input type="text" class="form-control" id="message" required>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
