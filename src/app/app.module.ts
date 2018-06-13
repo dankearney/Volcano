@@ -13,12 +13,13 @@ import { CardComponent } from './card/card.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { StoryComponent } from './story/story.component';
 import { StoryPageComponent } from './story-page/story-page.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
   { path: 'cards', component: CardPageComponent },
   { path: 'stories', component: StoryPageComponent },
-  { path: '', component: DefaultComponent }
+  { path: '', component: LoginComponent }
 ]
 
 @NgModule({
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     CardPageComponent,
     StoryComponent,
     StoryPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
