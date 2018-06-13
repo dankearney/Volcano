@@ -14,11 +14,14 @@ import { CardPageComponent } from './card-page/card-page.component';
 import { StoryComponent } from './story/story.component';
 import { StoryPageComponent } from './story-page/story-page.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
   { path: 'cards', component: CardPageComponent },
   { path: 'stories', component: StoryPageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '', component: LoginComponent }
 ]
 
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     StoryComponent,
     StoryPageComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
