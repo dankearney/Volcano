@@ -14,10 +14,8 @@ export class ChatComponent implements OnInit {
 
   constructor() { }
 
-  // THIS IS A KLUDGE, DO NOT REPLICATE
-  onSubmit(event: any) { 
-  	let message = event.target[0].value;
-  	let newchat = new Chat('Dan', message);
+  onSubmit(form: any) { 
+  	let newchat = new Chat('Dan', form.message);
   	this.chats.push(newchat);
   }
 
