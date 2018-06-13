@@ -1,12 +1,18 @@
 <div class="row">
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
-            <h4 class="card-header">{{card.number}}) {{card.title}} <br /> by {{card.owner}}</h4>
+            <h4 class="card-header">{{card.number}}) {{card.title}} <br /> <div align="center">by {{card.owner}}</div>
+				<span class="badge badge-pill badge-primary">{{card.labels}}</span>
+
+            </h4>
             <div class="card-body">
-              <p class="card-text"><a href="#" class="btn btn-danger">Not Done</a><br /><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+              <p class="card-text"><span class="label label-info">{{card.priority}}</span><br /><br />
+              	<b>{{card.story}}</b><br />
+              {{card.description}}</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
+              <span class="label label-danger">{{card.status}}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">Mark as Completed</a>
 
             </div>
           </div>
