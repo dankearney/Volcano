@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: 'stories', component: StoryPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: LoginComponent }
+  { path: '', component: DefaultComponent }
 ]
 
 @NgModule({
