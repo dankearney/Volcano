@@ -11,10 +11,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './default/default.component';
 import { CardComponent } from './card/card.component';
 import { CardPageComponent } from './card-page/card-page.component';
+import { StoryComponent } from './story/story.component';
+import { StoryPageComponent } from './story-page/story-page.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
   { path: 'cards', component: CardPageComponent },
+  { path: 'stories', component: StoryPageComponent },
   { path: '', component: DefaultComponent }
 ]
 
@@ -26,6 +29,8 @@ const appRoutes: Routes = [
     DefaultComponent,
     CardComponent,
     CardPageComponent,
+    StoryComponent,
+    StoryPageComponent,
   ],
   imports: [
     BrowserModule,
