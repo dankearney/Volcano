@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCK_CARD } from '../mock-card.ts';
+import { MOCK_CARD } from '../mock-card';
 
 @Component({
   selector: 'app-card',
