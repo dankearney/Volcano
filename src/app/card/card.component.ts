@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../card';
 import { MOCK_CARD } from '../mock-card';
 
 @Component({
