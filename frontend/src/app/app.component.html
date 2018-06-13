@@ -1,4 +1,37 @@
-<div class='main-container'>
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class = "navbar-brand" href = "#"> Volcano </a>
+  <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">>
+    <span class = "navbar-toggler-icon"></span>
+  </button>
+
+  <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+    <ul class = "navbar-nav mr-auto">
+      <li class ="nav-item">
+        <a class = "nav-link" routerLink = "/cards" routerLinkActive = "active">Cards</a>
+      </li>
+      <li class = "nav-item">
+        <a class = "nav-link" routerLink = "/stories" routerLinkActive = "active">Stories</a>
+      </li>
+      <li class = "nav-item">
+        <a class = "nav-link" routerLink = "/chat" routerLinkActive = "active">Chat</a>
+      </li>
+    </ul>
+    <ul class ="navbar-nav">
+      <a class = "nav-link" routerLink = "/login" routerLinkActive = "active"> Login</a>
+      <a class = "nav-link" routerLink = "/register" routerLinkActive = "active"> Register</a>
+    </ul>
+  </div>
+</nav>
+
+<div class = "container">
   <router-outlet></router-outlet>
 </div>
 
+<!-- Footer -->
+<footer class="py-5 bg-dark" style='position: fixed; bottom: 0px; width: 100%'>
+     <div class="container">
+       <p class="m-0 text-center text-white">Copyright &copy; Y.H.D.T.N.Q 2018</p>
+     </div>
+     <!-- /.container -->
+</footer>
