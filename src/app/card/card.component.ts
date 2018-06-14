@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../card';
 import { MOCK_CARD } from '../mock-card';
 
@@ -10,10 +10,10 @@ import { MOCK_CARD } from '../mock-card';
 
 export class CardComponent implements OnInit {
 
-  card = MOCK_CARD;
+  @Input() public card : Card;
 
   constructor() { }
-
+  
   ngOnInit() {
   }
 

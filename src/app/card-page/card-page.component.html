@@ -2,6 +2,9 @@
 	Cards
 </h1>
 <h2>
-	Assigned to Me
+	Active Cards
 </h2>
-<app-card>
+<br />
+  <span *ngFor="let card of cards" >
+    <app-card [card]="card">
+  
