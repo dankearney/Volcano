@@ -2,7 +2,6 @@ export class Card {
   number: number;
   type: string;
   title: string;
-  type: string;
   story: string;
   priority: string;
   labels: string;
