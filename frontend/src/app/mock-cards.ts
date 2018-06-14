@@ -4,6 +4,7 @@ export const MOCK_CARDS: Card[] = [
 {
   number: 1,
   title: 'Add header to mobile site',
+  type: 'Task',
   story: 'Story Name',
   priority: 'Normal',
   labels: 'Mobile',
@@ -16,6 +17,7 @@ export const MOCK_CARDS: Card[] = [
 {
   number: 5,
   title: 'Make site responsive',
+  type: 'Task',
   story: 'Story Name',
   priority: 'Normal',
   labels: 'Mobile',
@@ -28,6 +30,7 @@ export const MOCK_CARDS: Card[] = [
 {
   number: 7,
   title: 'Localize for Spanish',
+  type: 'Task',
   story: 'Story Name',
   priority: 'Low',
   labels: 'Localization',
