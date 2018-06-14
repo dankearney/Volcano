@@ -3,14 +3,13 @@ import { Story } from './story';
 export const MOCK_STORY: Story = 
 {
   number: 0,
-  title: 'Add header to mobile website', 
-  type: 'task',
+  title: 'Create frontend', 
   cards: ['card name'],
-  priority: 'normal',
+  priority: 'high',
   labels: 'mobile',
   status: 'Not done',
   resolution: '',
-  description: 'First Iteration',
+  description: 'First iteration of the frontend has the following requirements.\r\nBe responsive. Less than 200 ms lag.',
   attachment: '',
-  creater: 'Qian'
+  creator: 'Qian'
 };

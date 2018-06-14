@@ -1,7 +1,6 @@
 export class Story {
     number: number;
     title: string;
-    type: string;
     cards: string[];
     priority: string;
     labels: string;
@@ -9,5 +8,5 @@ export class Story {
     resolution: string;
     description: string;
     attachment: string;
-    creater: string;
+    creator: string;
   }
