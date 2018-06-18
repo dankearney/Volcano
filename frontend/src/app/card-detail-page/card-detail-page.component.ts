@@ -15,7 +15,7 @@ export class CardDetailPageComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.card = this.cards[this.route.snapshot.paramMap.get('card-id'))];
+    this.card = this.cards[this.route.snapshot.paramMap.get('card-id')];
   }
 
 }
