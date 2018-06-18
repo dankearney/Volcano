@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'stories', component: StoryPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: DefaultComponent }
+  { path: '', component: DefaultComponent },
   { path: 'cardDetail/:card-id', component: CardDetailPageComponent }
 ]
 
