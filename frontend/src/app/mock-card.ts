@@ -2,7 +2,7 @@ import { Card } from './card';
 
 export const MOCK_CARD: Card =
 {
-  number: 1,
+  id: 1,
   title: 'Add header to mobile site',
   type: 'Task',
   story: 'Story Name',

@@ -1,14 +1,14 @@
 <div class="card volcano-card" >
   <h2 class="card-header volcano-card-header">
-    <strong>{{card.title}}</strong>
+    <strong><a href="/cardDetail/{{card.id}}">{{card.title}}</a></strong>
   </h2>
   <div class="card-body">
     <p class="card-text">
-      <a class="label label-info label-sm" style='color: white'>{{card.type}}</a>
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
       &nbsp;
-      <a class="label label-danger label-sm" style='color: white'>{{card.status}}</a>
+      <a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
       &nbsp;
-      <a class="label label-info label-sm" style='color: white'>{{card.priority}}</a>
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
       <br />
       <br />
       {{card.description}}
@@ -17,7 +17,7 @@
   <div class="card-footer">
     <p><strong>Assigned to: </strong> {{card.owner}}</p>
     <p><strong>story: </strong> {{card.story}}</p>
-    <p><strong>labels: </strong> {{card.labels}}</p>
+    <p><strong>btns: </strong> {{card.labels}}</p>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
         Mark as Completed
       </a>
