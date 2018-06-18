@@ -15,6 +15,7 @@ import { StoryComponent } from './story/story.component';
 import { StoryPageComponent } from './story-page/story-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CardDetailPageComponent } from './card-detail-page/card-detail-page.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: DefaultComponent }
+  { path: 'cardDetail/:card-id', component: CardDetailPageComponent }
 ]
 
 @NgModule({
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     StoryPageComponent,
     LoginComponent,
     RegisterComponent,
+    CardDetailPageComponent,
   ],
   imports: [
     BrowserModule,

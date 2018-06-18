@@ -2,7 +2,7 @@ import { Card } from './card';
 
 export const MOCK_CARDS: Card[] = [
 {
-  number: 1,
+  id: 0,
   title: 'Add header to mobile site',
   type: 'Task',
   story: 'Story Name',
@@ -15,7 +15,7 @@ export const MOCK_CARDS: Card[] = [
   owner: 'Qian'
 },
 {
-  number: 5,
+  id: 1,
   title: 'Make site responsive',
   type: 'Task',
   story: 'Story Name',
@@ -28,7 +28,7 @@ export const MOCK_CARDS: Card[] = [
   owner: 'Terence'
 },
 {
-  number: 7,
+  id: 2,
   title: 'Localize for Spanish',
   type: 'Task',
   story: 'Story Name',
