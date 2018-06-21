@@ -1,7 +1,5 @@
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/Login.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/controller/LoginController.java
-/mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/repository/AnswerRepository.java
-/mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/repository/QuestionRepository.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/AuditModel.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/VolcanoApplication.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/exception/ResourceNotFoundException.java
