@@ -4,9 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.*;
+import com.example.volcano.login.Login;
+import com.example.volcano.service.ILoginService;
+import java.util.List;
 
 @Controller
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={"com.example.volcano", "com.example.volcano.service", "com.example.volcano.repository"})
 public class DemoApplication {
 
     @RequestMapping("/")
