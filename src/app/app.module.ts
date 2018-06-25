@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 
 import { FormsModule } from '@angular/forms';
-import { ChatPageComponent } from './chat-page/chat-page.component'; // <-- NgModel lives here
+import { ChatPageComponent } from './chat-page/old-page/chat-page.component'; // <-- NgModel lives here
 
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './default/default.component';
