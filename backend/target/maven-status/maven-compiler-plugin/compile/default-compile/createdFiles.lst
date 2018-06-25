@@ -1,6 +1,7 @@
 com/example/postgresdemo/VolcanoApplication.class
 com/example/postgresdemo/controller/LoginController.class
 com/example/postgresdemo/model/AuditModel.class
+com/example/postgresdemo/VolcanoApplication$SecurityConfiguration.class
 com/example/postgresdemo/repository/LoginRepository.class
 com/example/postgresdemo/model/Login.class
 com/example/postgresdemo/exception/ResourceNotFoundException.class

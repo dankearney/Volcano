@@ -14,6 +14,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Random;
+import java.util.*;
+import java.nio.charset.Charset;
+import org.springframework.http.*;
 
 @RestController
 public class LoginController {
@@ -29,14 +32,16 @@ public class LoginController {
     }
 
     @GetMapping("/register")
-    public List<Login> setLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-        Login login = new Login();
-        login.setUsername(username);
-        login.setPassword(password);
-        login.setUserid(getRandomUserId());
-        loginRepository.save(login);
-        List<Login> logins = loginRepository.findAll();
-        return logins;        
+    public List<Login> register() {
+
+            Login login = new Login();
+            login.setUsername("username");
+            login.setPassword("password");
+            login.setUserid(getRandomUserId());
+            loginRepository.save(login);
+            List<Login> logins = loginRepository.findAll();
+            return logins;  
+        // }      
     }
 
     private Long getRandomUserId() {
