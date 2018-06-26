@@ -7,18 +7,24 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "login")
-public class Login extends AuditModel {
+@Table(name = "users", indexes = {@Index(name = "i1",  columnList="username", unique = true)})
+public class User extends AuditModel {
 
-    @Column(columnDefinition = "integer")
+    @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long userid;
 
-    @Id
+    @Column(name="username")
     private String username;
 
-    @Column(columnDefinition = "text")
+    @Column()
     private String password;
+
+    @Column()
+    private String email;
+
+    @Column()
+    private String name;
 
     public Long getUserid() {
         return userid;
@@ -42,5 +48,21 @@ public class Login extends AuditModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void getName(String name) {
+        this.name = name;
     }
 }
