@@ -20,7 +20,8 @@ import org.springframework.http.*;
 import org.springframework.security.access.method.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import java.security.Principal;
+import org.springframework.security.core.context.*;
 
 @RestController
 public class UserController {
@@ -31,9 +32,8 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> User() {
-        List<User> Users = userRepository.findAll();
-        return Users;
+    public Principal User(Principal principal) {
+        return principal;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
