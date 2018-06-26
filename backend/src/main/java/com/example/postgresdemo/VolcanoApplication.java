@@ -34,7 +34,7 @@ public class VolcanoApplication {
 		protected void configure(HttpSecurity http) throws Exception {
 	       http.
 	            authorizeRequests().
-	            antMatchers(HttpMethod.GET, "/login").permitAll().
+	            antMatchers(HttpMethod.GET, "/test").permitAll().
 	            antMatchers(HttpMethod.POST, "/register").permitAll().
 		        anyRequest().authenticated().and().httpBasic().and().csrf().disable();
 		}

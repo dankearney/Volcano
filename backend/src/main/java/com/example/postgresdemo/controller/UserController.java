@@ -30,7 +30,6 @@ public class UserController {
     private BCryptPasswordEncoder bc = new BCryptPasswordEncoder(11);
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody
     public List<User> User() {
         List<User> Users = userRepository.findAll();
@@ -45,10 +44,9 @@ public class UserController {
         return user;       
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public List<User> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return users;       
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "test!";       
     }
 
 }
