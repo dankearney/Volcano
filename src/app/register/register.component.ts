@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Register } from '../register';
+import { HttpClient } from '@angular/common/http';
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-register',
@@ -7,13 +12,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   registerUserData = {};
-  constructor(private _router: Router) { }
+
+  public registerForm : FormGroup;
+
+  constructor(private _router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+
+    this.registerForm = new FormGroup({
+        username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        email: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+    });
   }
 
-  registerUser() {
+  registerUser( model: Register, isValid: boolean) {
+  	console.log(model);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post("http://localhost:8080/register", model, options).toPromise()
+	   .then(this.extractData)
+	   .catch(this.handleErrorPromise);
   }
 
 
