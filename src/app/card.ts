@@ -1,7 +1,7 @@
 export class Card {
-  id: number;
+  cardId: number;
   type: string;
-  title: string;
+  cardName: string;
   story: string;
   priority: string;
   labels: string;
