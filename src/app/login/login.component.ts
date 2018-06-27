@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
 	        'Authorization' : 'Basic ' + token
 	    }
 	};
-    this.http.get("http://localhost:8080/login", config).subscribe(
+    this.http.get("http://volcano-backend.herokuapp.com/login", config).subscribe(
       data => {
-        let userPrincipal = data.principal.user;
+        let userPrincipal = data["principal"]["user"];
         alert("Login successful! Welcome, " + userPrincipal.username + "!");
         window.localStorage.setItem("authToken", token);
         window.localStorage.setItem("userPrincipal", JSON.stringify(userPrincipal));
