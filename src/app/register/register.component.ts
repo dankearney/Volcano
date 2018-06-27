@@ -33,9 +33,19 @@ export class RegisterComponent implements OnInit {
   	console.log(model);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post("http://volcano-backend.herokuapp.com/register", model, options).toPromise()
-	   .then(this.extractData)
-	   .catch(this.handleErrorPromise);
+	let config = { headers:  {
+	        'Content-Type': 'application/json',
+	    }
+	};
+    this.http.post("http://volcano-backend.herokuapp.com/register", model, config).subscribe(
+      data => {
+        alert("Creation successful!");
+      },
+      err => {
+        alert("Login failed");
+      }
+    );
+
   }
 
 
