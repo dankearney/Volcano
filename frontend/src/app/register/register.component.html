@@ -5,16 +5,24 @@
         <h3 class = "mb-0">Register</h3>
       </div>
       <div class = "card-body">
-        <form class = "form">
+        <form [formGroup]="registerForm" class = "form" (ngSubmit)="registerUser(registerForm.value, registerForm.valid)">
           <div class = "form-group">
-            <label for = "">Email</label>
-            <input name = "email" type = "text" class = "form-control rounded-0" required>
+            <label for = "">Username</label>
+            <input formControlName = "username" name = "username" type = "text" class = "form-control rounded-0" required>
           </div>
           <div class = "form-group">
             <label for="">Password</label>
-            <input name = "password" type = "password" class = "form-control rounded-0" required>
+            <input formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
           </div>
-          <button type = "button" class = "btn btn-primary float-right">Register</button>
+          <div class = "form-group">
+            <label for="">Name</label>
+            <input formControlName = "name" name = "name" type = "text" class = "form-control rounded-0" required>
+          </div>
+          <div class = "form-group">
+            <label for="">Email</label>
+            <input formControlName = "email" name = "email" type = "text" class = "form-control rounded-0" required>
+          </div>
+          <button type = "submit" class = "btn btn-primary float-right">Register</button>
         </form>
       </div>
     </div>

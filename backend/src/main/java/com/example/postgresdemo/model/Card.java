@@ -6,15 +6,15 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cards", indexes = {@Index(name = "card1",  columnList="title", unique = true)})
+@Table(name = "cards", indexes = {@Index(name = "card1",  columnList="name", unique = false)})
 public class Card extends AuditModel {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long cardId; //primary id
 
-    @Column(name="title")
-    private String cardTitle;
+    @Column(name="name")
+    private String cardName;
     @Column()
     private String type;
     @Column()
@@ -40,8 +40,8 @@ public class Card extends AuditModel {
         return cardId;
     }
 
-    public String getCardTitle() {
-        return cardTitle;
+    public String getCardName() {
+        return cardName;
     }
 
     public String getType() {
@@ -85,8 +85,8 @@ public class Card extends AuditModel {
         this.cardId = cardId;
     }
 
-    public void setCardTitle(String cardTitle) {
-        this.cardTitle = cardTitle;
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
     }
 
     public void setType(String type) {

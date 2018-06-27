@@ -22,7 +22,7 @@ public class CardController {
     }
 
 
-    @PostMapping("/cards")
+    @PostMapping("/card")
     public Card createCard(@Valid @RequestBody Card card) {
         return cardRepository.save(card);
     }
@@ -32,7 +32,7 @@ public class CardController {
                                    @Valid @RequestBody Card cardRequest) {
         return cardRepository.findById(cardId)
                 .map(card -> {
-                    card.setCardTitle(cardRequest.getCardTitle());
+                    card.setCardName(cardRequest.getCardName());
                     card.setType(cardRequest.getType());
                     card.setPriority(cardRequest.getPriority());
                     card.setLabel(cardRequest.getLabel());

@@ -31,7 +31,7 @@ public class StoryController {
                                    @Valid @RequestBody Story storyRequest) {
         return storyRepository.findById(storyId)
                 .map(story -> { //all these are passing changes on model back to repository
-                    story.setStoryTitle(storyRequest.getStoryTitle());
+                    story.setStoryName(storyRequest.getStoryName());
                     story.setType(storyRequest.getType());
                     story.setPriority(storyRequest.getPriority());
                     story.setLabel(storyRequest.getLabel());

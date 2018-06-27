@@ -6,7 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stories", indexes = {@Index(name = "story1",  columnList="title", unique = true)})
+@Table(name = "stories", indexes = {@Index(name = "story1",  columnList="name", unique = true)})
 public class Story extends AuditModel {
 
     @Id
@@ -15,27 +15,36 @@ public class Story extends AuditModel {
 
     @Column()
     private Integer number;
-    @Column(name="title")
-    private String title;
+
+    @Column(name="name")
+    private String storyName;
+
     @Column()
     private String type;
+    
     @Column()
     private String priority;
+    
     @Column()
     private String label;
+    
     @Column()
     private String[] status;
+    
     @Column()
     private String resolution;
+    
     @Column()
     private String description;
+    
     @Column()
     private String attachment;
+    
     @Column()
     private Long userId; //wrote getter, not setter
+    
     @Column()
     private Long teamId; //wrote getter, not setter
-
 
     //getters
     public Long getStoryId() {
@@ -46,8 +55,8 @@ public class Story extends AuditModel {
       return number;
     }
 
-    public String getStoryTitle() {
-        return title;
+    public String getStoryName() {
+        return storyName;
     }
 
     public String getType() {
@@ -95,8 +104,8 @@ public class Story extends AuditModel {
       this.number = number;
     }
 
-    public void setStoryTitle(String title) {
-        this.title = title;
+    public void setStoryName(String name) {
+        this.storyName = name;
     }
 
     public void setType(String type) {

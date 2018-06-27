@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface StoryRepository extends JpaRepository<Story, Long> {
-    Story findByStoryname(String storyname);
+    Story findByStoryName(String storyName);
 }
