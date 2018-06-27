@@ -25,7 +25,7 @@ export class CardPageComponent implements OnInit {
 	};
     this.http.get("http://volcano-backend.herokuapp.com/cards", config).subscribe(
       data => {
-        this.cards = data.content;
+        this.cards = data["content"];
       },
       err => {
         alert("Login failed");
