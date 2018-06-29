@@ -19,7 +19,7 @@ export class CardPageComponent implements OnInit {
   ngOnInit() {
     this.http.get("https://volcano-backend.herokuapp.com/cards", Util.getReqConfig()).subscribe(
       data => {
-        this.cards = data["content"];
+        this.cards = <any[]>data;
       },
       err => {
         Util.writeGenericError();
