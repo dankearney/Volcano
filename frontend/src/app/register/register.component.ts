@@ -5,6 +5,7 @@ import { Register } from '../register';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { Util } from '../utilities/util';
 
 @Component({
   selector: 'app-register',
@@ -30,19 +31,15 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser( model: Register, isValid: boolean) {
-  	console.log(model);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-	let config = { headers:  {
-	        'Content-Type': 'application/json',
-	    }
-	};
-    this.http.post("http://volcano-backend.herokuapp.com/register", model, config).subscribe(
+	const config = { headers:  {
+    	'Content-Type': 'application/json',
+    } };
+    this.http.post("https://volcano-backend.herokuapp.com/register", model, config ).subscribe(
       data => {
-        alert("Creation successful!");
+        Util.writeSuccess("Creation successful! Welcome, " + model.username);
       },
       err => {
-        alert("Login failed");
+        Util.writeError("Account creation failed. Username may be in use.");
       }
     );
 
