@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { Injectable } from "@angular/core";
+import { Util } from '../utilities/util';
 
 @Component({
   selector: 'app-login',
@@ -30,20 +31,16 @@ export class LoginComponent implements OnInit {
 
   loginUser( model: Login, isValid: boolean) {
   	let token = btoa(model.username + ":" + model.password);
-	let config = { headers:  {
-	        'Content-Type': 'application/json',
-	        'Authorization' : 'Basic ' + token
-	    }
-	};
-    this.http.get("http://volcano-backend.herokuapp.com/login", config).subscribe(
+	window.localStorage.setItem("authToken", token);
+    this.http.get("https://volcano-backend.herokuapp.com/login", Util.getReqConfig() ).subscribe(
       data => {
         let userPrincipal = data["principal"]["user"];
-        alert("Login successful! Welcome, " + userPrincipal.username + "!");
+        Util.writeSuccess("Login successful! Welcome, " + userPrincipal.username + "!");
         window.localStorage.setItem("authToken", token);
         window.localStorage.setItem("userPrincipal", JSON.stringify(userPrincipal));
       },
       err => {
-        alert("Login failed");
+        Util.writeError("Login failed");
       }
     );
   }
