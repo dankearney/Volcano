@@ -1,0 +1,31 @@
+<h1>Card Edit</h1>
+
+<br />
+<div class="card" >
+  <h2 class="card-header">
+    <strong>{{card.title}}</strong>
+  </h2>
+  <div class="card-body">
+    <p class="card-text">
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
+      &nbsp;
+      <a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
+      <br />
+      <br />
+      {{card.description}}
+    </p>
+  </div>
+  <div class="card-footer">
+    <p><strong>Assigned to: </strong> {{card.owner}}</p>
+    <p><strong>story: </strong> {{card.story}}</p>
+    <p><strong>btns: </strong> {{card.labels}}</p>
+    <a href="#" class="btn btn-success">Edit Card</a>
+      &nbsp;<a href="#" class="btn btn-primary">
+        Mark as Completed
+      </a>
+  </div>
+</div>
+
+&nbsp; &nbsp; <a href="#" class="btn btn-primary btn-block">Go Back</a>
