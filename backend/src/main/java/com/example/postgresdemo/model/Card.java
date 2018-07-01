@@ -3,7 +3,11 @@ package com.example.postgresdemo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import com.example.postgresdemo.model.User;
+import com.example.postgresdemo.repository.UserRepository;
 import javax.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 
 @Entity
 @Table(name = "cards", indexes = {@Index(name = "card1",  columnList="name", unique = false)})
@@ -32,8 +36,15 @@ public class Card extends AuditModel {
     @Column()
     private String attachment;
     @Column()
-    private Long userId; //wrote getters, but not setters
+    private Long creatorId; 
+    @Column()
+    private Long assigneeId;
 
+    @Transient
+    private Optional<User> creator;
+
+    @Transient
+    private Optional<User> assignee;
 
     //getters
     public Long getCardId() {
@@ -76,8 +87,16 @@ public class Card extends AuditModel {
       return storyId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Long creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public Long getAssigneeId() {
+        return assigneeId;
     }
 
     //setters
@@ -116,4 +135,21 @@ public class Card extends AuditModel {
     public void setAttachment(String attachment) {
         this.attachment = attachment;
     }
+
+    public Optional<User> getCreator() {
+        return creator;
+    }
+
+    public Optional<User> getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Optional<User> user) {
+        assignee = user;
+    }
+
+    public void setCreator(Optional<User> user) {
+        creator = user;
+    }
+
 }
