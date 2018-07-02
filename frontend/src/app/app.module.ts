@@ -18,6 +18,8 @@ import { StoryPageComponent } from './story-page/story-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CardDetailPageComponent } from './card-detail-page/card-detail-page.component';
+//rounting component includes card and story create
+// import { AppRoutingModule, routingComponent } from './app-routing.module';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: DefaultComponent },
-  { path: 'cardDetail/:card-id', component: CardDetailPageComponent },
+  { path: 'cardDetail/:card-id', component: CardDetailPageComponent }
 ]
 
 @NgModule({
@@ -41,7 +43,9 @@ const appRoutes: Routes = [
     StoryPageComponent,
     LoginComponent,
     RegisterComponent,
-    CardDetailPageComponent
+    CardDetailPageComponent,
+    //put create card under rounting Component
+    // routingComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    // AppRoutingModule
     // other imports
   ],
   providers: [],

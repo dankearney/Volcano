@@ -41,10 +41,10 @@ public class Card extends AuditModel {
     private Long assigneeId;
 
     @Transient
-    private Optional<User> creator;
+    private User creator;
 
     @Transient
-    private Optional<User> assignee;
+    private User assignee;
 
     //getters
     public Long getCardId() {
@@ -136,19 +136,19 @@ public class Card extends AuditModel {
         this.attachment = attachment;
     }
 
-    public Optional<User> getCreator() {
+    public User getCreator() {
         return creator;
     }
 
-    public Optional<User> getAssignee() {
+    public User getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Optional<User> user) {
+    public void setAssignee(User user) {
         assignee = user;
     }
 
-    public void setCreator(Optional<User> user) {
+    public void setCreator(User user) {
         creator = user;
     }
 

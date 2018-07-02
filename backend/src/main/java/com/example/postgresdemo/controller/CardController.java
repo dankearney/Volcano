@@ -16,6 +16,9 @@ import java.util.List;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import java.util.Optional;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.ArrayList;
 
 @RestController
 public class CardController {
@@ -30,13 +33,35 @@ public class CardController {
     public List<Card> getCards() {
         List<Card> cards = cardRepository.findAll();
 
-        // Hydrate the assignee, creator with actual User objects.
-        // TODO: Make this more efficient -- this does two user table calls per card!
-        // Ideally let's do this in the Model layer itself. 
-        // Or at the very worst, we'll do one batch call to the User table.
+        // Cache the user ID <=> user object to avoid lots of
+        // Requests to the User DB.
+
+        // Initialize it empty.
+        HashMap<Long, User> userIdCache = new HashMap<Long, User>();
+        HashSet<Long> userIds = new HashSet<Long>();
+
         for ( Card card : cards ) {
-            card.setCreator(userRepository.findOneByUserid(card.getCreatorId()));
-            card.setAssignee(userRepository.findOneByUserid(card.getAssigneeId()));
+            userIds.add(card.getCreatorId());
+            userIds.add(card.getAssigneeId());
+        }
+        userIds.remove(null);
+        System.out.println(cards);
+        System.out.println(new ArrayList(userIds));
+
+        // Look up all the users in batch and fill the cache.
+        List<User> users = userRepository.findByUseridIn(new ArrayList(userIds));
+        for ( User user : users ) {
+            userIdCache.put(user.getUserid(), user);
+        }
+        
+        // Hydrate the assignee, creator with actual User objects from the cache.
+        for ( Card card : cards ) {
+            if ( card.getCreatorId() != null ) {
+                card.setCreator( userIdCache.get(card.getCreatorId()  ) );
+            }
+            if ( card.getAssigneeId() != null ) {
+               card.setAssignee(userIdCache.get(card.getAssigneeId() ) );
+            }
         }
         return cards;
     }
