@@ -5,12 +5,13 @@ export const MOCK_CARD: Card =
   cardId: 1,
   cardName: 'Add header to mobile site',
   type: 'Task',
-  story: 'Story Name',
+  storyId: 5,
   priority: 'Normal',
-  labels: 'Mobile',
-  status: 'Not Done',
+  label: 'Mobile',
+  status: [],
   resolution: '',
   description: 'This is a demo description.',
   attachment: '',
-  owner: 'Qian'
+  creatorId: 1,
+  assigneeId: 1
 };

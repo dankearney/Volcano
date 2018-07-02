@@ -10,10 +10,10 @@
     <div class ="card rounded-0">
       </div>
       <div class = "card-body">
-        <form [formGroup]="registerForm" class = "form" (ngSubmit)="registerUser(registerForm.value, registerForm.valid)">
+        <form [formGroup]="registerForm" class = "form" (ngSubmit)="registerUser(registerForm.value, registerForm.valid)"> // Name function in the .ts file!
           <div class = "form-group">
             <label for = "">Card Name</label>
-            <input formControlName = "username" name = "username" type = "text" class = "form-control rounded-0" required>
+            <input formControlName = "cardName" name = "username" type = "text" class = "form-control rounded-0" required>
           </div>
 	    <div class="form-group">
 	      <label for="inputState">Assigned To</label>
