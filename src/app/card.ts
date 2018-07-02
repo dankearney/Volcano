@@ -1,13 +1,14 @@
 export class Card {
   cardId: number;
-  type: string;
   cardName: string;
-  story: string;
+  type: string;
+  storyId: number;
   priority: string;
-  labels: string;
-  status: string;
+  label: string;
+  status: string[];
   resolution: string;
   description: string;
   attachment: string;
-  owner: string;
+  creatorId: number;
+  assigneeId: number;
 }
