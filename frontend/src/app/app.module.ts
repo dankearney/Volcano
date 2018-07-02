@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CardDetailPageComponent } from './card-detail-page/card-detail-page.component';
 //rounting component includes card and story create
- import { AppRoutingModule, routingComponent } from './app-routing.module';
+import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 

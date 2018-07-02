@@ -1,46 +1,67 @@
-<div class="container">
-
-    <form role="form" style="width:600px; margin: 0 auto;">
-        <h1>Create a Story</h1>
-
-        <div class="required-field-block">
-            <input type="text" placeholder="Title" class="form-control">
-            <div class="required-icon">
-                <div class="text">*</div>
-            </div>
+<div class = "row pt-5">
+    <div class = "col-md-6 mx-auto">
+      <div class ="card rounded-0">
+        <div class = "card-header">
+          <h3 class = "mb-0">Create a Story</h3>
         </div>
-        <div class="required-field-block">
-          <input type="text" placeholder="Priority" class="form-control">
-          <div class="required-icon">
-              <div class="text">*</div>
-          </div>
+        <div class = "card-body">
+          <form [formGroup]="creatStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createCardForm.valid)">
+            <div class = "form-group">
+              <label for = "">storyId</label>
+              <input formControlName = "storyId" name = "storyId" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">number</label>
+              <input formControlName = "number" name = "number" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">storyName</label>
+              <input formControlName = "storyName" name = "storyName" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+                <label for="">type</label>
+                <input formControlName = "type" name = "type" type = "text" class = "form-control rounded-0" required>
+              </div>
+            <div class = "form-group">
+              <label for="">Priority</label>
+              <input formControlName = "priority" name = "priority" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">Label</label>
+              <input formControlName = "label" name = "label" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">Status</label>
+              <input formControlName = "status" name = "status" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">Resolution</label>
+              <input formControlName = "resolution" name = "resolution" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">Description</label>
+              <input formControlName = "description" name = "description" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">Attachment</label>
+              <input formControlName = "attachment" name = "attachment" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">userId</label>
+              <input formControlName = "userId" name = "userId" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">teamId</label>
+              <input formControlName = "teamId" name = "teamId" type = "text" class = "form-control rounded-0" required>
+            </div>
+           
+            <button type = "submit" class = "btn btn-primary float-right">Create a Story</button>
+          </form>
+        </div>
       </div>
-
-        <div class="required-field-block">
-            <input type="text" placeholder="status" class="form-control">
-            <div class="required-icon">
-                <div class="text">*</div>
-            </div>
-        </div>
-        <div class="required-field-block">
-          <input type="text" placeholder="creator" class="form-control">
-          <div class="required-icon">
-              <div class="text">*</div>
-          </div>
-      </div>
-        <div class="required-field-block">
-            <textarea rows="4" class="form-control" placeholder="Description"></textarea>
-            <div class="required-icon">
-                <div class="text">*</div>
-            </div>
-        </div>
-
-        <button class="btn btn-primary">Create your story</button>
-
-    </form>
-</div>
-
-
+    </div>
+  </div>
+  
 <nav>
   &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/stories">Go Back</a></button>
 </nav>
