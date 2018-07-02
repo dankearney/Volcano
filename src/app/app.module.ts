@@ -22,6 +22,7 @@ import { CardDetailPageComponent } from './card-detail-page/card-detail-page.com
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   { path: 'cardDetail/:card-id', component: CardDetailPageComponent },
   { path: 'createCard', component: CreateCardComponent},
   { path: 'createStory', component: CreateStoryComponent},
+  { path: 'error', component: ErrorPageComponent},
 ]
 
 @NgModule({
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
     CardDetailPageComponent,
     //put create card under rounting Component
      routingComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
