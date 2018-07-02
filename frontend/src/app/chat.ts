@@ -1,12 +1,7 @@
 export class Chat {
-  sender: string;
+  creatorId: number;
+  creatorNameSnapshot: string;
   thread: string;
   project: string;
   message: string;
-
-  constructor (sender: string, message: string) { 
-    this.sender = sender;
-    this.message = message;
-  }
-
 }

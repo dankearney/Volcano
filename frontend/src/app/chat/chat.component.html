@@ -1,16 +1,20 @@
 <div class="chat">
   <h3>Private Chat</h3>
-  <div *ngFor="let chat of chats">
-    <strong>{{chat.sender}}:</strong> {{chat.message}}
+  <div class = "chat-container" scroll-glue-bottom="glued" >
+    <div *ngFor="let chat of chats" >
+      <strong>{{chat.creatorNameSnapshot}}:</strong> {{chat.message}}
+    </div>
   </div>
   <br />
-    <form #f="ngForm"  
-      (ngSubmit)="onSubmit(f.value)"  
-      class="ui form">
-      <input type="text"  
- 	    id="message"  
-        name="message" ngModel>  
-      &nbsp;
-      <button type="submit" class="btn btn-sm sendbtn">Send</button>
-  </form>  
+      <form [formGroup]="chatForm" class = "form" (ngSubmit)="sendChatMessage(chatForm.value, chatForm.valid)">
+        <div class = "form-group">
+          <label for = "">Message</label>
+          <input formControlName = "message" name = "name" type = "text" class = "form-control rounded-0" required>
+        </div>
+        <div class="chat-button">
+        <button type = "submit" class = "btn btn-primary float-right">Send</button>
+      </div>
+      </form> 
 </div>
+
+

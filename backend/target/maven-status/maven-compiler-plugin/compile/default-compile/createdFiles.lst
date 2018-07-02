@@ -1,9 +1,12 @@
 com/example/postgresdemo/VolcanoApplication.class
 com/example/postgresdemo/repository/CardRepository.class
 com/example/postgresdemo/repository/UserRepository.class
+com/example/postgresdemo/controller/ChatController.class
+com/example/postgresdemo/model/Chat.class
 com/example/postgresdemo/VolcanoApplication$SecurityConfiguration.class
 com/example/postgresdemo/security/VolcanoUserPrincipal.class
 com/example/postgresdemo/security/SimpleCORSFilter.class
+com/example/postgresdemo/repository/ChatRepository.class
 com/example/postgresdemo/model/AuditModel.class
 com/example/postgresdemo/controller/CardController.class
 com/example/postgresdemo/service/VolcanoUserDetailsService.class
