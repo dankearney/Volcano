@@ -1,12 +1,15 @@
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/Card.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/security/VolcanoUserPrincipal.java
+/mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/controller/ChatController.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/AuditModel.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/User.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/controller/UserController.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/controller/StoryController.java
+/mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/repository/ChatRepository.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/controller/CardController.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/Story.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/security/SimpleCORSFilter.java
+/mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/model/Chat.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/repository/StoryRepository.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/VolcanoApplication.java
 /mnt/c/Users/Dank/Dropbox/BU_MET/CS671/Volcano/backend/src/main/java/com/example/postgresdemo/exception/ResourceNotFoundException.java

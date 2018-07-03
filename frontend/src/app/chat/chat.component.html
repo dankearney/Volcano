@@ -1,6 +1,6 @@
 <div class="chat">
   <h3>Private Chat</h3>
-  <div class = "chat-container" scroll-glue-bottom="glued" >
+  <div class = "chat-container" id="chatcontainer">
     <div *ngFor="let chat of chats" >
       <strong>{{chat.creatorNameSnapshot}}:</strong> {{chat.message}}
       <button class = "button3" style = 'float: right'>Delete</button>
