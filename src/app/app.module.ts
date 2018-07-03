@@ -23,6 +23,7 @@ import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginNavComponent } from './login-nav/login-nav.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     //put create card under rounting Component
      routingComponent,
     ErrorPageComponent,
+    LoginNavComponent,
   ],
   imports: [
     BrowserModule,
