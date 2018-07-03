@@ -20,7 +20,7 @@ public class ChatController {
     @Autowired
     private ChatRepository chatRepository;
 
-    @GetMapping("/chats") 
+    @GetMapping("/chats")
     public List<Chat> getChats() {
         return chatRepository.findAll();
     }
@@ -34,5 +34,14 @@ public class ChatController {
         chat.setCreatorNameSnapshot(userName);
         return chatRepository.save(chat);
     }
-
+/*
+    @DeleteMapping("/chats/{chatId}")
+    public ResponseEntity<?> deleteChat(@PathVariable Long chatId) {
+        return chatRepository.findByChatId(chatId)
+                .map(chat -> {
+                    chatRepository.delete(chat);
+                    return ResponseEntity.ok().build();
+                }).orElseThrow(() -> new ResourceNotFoundException("Chat not found with id " + chatId));
+    }
+    */
 }

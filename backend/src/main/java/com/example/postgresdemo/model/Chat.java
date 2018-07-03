@@ -31,6 +31,10 @@ public class Chat extends AuditModel {
     public void setCreatorId(Long userId) {
         this.creatorId = creatorId;
     }
+  
+    public Long getChatId() {
+      return this.creatorId;
+    }
 
     public String getMessage() {
         return this.message;
