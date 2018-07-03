@@ -1,0 +1,12 @@
+<span id = "logged-in-nav" *ngIf="user != null">
+	<ul class ="navbar-nav">
+		<a class = "nav-link">Welcome, {{user.username}}! </a>
+		<a routerLinkActive = "active" routerLink = "/login" class = "nav-link" (click)="logout()"> Logout</a>
+	</ul>
+	</span>
+	<span id="logged-out-nav" *ngIf="user == null">
+		<ul class ="navbar-nav">
+		<a class = "nav-link" routerLink = "/login" routerLinkActive = "active"> Login</a>
+		<a class = "nav-link" routerLink = "/register" routerLinkActive = "active"> Register</a>
+	</ul>
+</span>
