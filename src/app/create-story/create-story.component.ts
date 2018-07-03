@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Story } from '../story'
 
 @Component({
   selector: 'app-create-story',
@@ -15,7 +16,7 @@ export class CreateStoryComponent implements OnInit {
   ngOnInit() {
   }
   
-  createStory(model: Story, isValid: boolen) { }
+  createStory(model: Story, isValid: boolean) { }
 
 }
 
