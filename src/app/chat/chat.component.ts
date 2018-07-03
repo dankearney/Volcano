@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit {
           this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
           data => {
             this.chats = data;
+            setTimeout(this.setScrollPosition, 50);
           },
           err => {
             Util.writeGenericError();
@@ -38,15 +39,21 @@ export class ChatComponent implements OnInit {
     );
   }
 
+  setScrollPosition() {
+    var objDiv = document.getElementById("chatcontainer");
+    objDiv.scrollTop = 10000;
+  }
+
   ngOnInit() {
 
       this.chatForm = new FormGroup({
         message: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
       });
 
-      this.http.get("https:volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
+      this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
       data => {
         this.chats = data;
+        setTimeout(this.setScrollPosition, 50);
       },
       err => {
         Util.writeGenericError();
