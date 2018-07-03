@@ -11,5 +11,5 @@ export class Card {
   attachment: string;
   creatorId: number;
   assigneeId: number;
-  creator: Object;
+  creator: any;
 }
