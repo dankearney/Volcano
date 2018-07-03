@@ -16,7 +16,7 @@ export class CreateCardComponent implements OnInit {
 
   createCardData = {};
 
-  public createCardForm : FormGroup;
+  createCardForm : FormGroup;
 
   constructor(private _router: Router, private http: HttpClient) { }
 
@@ -25,24 +25,17 @@ export class CreateCardComponent implements OnInit {
     this.createCardForm = new FormGroup({
         cardName: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         type: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        storyId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         priority: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         label: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        status: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        attachment: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        creatorId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
 
     });
   }
 
   createCard( model: Card, isValid: boolean) {
-	const config = { headers:  {
-    	'Content-Type': 'application/json',
-    } };
-    this.http.post("https://volcano-backend.herokuapp.com/card", model, config ).subscribe(
+    console.log("CODE RUNNING");
+    this.http.post("https://volcano-backend.herokuapp.com/card", model, Util.getReqConfig() ).subscribe(
       data => {
         Util.writeSuccess("Creation successful! Card Name, " + model.cardName);
       },
