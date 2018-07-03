@@ -5,7 +5,7 @@
           <h3 class = "mb-0">Create a Story</h3>
         </div>
         <div class = "card-body">
-          <form [formGroup]="creatStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createCardForm.valid)">
+          <form [formGroup]="createStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createCardForm.valid)">
             <div class = "form-group">
               <label for = "">storyId</label>
               <input formControlName = "storyId" name = "storyId" type = "text" class = "form-control rounded-0" required>
