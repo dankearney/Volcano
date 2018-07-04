@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 @Entity
 @Table(name = "stories", indexes = {@Index(name = "story1",  columnList="name", unique = true)})
@@ -21,30 +25,33 @@ public class Story extends AuditModel {
 
     @Column()
     private String type;
-    
+
     @Column()
     private String priority;
-    
+
     @Column()
     private String label;
-    
+
     @Column()
     private String[] status;
-    
+
     @Column()
     private String resolution;
-    
+
     @Column()
     private String description;
-    
+
     @Column()
     private String attachment;
-    
+
     @Column()
     private Long userId; //wrote getter, not setter
-    
+
     @Column()
     private Long teamId; //wrote getter, not setter
+
+    @Transient
+    private ArrayList<Card> cardsAttached;
 
     //getters
     public Long getStoryId() {
@@ -95,6 +102,10 @@ public class Story extends AuditModel {
       return teamId;
     }
 
+    public ArrayList<Card> getCardsAttached() {
+      return cardsAttached;
+    }
+
     //setters
     public void setStoryId(Long storyId) {
         this.storyId = storyId;
@@ -134,5 +145,9 @@ public class Story extends AuditModel {
 
     public void setAttachment(String attachment) {
         this.attachment = attachment;
+    }
+
+    public void setCardsAttached(ArrayList<Card> cards) {
+      this.cardsAttached = cards;
     }
 }

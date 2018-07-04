@@ -2,7 +2,12 @@ package com.example.postgresdemo.controller;
 
 import com.example.postgresdemo.exception.ResourceNotFoundException;
 import com.example.postgresdemo.model.Story;
+import com.example.postgresdemo.model.Card;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Optional;
 import com.example.postgresdemo.repository.StoryRepository;
+import com.example.postgresdemo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +21,21 @@ public class StoryController {
     @Autowired
     private StoryRepository storyRepository;
 
+    @Autowired
+    private CardRepository cardRepository;
+
     @GetMapping("/stories") //mapped to a table named stories in database
     public Page<Story> getStories(Pageable pageable) {
         return storyRepository.findAll(pageable);
+    }
+
+    @GetMapping("/stories/{storyId}") //name of the card table
+    public Story getStory(@PathVariable Long storyId) {
+        Story story = storyRepository.findByStoryId(storyId);
+        ArrayList<Card> cards = cardRepository.findByStoryId(storyId);
+
+        story.setCardsAttached(cards);
+        return story;
     }
 
     @PostMapping("/stories")

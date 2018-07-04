@@ -1,6 +1,6 @@
 com/example/postgresdemo/VolcanoApplication.class
-com/example/postgresdemo/repository/CardRepository.class
 com/example/postgresdemo/repository/UserRepository.class
+com/example/postgresdemo/repository/CardRepository.class
 com/example/postgresdemo/security/VolcanoUserPrincipal.class
 com/example/postgresdemo/model/AuditModel.class
 com/example/postgresdemo/controller/CardController.class
