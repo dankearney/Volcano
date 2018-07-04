@@ -29,6 +29,7 @@ export class CreateCardComponent implements OnInit {
         label: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
 
     });
   }
