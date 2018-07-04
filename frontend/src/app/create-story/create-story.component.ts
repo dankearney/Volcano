@@ -25,18 +25,15 @@ export class CreateStoryComponent implements OnInit {
   ngOnInit() {
 
     this.createStoryForm = new FormGroup({
-        storyId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         number: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         storyName: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        Type: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         priority: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        label: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        labels: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         attachment: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         userId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         teamId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-
     });
   }
 
