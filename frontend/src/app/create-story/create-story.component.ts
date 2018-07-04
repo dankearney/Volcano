@@ -25,7 +25,6 @@ export class CreateStoryComponent implements OnInit {
   ngOnInit() {
 
     this.createStoryForm = new FormGroup({
-        number: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         storyName: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         priority: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         labels: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
