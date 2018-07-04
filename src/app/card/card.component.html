@@ -4,23 +4,24 @@
   </h2>
   <div class="card-body">
     <p class="card-text">
+      <a class="badge badge-pill badge-warning" style='color: white'>{{card.resolution}}</a> &nbsp;
       <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
       &nbsp;
-      <a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
-      &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
+      <!--<a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
+      &nbsp;-->
+      <a class="btn btn-danger btn-sm" style='color: white'>{{card.priority}}</a>
       <br />
       <br />
       {{card.description}}
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Assigned to: </strong> {{card.assigneeId}}</p>
-    <p><strong>story id: </strong> {{card.storyId}}</p>
-    <p><strong>labels: </strong> {{card.label}}</p>
-    <p><strong>Created by: </strong> {{card.creatorId}}</p>
+    <p><strong>Assigned to: </strong> {{card.assignee.username}}</p>
+    <!--<p><strong>story id: </strong> {{card.storyId}}</p>-->
+    <p><strong>Label(s): </strong> {{card.label}}</p>
+    <p><strong>Created by: </strong> {{card.creator.username}}</p>
 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
         Mark as Completed
       </a>
   </div>

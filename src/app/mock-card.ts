@@ -13,5 +13,7 @@ export const MOCK_CARD: Card =
   description: 'This is a demo description.',
   attachment: '',
   creatorId: 1,
-  assigneeId: 1
+  assigneeId: 1,
+  creator: null,
+  assignee: null
 };
