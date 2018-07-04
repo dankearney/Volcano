@@ -1,6 +1,6 @@
 export class Story {
-    number: number;
-    title: string;
+    storyId: number;
+    storyName: string;
     cards: string[];
     priority: string;
     labels: string;
@@ -9,4 +9,6 @@ export class Story {
     description: string;
     attachment: string;
     creator: string;
+    userId: number;
+    teamId: number;
   }
