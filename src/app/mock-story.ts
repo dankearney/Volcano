@@ -1,9 +1,9 @@
 import { Story } from './story';
 
-export const MOCK_STORY: Story = 
+export const MOCK_STORY: Story =
 {
-  number: 0,
-  title: 'Create frontend', 
+  storyId: 0,
+  storyName: 'Create frontend',
   cards: ['card name'],
   priority: 'high',
   labels: 'mobile',
