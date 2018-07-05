@@ -23,15 +23,19 @@ export class ChatComponent implements OnInit {
   sendChatMessage(model: Chat, isValid: boolean) { 
       this.http.post("https://volcano-backend.herokuapp.com/chat", model, Util.getReqConfig()).subscribe(
       data => {
-          this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
-          data => {
-            this.chats = data;
-            setTimeout(this.setScrollPosition, 50);
-          },
-          err => {
-            Util.writeGenericError();
-          }
-        );
+          this.refreshChats();
+      },
+      err => {
+        Util.writeGenericError();
+      }
+    );
+  }
+
+  refreshChats() {
+    this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
+      data => {
+        this.chats = data;
+        setTimeout(this.setScrollPosition, 50);
       },
       err => {
         Util.writeGenericError();
@@ -50,14 +54,9 @@ export class ChatComponent implements OnInit {
         message: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
       });
 
-      this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
-      data => {
-        this.chats = data;
-        setTimeout(this.setScrollPosition, 50);
-      },
-      err => {
-        Util.writeGenericError();
-      }
+      this.refreshChats();
+      setInterval(() => { this.refreshChats() }, 5000);
+
     );
   }
 
