@@ -57,7 +57,6 @@ export class ChatComponent implements OnInit {
       this.refreshChats();
       setInterval(() => { this.refreshChats() }, 5000);
 
-    );
   }
 
 }
