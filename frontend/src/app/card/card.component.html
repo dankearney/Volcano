@@ -16,9 +16,13 @@
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Assigned to: </strong> {{card.assignee.username}}</p>
+    <p><strong>Assigned to: </strong> {{card.assignee.name}}</p>
     <!--<p><strong>story id: </strong> {{card.storyId}}</p>-->
     <p><strong>Label(s): </strong> {{card.label}}</p>
-    <p><strong>Created by: </strong> {{card.creator.username}}</p>
+    <p><strong>Created by: </strong> {{card.creator.name}}</p>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
+        Mark as Completed
+      </a>
   </div>
 </div>
