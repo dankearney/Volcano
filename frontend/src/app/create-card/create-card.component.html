@@ -15,6 +15,9 @@
             <label for="">Type</label>
             <select formControlName = "type" name = "type" class="form-control" id="type">
               <option>Task</option>
+              <option>Bug</option>
+              <option>Feature</option>
+
             </select>
           </div>
 
@@ -43,7 +46,10 @@
           <div class = "form-group">
             <label for="">Resolution</label>
             <select formControlName = "resolution" name = "resolution" class="form-control" id="resolution">
+              <option>Incomplete</option>
               <option>In Progress</option>
+              <option>Complete</option>
+
             </select>
           </div>
 
@@ -61,14 +67,13 @@
             <input formControlName = "creatorId" name = "creatorId" type = "text" class = "form-control rounded-0" required>
           </div>-->
           <div class = "form-group">
-            <label for="">Assignee ID</label><br />
-            <label for="">1: Dan, 2: , 3: Nicholas, 4:, 5:</label>
+            <label for="">Assigned To</label><br />
             <select formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value=1>Dan</option>
+              <option value=5>Qian</option>
+              <option value=158>Nicholas</option>
+              <option value=159>Heng Guang</option>
+              <option value=160>Terence</option>
             </select>
           </div>
 
