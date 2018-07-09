@@ -47,7 +47,7 @@ export class CreateStoryComponent implements OnInit {
           Util.writeSuccess("Creation successful! Story Name, " + model.storyName);
         },
         err => {
-          Util.writeError("Card creation failed.");
+          Util.writeError("Story creation failed.");
         }
       );
   }

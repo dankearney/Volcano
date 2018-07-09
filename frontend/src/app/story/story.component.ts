@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Story } from '../story';
 import { MOCK_STORY } from '../mock-story';
 
@@ -10,11 +10,13 @@ import { MOCK_STORY } from '../mock-story';
 
 export class StoryComponent implements OnInit {
 
-  story = MOCK_STORY;
-
+  @Input() public story : Story;
+  
   constructor() { }
 
   ngOnInit() {
   }
 
 }
+
+
