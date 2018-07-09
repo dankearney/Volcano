@@ -26,8 +26,14 @@ public class CardController {
     @Autowired
     private CardRepository cardRepository;
 
-    @Autowired 
+    @Autowired
     private UserRepository userRepository;
+
+    @GetMapping("/cards/{cardId}")
+    public Card getCard(@PathVariable Long cardId,
+                                  @Valid @RequestBody Card cardRequest) {
+        return cardRepository.findById(cardId).get();
+    }
 
     @GetMapping("/cards") //name of the card table
     public List<Card> getCards() {
@@ -53,7 +59,7 @@ public class CardController {
         for ( User user : users ) {
             userIdCache.put(user.getUserid(), user);
         }
-        
+
         // Hydrate the assignee, creator with actual User objects from the cache.
         for ( Card card : cards ) {
             if ( card.getCreatorId() != null ) {
@@ -66,7 +72,7 @@ public class CardController {
         return cards;
     }
 
-    @PostMapping("/card")
+    @PostMapping("/cards")
     public Card createCard(@Valid @RequestBody Card card) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
