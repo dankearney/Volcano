@@ -36,7 +36,9 @@ public class StoryController {
 
         story.setCardsAttached(cards);
         return story;
-    }
+    }  
+
+    
 
     @PostMapping("/stories")
     public Story createStory(@Valid @RequestBody Story story) {

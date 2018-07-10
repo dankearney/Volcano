@@ -12,4 +12,6 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
 
     Story findByStoryId(Long storyId);
 
+    ArrayList<Story> findByTeamId(Long teamId);
+
 }

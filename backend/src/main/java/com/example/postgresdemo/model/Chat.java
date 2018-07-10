@@ -22,16 +22,11 @@ public class Chat extends AuditModel {
     @Column()
     private Long creatorId;
     @Column()
+    private Long teamId; //only got setters, as teamId should not be changed once set
+    @Column()
     private String creatorNameSnapshot; // Let's just dump the username here for perf
 
-    public void setCreatorNameSnapshot(String name) {
-        this.creatorNameSnapshot = name;
-    }
-
-    public void setCreatorId(Long userId) {
-        this.creatorId = creatorId;
-    }
-  
+    //getters
     public Long getCreatorId() {
         return this.creatorId;
     }
@@ -46,6 +41,23 @@ public class Chat extends AuditModel {
 
     public String getCreatorNameSnapshot() {
         return this.creatorNameSnapshot;
+    }
+
+    public Long getTeamId() {
+      return teamId;
+    }
+
+    //setters
+    public void setCreatorNameSnapshot(String name) {
+        this.creatorNameSnapshot = name;
+    }
+
+    public void setCreatorId(Long userId) {
+        this.creatorId = creatorId;
+    }
+  
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
 }

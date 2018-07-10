@@ -24,6 +24,8 @@ public class Card extends AuditModel {
     @Column()
     private Long storyId; //wrote getters, but not setters
     @Column()
+    private Long teamId; 
+    @Column()
     private String priority;
     @Column()
     private String label;
@@ -36,7 +38,7 @@ public class Card extends AuditModel {
     @Column()
     private String attachment;
     @Column()
-    private Long creatorId; 
+    private Long creatorId;
     @Column()
     private Long assigneeId;
 
@@ -53,6 +55,10 @@ public class Card extends AuditModel {
 
     public String getCardName() {
         return cardName;
+    }
+
+    public Long getTeamId() {
+      return teamId;
     }
 
     public String getType() {
@@ -108,6 +114,10 @@ public class Card extends AuditModel {
         this.cardName = cardName;
     }
 
+    public void setTeamId(Long cardId) {
+      this.teamId = teamId;
+    }
+    
     public void setType(String type) {
         this.type = type;
     }

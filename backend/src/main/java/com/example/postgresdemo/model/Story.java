@@ -27,10 +27,19 @@ public class Story extends AuditModel {
     private String type;
 
     @Column()
+    private Long teamId;
+
+    @Column()
+    private Long chatId;
+
+    @Column()
     private String priority;
 
     @Column()
     private String label;
+
+    @Column()
+    private String message;
 
     @Column()
     private String[] status;
@@ -45,10 +54,10 @@ public class Story extends AuditModel {
     private String attachment;
 
     @Column()
-    private Long userId; //wrote getter, not setter
+    private Long creatorId; //wrote getter, not setter
 
     @Column()
-    private Long teamId; //wrote getter, not setter
+    private String creatorNameSnapshot;
 
     @Transient
     private ArrayList<Card> cardsAttached;
@@ -56,6 +65,26 @@ public class Story extends AuditModel {
     //getters
     public Long getStoryId() {
         return storyId;
+    }
+
+    public Long getCreatorId() {
+        return this.creatorId;
+    }
+
+    public Long getChatId() {
+      return this.chatId;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public String getCreatorNameSnapshot() {
+        return this.creatorNameSnapshot;
+    }
+
+    public Long getTeamId() {
+      return teamId;
     }
 
     public Integer getNumber() {
@@ -94,25 +123,30 @@ public class Story extends AuditModel {
         return attachment;
     }
 
-    public Long getUserId() {
-      return userId;
-    }
-
-    public Long getTeamId() {
-      return teamId;
-    }
-
     public ArrayList<Card> getCardsAttached() {
       return cardsAttached;
     }
 
     //setters
+
     public void setStoryId(Long storyId) {
         this.storyId = storyId;
     }
 
     public void setNumber(Integer number) {
       this.number = number;
+    }
+
+    public void setChatId(Long id) {
+        this.chatId = chatId;
+    }
+
+    public void setCreatorId(Long id) {
+        this.creatorId = id;
+    }
+
+    public void setCreatorNameSnapshot(String name) {
+        this.creatorNameSnapshot = name;
     }
 
     public void setStoryName(String name) {
@@ -123,6 +157,13 @@ public class Story extends AuditModel {
         this.type = type;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
     public void setPriority(String priority) {
         this.priority = priority;
     }
