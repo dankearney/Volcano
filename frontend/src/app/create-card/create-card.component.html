@@ -2,12 +2,12 @@
   <div class = "col-md-6 mx-auto">
     <div class ="card rounded-0">
       <div class = "card-header">
-        <h3 class = "mb-0">Create a card</h3>
+        <h3 class = "mb-0">Create a Ticket</h3>
       </div>
       <div class = "card-body">
         <form [formGroup]="createCardForm" class = "form" (ngSubmit)="createCard(createCardForm.value, createCardForm.valid)">
           <div class = "form-group">
-            <label for = "">Card Name</label>
+            <label for = "">Ticket Name</label>
             <input formControlName = "cardName" name = "cardName" type = "text" class = "form-control rounded-0" required>
           </div>
 

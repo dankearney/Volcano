@@ -3,9 +3,6 @@
     <button type="button" class="btn btn-light"><a routerLink ="/createStory">+ Create New Story</a></button>
   </nav>
 
-  <app-story>
-  
   <br />
- 
- 
-      
+  <span *ngFor="let story of stories" >
+    <app-story [story]="story">
