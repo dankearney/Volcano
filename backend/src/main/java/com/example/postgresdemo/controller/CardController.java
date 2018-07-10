@@ -97,6 +97,15 @@ public class CardController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
     }
 
+    @PutMapping("/cards/{cardId}")
+    public Card markAsComplete(@PathVariable Long cardId,
+                                   @Valid @RequestBody Card cardRequest) {
+        return cardRepository.findById(cardId)
+                .map(card -> {
+                    card.setResolution("Complete");
+                    return cardRepository.save(card);
+                }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
+    }
 
     @DeleteMapping("/cards/{cardId}")
     public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
