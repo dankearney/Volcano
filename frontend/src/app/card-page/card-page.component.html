@@ -7,10 +7,67 @@
 <nav>
   <button type="button" class="btn btn-light"><a routerLink ="/createCard">+ Create New Tickets</a></button>
 </nav>
-
-
-
-
 <br />
-  <span *ngFor="let card of cards" >
-    <app-card [card]="card">
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Incomplete</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">In Progress</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Completed</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <p>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Incomplete'">
+    		<app-card [card]="card"></app-card>
+    	</span>
+	</span>
+	</p>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <p>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'In Progress'">
+    	<app-card [card]="card"></app-card>
+    	</span>
+	</span>
+    </p>
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+    <p>
+	<span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Completed'">
+    		<app-card [card]="card"></app-card>
+    	</span>
+    </span>
+    </p>
+  </div>
+</div>
+
+
+<!--<br />
+<h4 align="center"> Incomplete Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Incomplete'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>
+
+<h4 align="center"> In Progress Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'In Progress'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>
+
+<h4 align="center"> Completed Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Completed'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>-->
