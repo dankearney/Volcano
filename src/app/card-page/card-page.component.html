@@ -8,9 +8,67 @@
   <button type="button" class="btn btn-light"><a routerLink ="/createCard">+ Create New Tickets</a></button>
 </nav>
 
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Incomplete</a></li>
+  <li><a data-toggle="tab" href="#menu1">In Progress</a></li>
+  <li><a data-toggle="tab" href="#menu2">Completed</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+  	<br />
+    <h4 align="center">Incomplete</h4>
+    <p>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Incomplete'">
+    		<app-card [card]="card"></app-card>
+    	</span>
+	</span>
+    </p>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+  	<br />
+    <h4 align="center">In Progress</h4>
+    <p>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'In Progress'">
+    	<app-card [card]="card"></app-card>
+    	</span>
+	</span>
+    </p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+  	<br />
+    <h4 align="center">Completed</h4>
+    <p>
+	<span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Completed'">
+    		<app-card [card]="card"></app-card>
+    	</span>
+    </span>
+    </p>
+  </div>
+</div>
 
 
+<!--<br />
+<h4 align="center"> Incomplete Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Incomplete'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>
 
-<br />
-  <span *ngFor="let card of cards" >
-    <app-card [card]="card">
+<h4 align="center"> In Progress Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'In Progress'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>
+
+<h4 align="center"> Completed Tickets </h4>
+    <span *ngFor="let card of cards" >
+		<span *ngIf="card.resolution == 'Completed'">
+    	<app-card [card]="card"></app-card>
+    </span>
+</span>-->
