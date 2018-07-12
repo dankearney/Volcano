@@ -4,12 +4,21 @@
   </h2>
   <div class="card-body">
     <p class="card-text">
-      <a class="btn btn-info btn-sm" style='color: white'>{{card.resolution}}</a> &nbsp;
+      <!--<a class="btn btn-info btn-sm" style='color: white'>{{card.resolution}}</a> &nbsp;-->
       <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
       &nbsp;
       <!--<a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
       &nbsp;-->
-      <a class="btn btn-danger btn-sm" style='color: white'>{{card.priority}}</a>
+      <span *ngIf="card.priority == 'Low'">
+        <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+      <span *ngIf="card.priority == 'Normal'">
+        <a class="btn btn-warning btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+      <span *ngIf="card.priority == 'High'">
+        <a class="btn btn-danger btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+
       <br />
       <br />
       {{card.description}}
