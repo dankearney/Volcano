@@ -2,6 +2,9 @@
   <h2 class="card-header volcano-story-header">
     <strong>{{story.storyName}}</strong>
   </h2>
+
+
+
   <div class="card-body">
     <p class="card-text">
       <a class="btn btn-info btn-sm" style='color: white'>{{story.priority}}</a>
@@ -14,8 +17,12 @@
   </div>
   <div class="card-footer">
     <p><strong>Created by: </strong> {{story.userId}}</p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
-        + Show Cards
-      </a>
+      <button class="btn btn-primary" data-toggle="collapse" data-target=#{story.storyId}>+ Show Cards</button>
+
+      <div id={story.storyId} class="collapse">
+      <p><br />
+        Show all story's cards here
+      </p>
+      </div>
   </div>
 </div>
