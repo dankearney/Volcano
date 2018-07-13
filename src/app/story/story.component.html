@@ -17,9 +17,9 @@
   </div>
   <div class="card-footer">
     <p><strong>Created by: </strong> {{story.userId}}</p>
-      <button class="btn btn-primary" data-toggle="collapse" data-target=#{story.storyId}>+ Show Cards</button>
+      <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Cards</button>
 
-      <div id={story.storyId} class="collapse">
+      <div id='{{story.storyId}}' class="collapse">
       <p><br />
         Show all story's cards here
       </p>
