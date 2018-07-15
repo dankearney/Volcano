@@ -32,6 +32,16 @@ export abstract class Util {
         }
     }
 
+    // Returns user's currently scoped team
+    public static getCurrentTeam() {
+        return JSON.parse(window.localStorage.getItem("team"));
+    }
+
+    // Sets a user's currently scoped team
+    public static setCurrentTeam(team: Object) {
+        window.localStorage.setItem("team", JSON.stringify(team))
+    }
+
     // Checks if user is logged in
     public static loggedIn() {
         return window.localStorage.getItem("authToken") == null;

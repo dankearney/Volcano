@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Util } from '../utilities/util';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,10 +13,14 @@ export class LoginNavComponent implements OnInit {
 
   user: Object;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   refreshNavBar() {
   	this.user = Util.getLoggedInUser();
+    let team = Util.getCurrentTeam();
+    if (this.user != null && team == null && this.router.url != '/teams') {
+      this.router.navigate(['teams']);
+    }
   }
 
 

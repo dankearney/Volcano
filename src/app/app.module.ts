@@ -24,6 +24,7 @@ import { CreateCardComponent } from './create-card/create-card.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginNavComponent } from './login-nav/login-nav.component';
+import { TeamsComponent } from './teams/teams.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'createCard', component: CreateCardComponent},
   { path: 'createStory', component: CreateStoryComponent},
   { path: 'error', component: ErrorPageComponent},
+  { path: 'teams', component: TeamsComponent}
 ]
 
 @NgModule({
@@ -55,6 +57,7 @@ const appRoutes: Routes = [
      routingComponent,
     ErrorPageComponent,
     LoginNavComponent,
+    TeamsComponent,
   ],
   imports: [
     BrowserModule,
