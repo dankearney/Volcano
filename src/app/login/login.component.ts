@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   loginUser( model: Login, isValid: boolean) {
   	let token = btoa(model.username + ":" + model.password);
 	  window.localStorage.setItem("authToken", token);
-    this.http.get("http://localhost:8080/login", Util.getReqConfig() ).subscribe(
+    this.http.get("https://volcano-backend.herokuapp.com/login", Util.getReqConfig() ).subscribe(
       data => {
         let userPrincipal = data["principal"]["user"];
         Util.writeSuccess("Login successful! Welcome, " + userPrincipal.username + "!");
