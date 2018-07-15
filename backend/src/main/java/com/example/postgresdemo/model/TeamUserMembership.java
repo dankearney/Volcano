@@ -10,18 +10,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
 @Entity
-@Table(name = "teamUserMemberships", indexes = {@Index(name = "admin1", columnList="status", unique = true)})
+@Table(name = "teamUserMemberships", indexes = {@Index(name = "teamIdx", columnList="team1", unique = false),
+                                                @Index(name = "userIdx", columnList="user1", unique = false)})
 public class TeamUserMembership extends AuditModel {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long TeamUserMembershipId; // required despite being nonsense
+
+    @Column(name = "team1")
     private Long teamId;
-    @Column
+
+    @Column(name = "user1")
     private Long userId;
+
     @Column(name = "status")
     private String status; //admin/normal/requesting
 
     //getters
+
+    public Long getTeamUserMembershipId() {
+        return TeamUserMembershipId;
+    }
+
     public Long getTeamId() {
         return teamId;
     }
@@ -46,6 +56,10 @@ public class TeamUserMembership extends AuditModel {
 
     public void setStatus(String newStatus) {
       this.status = newStatus;
+    }
+
+    public void setTeamUserMembershipId(Long tumi) {
+        this.TeamUserMembershipId = tumi;
     }
 
 }

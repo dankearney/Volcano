@@ -7,6 +7,7 @@ import com.example.postgresdemo.model.User;
 import com.example.postgresdemo.model.Card;
 import java.util.List;
 import java.util.ArrayList;
+import com.example.postgresdemo.security.VolcanoUserPrincipal;
 import java.util.Optional;
 import com.example.postgresdemo.repository.TeamRepository;
 import com.example.postgresdemo.repository.StoryRepository;
@@ -17,6 +18,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+import java.util.List;
 
 @RestController
 public class TeamController {
@@ -28,8 +32,8 @@ public class TeamController {
     private StoryRepository storyRepository;
 
     @GetMapping("/teams") //mapped to a table named teams in database
-    public Page<Team> getTeams(Pageable pageable) {
-        return teamRepository.findAll(pageable);
+    public List<Team> getTeams() {
+        return teamRepository.findAll();
     }
 
     //returns a team with stories attached
@@ -44,6 +48,11 @@ public class TeamController {
 
     @PostMapping("/teams")
     public Team createTeam(@Valid @RequestBody Team team) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        team.setCreatorId(userId);
+        System.out.println(userId);
+        System.out.println(team);
         return teamRepository.save(team);
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "teams", indexes = {@Index(name = "team1",  columnList="name", unique = false)})
+@Table(name = "teams", indexes = {@Index(name = "team1",  columnList="name", unique = true)})
 public class Team extends AuditModel {
 
     @Id
@@ -26,10 +26,8 @@ public class Team extends AuditModel {
     @Column()
     private Long creatorId;
 
-
     @Transient
     private ArrayList<Story> storiesAttached;
-
 
     //getters
     public Long getTeamId() {
