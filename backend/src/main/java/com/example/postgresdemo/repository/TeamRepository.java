@@ -8,4 +8,5 @@ import java.util.ArrayList;
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
     Team findByTeamId(Long teamId);
+    ArrayList<Team> findByTeamIdIn(ArrayList<Long> teamIds);
 }

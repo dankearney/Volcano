@@ -5,11 +5,13 @@ import com.example.postgresdemo.model.Team;
 import com.example.postgresdemo.model.Story;
 import com.example.postgresdemo.model.User;
 import com.example.postgresdemo.model.Card;
+import com.example.postgresdemo.model.TeamUserMembership;
 import java.util.List;
 import java.util.ArrayList;
 import com.example.postgresdemo.security.VolcanoUserPrincipal;
 import java.util.Optional;
 import com.example.postgresdemo.repository.TeamRepository;
+import com.example.postgresdemo.repository.TeamUserMembershipRepository;
 import com.example.postgresdemo.repository.StoryRepository;
 import com.example.postgresdemo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class TeamController {
     @Autowired
     private StoryRepository storyRepository;
 
+    @Autowired 
+    private TeamUserMembershipRepository tumRepository;
+
     @GetMapping("/teams") //mapped to a table named teams in database
     public List<Team> getTeams() {
         return teamRepository.findAll();
@@ -45,15 +50,35 @@ public class TeamController {
         return team;
     }
 
+    // Returns the teams I'm a member of
+    @GetMapping("/myTeams")
+    public ArrayList<Team> getMyTeams() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        ArrayList<TeamUserMembership> memberships = tumRepository.findByUserId(userId);
+
+        ArrayList<Long> teamIds = new ArrayList<Long>();
+        for ( TeamUserMembership tum : memberships ) {
+            teamIds.add(tum.getTeamId());
+        }
+        return teamRepository.findByTeamIdIn(teamIds);
+    }
 
     @PostMapping("/teams")
     public Team createTeam(@Valid @RequestBody Team team) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
         team.setCreatorId(userId);
-        System.out.println(userId);
-        System.out.println(team);
-        return teamRepository.save(team);
+        team = teamRepository.save(team);
+
+        // Add yourself to the team membership table
+        TeamUserMembership tum = new TeamUserMembership();
+        tum.setTeamId(team.getTeamId());
+        tum.setUserId(userId);
+        tum.setStatus("Admin");
+        tumRepository.save(tum);
+
+        return team;
     }
 
     @PutMapping("/teams/{teamId}") 

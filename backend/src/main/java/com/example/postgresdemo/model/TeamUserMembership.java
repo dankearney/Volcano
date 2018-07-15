@@ -3,27 +3,29 @@ package com.example.postgresdemo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import com.example.postgresdemo.model.TeamUserMembership;
 import com.example.postgresdemo.repository.TeamUserMembershipRepository;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
+
+// TODO: add indexes here for performance. not super relevant on a teeny table
 @Entity
-@Table(name = "teamUserMemberships", indexes = {@Index(name = "teamIdx", columnList="team1", unique = false),
-                                                @Index(name = "userIdx", columnList="user1", unique = false)})
+@Table(name = "teamUserMemberships")
 public class TeamUserMembership extends AuditModel {
 
     @Id
+    @Column
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long TeamUserMembershipId; // required despite being nonsense
 
-    @Column(name = "team1")
+    @Column()
     private Long teamId;
 
-    @Column(name = "user1")
+    @Column()
     private Long userId;
 
-    @Column(name = "status")
+    @Column()
     private String status; //admin/normal/requesting
 
     //getters

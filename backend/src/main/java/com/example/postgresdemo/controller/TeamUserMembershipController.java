@@ -17,6 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import com.example.postgresdemo.security.VolcanoUserPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 
 @RestController
 public class TeamUserMembershipController {
@@ -35,12 +38,15 @@ public class TeamUserMembershipController {
 
     }
     */
+
     @PostMapping("/teamUserMemberships")
     public TeamUserMembership createTeamUserMembership(@Valid @RequestBody TeamUserMembership teamUserMembership) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        teamUserMembership.setUserId(userId);
+        teamUserMembership.setStatus("Normal");
         return teamUserMembershipRepository.save(teamUserMembership);
     }
-
-
 
     @PutMapping("/teamUserMemberships/{teamId}") 
     public TeamUserMembership setStatusToAdmin(@PathVariable Long teamId,

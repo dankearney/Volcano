@@ -10,4 +10,5 @@ import java.util.ArrayList;
 public interface TeamUserMembershipRepository extends JpaRepository<TeamUserMembership, Long> {
 
     ArrayList<TeamUserMembership> findByTeamId(Long teamId);
+    ArrayList<TeamUserMembership> findByUserId(long userId);
 }
