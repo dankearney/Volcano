@@ -1,0 +1,43 @@
+<h1>Teams</h1>
+
+<h2>My teams</h2>
+<div *ngFor="let team of myTeams" >
+  <span *ngIf = "currentTeam != null && (currentTeam.teamName == team.teamName); then thenSelect; else elseSelect">
+  </span>
+
+  <ng-template #thenSelect>
+    <button class="btn btn-sm btn-primary" (click)="selectTeam(team)">Selected</button>&nbsp;
+  </ng-template>
+
+  <ng-template #elseSelect>
+    <button class="btn btn-sm" (click)="selectTeam(team)">Select</button>&nbsp;
+  </ng-template>
+
+  <strong>{{team.teamName}}</strong>
+  <br /> <br /> 
+</div>
+<br />
+
+<h2>Public Teams to Join</h2>
+<div *ngFor="let team of publicTeams" >
+  <button class="btn btn-sm" (click)="joinTeam(team)">Join</button>&nbsp;
+  <strong>{{team.teamName}}:</strong>
+  <br /> <br />
+</div>
+<br />
+
+<h2>Create new team</h2>
+<form [formGroup]="teamForm" class = "form" (ngSubmit)="createTeam(teamForm.value, teamForm.valid)">
+	<div class = "form-group">
+	  <label for = "">Team Name</label>
+	  <input formControlName = "teamName" name = "teamName" type = "text" class = "form-control rounded-0" required>
+	  <br />
+	  <label for = "">Type</label>
+      <select formControlName = "type" name = "type" class="form-control" id="type">
+        <option ng-selected=true>Public</option>
+        <option>Private</option>
+        <option>Hidden</option>
+      </select>
+	</div>
+	<button type = "submit" class = "btn btn-primary float-right">Create</button>
+</form>
