@@ -30,8 +30,7 @@ public class CardController {
     private UserRepository userRepository;
 
     @GetMapping("/cards/{cardId}")
-    public Card getCard(@PathVariable Long cardId,
-                                  @Valid @RequestBody Card cardRequest) {
+    public Card getCard(@PathVariable Long cardId) {
         return cardRepository.findById(cardId).get();
     }
 
@@ -65,8 +64,8 @@ public class CardController {
             if ( card.getAssigneeId() != null ) {
                card.setAssignee(userIdCache.get(card.getAssigneeId() ) );
             }
-        }     
-        return cards;  
+        }
+        return cards;
     }
 
     @GetMapping("/cards")
@@ -127,7 +126,7 @@ public class CardController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
     }
     */
-    
+
     @DeleteMapping("/cards/{cardId}")
     public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
         return cardRepository.findById(cardId)
