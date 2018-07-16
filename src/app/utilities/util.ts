@@ -39,7 +39,7 @@ export abstract class Util {
 
     // Returns current team ID, as a string
     public static getCurrentTeamId() {
-        return getCurrentTeam().teamId.toString();
+        return Util.getCurrentTeam().teamId.toString();
     }
 
     // Sets a user's currently scoped team
