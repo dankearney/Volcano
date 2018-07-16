@@ -37,6 +37,11 @@ export abstract class Util {
         return JSON.parse(window.localStorage.getItem("team"));
     }
 
+    // Returns current team ID, as a string
+    public static getCurrentTeamId() {
+        return getCurrentTeam().teamId.toString();
+    }
+
     // Sets a user's currently scoped team
     public static setCurrentTeam(team: Object) {
         window.localStorage.setItem("team", JSON.stringify(team))
