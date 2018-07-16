@@ -17,7 +17,8 @@ export class CardPageComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get("https://volcano-backend.herokuapp.com/" + Util.getCurrentTeamId() + "/cards", Util.getReqConfig()).subscribe(
+    console.log(Util.getCurrentTeamId());
+    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", Util.getReqConfig()).subscribe(
       data => {
         this.cards = <any[]>data;
       },
