@@ -35,8 +35,7 @@ export class CreateCardComponent implements OnInit {
   }
 
   createCard( model: Card, isValid: boolean) {
-    console.log("CODE RUNNING");
-    this.http.post("https://volcano-backend.herokuapp.com/card", model, Util.getReqConfig() ).subscribe(
+    this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", model, Util.getReqConfig() ).subscribe(
       data => {
         Util.writeSuccess("Creation successful! Card Name, " + model.cardName);
       },

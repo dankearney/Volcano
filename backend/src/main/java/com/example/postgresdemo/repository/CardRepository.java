@@ -10,4 +10,5 @@ public interface CardRepository extends JpaRepository<Card, Long> {
     Card findByCardName(String cardName);
 
     ArrayList<Card> findByStoryId(Long storyId);
+    ArrayList<Card> findByTeamId(Long teamId);
 }

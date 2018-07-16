@@ -114,7 +114,7 @@ public class Card extends AuditModel {
         this.cardName = cardName;
     }
 
-    public void setTeamId(Long cardId) {
+    public void setTeamId(Long teamId) {
       this.teamId = teamId;
     }
     
