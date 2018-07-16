@@ -3,13 +3,15 @@
 <br />
 <div class="card" >
   <h2 class="card-header">
-    <strong>{{card.title}}</strong>
+    <strong>{{card.cardName}}</strong>
   </h2>
   <div class="card-body">
     <p class="card-text">
       <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
       &nbsp;
-      <a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
+      <a class="btn btn-danger btn-sm" style='color: white'>{{card.label}}</a>
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.resolution}}</a>
       &nbsp;
       <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
       <br />
@@ -18,9 +20,9 @@
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Assigned to: </strong> {{card.owner}}</p>
-    <p><strong>ticket: </strong> {{card.story}}</p>
-    <p><strong>btns: </strong> {{card.labels}}</p>
+    <p><strong>Assigned to: </strong> {{card.creatorId}}</p>
+    <!--<p><strong>ticket: </strong> {{card.story}}</p>
+    <p><strong>btns: </strong> {{card.labels}}</p>-->
     <a href="#" class="btn btn-success">Edit Card</a>
       &nbsp;<a href="#" class="btn btn-primary">
         Mark as Completed
@@ -29,7 +31,5 @@
 </div>
 
 <nav>
-  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-primary btn-block"><a routerLink ="/cards">Go Back</a></button>
+  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/cards">Go Back</a></button>
 </nav>
-
-

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MOCK_CARDS } from '../mock-cards'
+import { Card } from '../card';
+import { HttpClient } from '@angular/common/http';
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+import { Util } from '../utilities/util';
+
 
 @Component({
   selector: 'app-card-detail-page',
@@ -9,13 +14,28 @@ import { MOCK_CARDS } from '../mock-cards'
 })
 export class CardDetailPageComponent implements OnInit {
 
-  cards = MOCK_CARDS;
-  card;
+    cardId;
+    cards = [];
+    card = null;
 
-  constructor(private route: ActivatedRoute) { }
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    this.card = this.cards[this.route.snapshot.paramMap.get('card-id')];
+    this.cardId = this.route.snapshot.paramMap.get('card-id');
+    this.getCard();
+  }
+
+  getCard() {
+    this.http.get("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig()).subscribe(
+      data => {
+        this.card = data;
+        console.log(this.card);
+      },
+      err => {
+        Util.writeGenericError();
+      }
+    );
   }
 
 }
