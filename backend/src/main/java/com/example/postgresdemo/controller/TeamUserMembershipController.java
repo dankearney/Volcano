@@ -41,6 +41,12 @@ public class TeamUserMembershipController {
 
     @PostMapping("/teamUserMemberships")
     public TeamUserMembership createTeamUserMembership(@Valid @RequestBody TeamUserMembership teamUserMembership) {
+        // Check password 
+        Team team = teamRepository.findById(teamUserMembership.getTeamId()).get();
+        if (!team.getPassword().equals(teamUserMembership.getPassword())) {
+            throw new org.springframework.security.access.AccessDeniedException("403 returned");
+        }
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
         teamUserMembership.setUserId(userId);

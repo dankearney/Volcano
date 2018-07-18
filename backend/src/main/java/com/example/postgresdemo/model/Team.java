@@ -19,9 +19,9 @@ public class Team extends AuditModel {
 
     @Column(name="name")
     private String teamName;
-
-    @Column()
-    private String type; //public/private
+    
+    @Column
+    private String password;
 
     @Column()
     private Long creatorId;
@@ -38,16 +38,16 @@ public class Team extends AuditModel {
         return this.teamName;
     }
 
-    public String getType() {
-      return this.type;
-    }
-
     public Long getCreatorId() {
         return this.creatorId;
     }
 
     public ArrayList<Story> getStoriesAttached() {
     	return storiesAttached;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 
@@ -60,15 +60,15 @@ public class Team extends AuditModel {
     	this.teamName = teamName;
     }
 
-    public void setType(String type) {
-    	this.type = type;
-    }
-
     public void setCreatorId(Long creatorId) {
     	this.creatorId = creatorId;
     }
 
     public void setStoriesAttached(ArrayList<Story> stories) {
     	this.storiesAttached = stories;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

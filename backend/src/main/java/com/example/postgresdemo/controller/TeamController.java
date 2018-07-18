@@ -87,7 +87,6 @@ public class TeamController {
         return teamRepository.findById(teamId)
                 .map(team -> { //all these are passing changes on model back to repository
                     team.setTeamName(teamRequest.getTeamName());
-                    team.setType(teamRequest.getType());
                     return teamRepository.save(team);
                 }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
     }
