@@ -18,7 +18,7 @@ export class TeamsComponent implements OnInit {
   currentTeam = null;
 
   public teamForm : FormGroup;
-
+  public joinTeamForm : FormGroup;
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,11 @@ export class TeamsComponent implements OnInit {
 
     this.teamForm = new FormGroup({
       teamName: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-      type: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
+      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
+    });
+
+    this.joinTeamForm = new FormGroup({
+      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
     });
 
     this.currentTeam = Util.getCurrentTeam();
@@ -73,8 +77,8 @@ export class TeamsComponent implements OnInit {
   	Util.writeSuccess("Logged in to team " + team.teamName);
   } 	
 
-  joinTeam(team: Team) {
-  	let tum = { teamId : team.teamId };
+  joinTeam(model: Object, isValid: boolean, team: Team) {
+  	let tum = { teamId : team.teamId, password : model["password"] };
 	this.http.post("https://volcano-backend.herokuapp.com/teamUserMemberships", tum, Util.getReqConfig()).subscribe(
 	    data => {
 	      Util.writeSuccess("Successfully joined " + team.teamName);

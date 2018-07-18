@@ -18,12 +18,18 @@
 </div>
 <br />
 
-<h2>Public Teams to Join</h2>
+<h2>Teams to Join</h2>
 <div *ngFor="let team of publicTeams" >
-  <button class="btn btn-sm" (click)="joinTeam(team)">Join</button>&nbsp;
-  <strong>{{team.teamName}}:</strong>
-  <br /> <br />
-</div>
+	<form [formGroup]="joinTeamForm" class = "form" (ngSubmit)="joinTeam(teamForm.value, teamForm.valid, team)">
+		<div class = "form-group">
+		  <strong style="min-width: 200px !important; display: inline-block;">&nbsp; &nbsp;{{team.teamName}}&nbsp; &nbsp;</strong>
+		  <label for = "">Password</label>
+		  <input style="display: inline; width: 200px; margin: 5px;" formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
+		  &nbsp;
+		  <button type = "submit" class = "btn btn-primary" style="margin-bottom: 5px;">Join</button>
+		</div>
+	</form> 
+ 	</div>
 <br />
 
 <h2>Create new team</h2>
@@ -32,12 +38,8 @@
 	  <label for = "">Team Name</label>
 	  <input formControlName = "teamName" name = "teamName" type = "text" class = "form-control rounded-0" required>
 	  <br />
-	  <label for = "">Type</label>
-      <select formControlName = "type" name = "type" class="form-control" id="type">
-        <option ng-selected=true>Public</option>
-        <option>Private</option>
-        <option>Hidden</option>
-      </select>
+	  <label for = "">Password</label>
+	  <input formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
 	</div>
 	<button type = "submit" class = "btn btn-primary float-right">Create</button>
 </form>
