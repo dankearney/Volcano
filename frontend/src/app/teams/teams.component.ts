@@ -60,15 +60,21 @@ export class TeamsComponent implements OnInit {
   }
 
   createTeam(model: Team, isValid: boolean) { 
-	this.http.post("https://volcano-backend.herokuapp.com/teams", model, Util.getReqConfig()).subscribe(
-	    data => {
-	      Util.writeSuccess("Team successfully created");
-	      this.loadTeams();
-	    },
-	    err => {
-	      Util.writeGenericError();
-	    }
-   	);
+  	if (!isValid) {
+  		Util.writeError("Invalid password or team name.");
+  	}
+  	else 
+  	{
+		this.http.post("https://volcano-backend.herokuapp.com/teams", model, Util.getReqConfig()).subscribe(
+		    data => {
+		      Util.writeSuccess("Team successfully created");
+		      this.loadTeams();
+		    },
+		    err => {
+		      Util.writeGenericError();
+		    }
+	   	);
+	}
   } 
 
   selectTeam(team: Team) {
@@ -86,7 +92,7 @@ export class TeamsComponent implements OnInit {
 	      this.loadTeams();
 	    },
 	    err => {
-	      Util.writeGenericError();
+	      Util.writeError("Unable to join team, password may be incorrect.");
 	    }
    	);
   }
