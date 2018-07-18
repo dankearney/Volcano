@@ -53,9 +53,9 @@ export abstract class Util {
     }
 
     public static logOut() {
-        window.localStorage.setItem("authToken", "");
-        window.localStorage.setItem("userPrincipal", "")
-        window.localStorage.setItem("team", "");
+        window.localStorage.setItem("authToken", null);
+        window.localStorage.setItem("userPrincipal", null)
+        window.localStorage.setItem("team", null);
     }
 
     // Writes an error message
