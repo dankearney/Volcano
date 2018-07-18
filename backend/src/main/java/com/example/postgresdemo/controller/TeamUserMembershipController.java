@@ -43,7 +43,7 @@ public class TeamUserMembershipController {
     public TeamUserMembership createTeamUserMembership(@Valid @RequestBody TeamUserMembership teamUserMembership) {
         // Check password 
         Team team = teamRepository.findById(teamUserMembership.getTeamId()).get();
-        if (!team.getPassword().equals(teamUserMembership.getPassword())) {
+        if (!(team.getPassword() == null && teamUserMembership.getPassword() == null) && !team.getPassword().equals(teamUserMembership.getPassword())) {
             throw new org.springframework.security.access.AccessDeniedException("403 returned");
         }
 
