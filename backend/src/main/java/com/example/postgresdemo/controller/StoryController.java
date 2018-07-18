@@ -6,6 +6,7 @@ import com.example.postgresdemo.model.Card;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
+import com.example.postgresdemo.security.VolcanoUserPrincipal;
 import com.example.postgresdemo.repository.StoryRepository;
 import com.example.postgresdemo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 
 @RestController
 public class StoryController {
@@ -24,9 +27,10 @@ public class StoryController {
     @Autowired
     private CardRepository cardRepository;
 
-    @GetMapping("/stories") //mapped to a table named stories in database
-    public Page<Story> getStories(Pageable pageable) {
-        return storyRepository.findAll(pageable);
+    @GetMapping("/stories")
+    public List<Story> getStories() {
+        List<Story> stories = storyRepository.findAll();
+        return hydrateStories(stories);
     }
 
     @GetMapping("/stories/{storyId}") //name of the card table
@@ -36,12 +40,38 @@ public class StoryController {
 
         story.setCardsAttached(cards);
         return story;
-    }  
+    }
 
-    
+    public List<Story> hydrateStories(List<Story> stories) {
+        for (Story story: stories) {
+          Long storyId = story.getStoryId();
+          ArrayList<Card> cards = cardRepository.findByStoryId(storyId);
+          story.setCardsAttached(cards);
+        }
+        return stories;
+    }
+
+    // Returns Story scoped to a specific team
+    @GetMapping("/team/{teamId}/stories")
+    public List<Story> getTeamScopedStories(@PathVariable("teamId") Long teamId) {
+        List<Story> stories = storyRepository.findByTeamId(teamId);
+        return hydrateStories(stories);
+    }
+
+    @PostMapping("/team/{teamId}/stories")
+    public Story createStoryInTeam(@Valid @RequestBody Story story, @PathVariable("teamId") Long teamId) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        story.setCreatorId(userId);
+        story.setTeamId(teamId);
+        return storyRepository.save(story);
+    }
 
     @PostMapping("/stories")
     public Story createStory(@Valid @RequestBody Story story) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        story.setCreatorId(userId);
         return storyRepository.save(story);
     }
 

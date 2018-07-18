@@ -20,9 +20,26 @@ public class ChatController {
     @Autowired
     private ChatRepository chatRepository;
 
+    @GetMapping("/team/{teamId}/chats")
+    public List<Chat> getTeamScopedChats(@PathVariable("teamId") Long teamId) {
+        List<Chat> chats = chatRepository.findByTeamId(teamId);
+        return chats;
+    }
+
     @GetMapping("/chats")
     public List<Chat> getChats() {
         return chatRepository.findAll();
+    }
+
+    @PostMapping("/team/{teamId}/chat")
+    public Chat createChatInTeam(@Valid @RequestBody Chat chat, @PathVariable("teamId") Long teamId) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        String userName = ((VolcanoUserPrincipal)principal).getUser().getUsername();
+        chat.setCreatorId(userId);
+        chat.setCreatorNameSnapshot(userName);
+        chat.setTeamId(teamId);
+        return chatRepository.save(chat);
     }
 
     @PostMapping("/chat")

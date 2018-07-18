@@ -33,7 +33,7 @@ public class TeamController {
     @Autowired
     private StoryRepository storyRepository;
 
-    @Autowired 
+    @Autowired
     private TeamUserMembershipRepository tumRepository;
 
     @GetMapping("/teams") //mapped to a table named teams in database
@@ -42,7 +42,7 @@ public class TeamController {
     }
 
     //returns a team with stories attached
-    @GetMapping("/teams/{teamId}") 
+    @GetMapping("/teams/{teamId}")
     public Team getTeam(@PathVariable Long teamId) {
         Team team = teamRepository.findByTeamId(teamId);
         ArrayList<Story> stories = storyRepository.findByTeamId(teamId);
@@ -81,12 +81,13 @@ public class TeamController {
         return team;
     }
 
-    @PutMapping("/teams/{teamId}") 
+    @PutMapping("/teams/{teamId}")
     public Team updateTeam(@PathVariable Long teamId,
                                    @Valid @RequestBody Team teamRequest) {
         return teamRepository.findById(teamId)
                 .map(team -> { //all these are passing changes on model back to repository
                     team.setTeamName(teamRequest.getTeamName());
+                    team.setPassword(teamRequest.getPassword()); //to allow password change
                     return teamRepository.save(team);
                 }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
     }
