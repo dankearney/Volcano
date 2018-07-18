@@ -78,6 +78,7 @@ export class TeamsComponent implements OnInit {
   } 	
 
   joinTeam(model: Object, isValid: boolean, team: Team) {
+  	console.log(model);
   	let tum = { teamId : team.teamId, password : model["password"] };
 	this.http.post("https://volcano-backend.herokuapp.com/teamUserMemberships", tum, Util.getReqConfig()).subscribe(
 	    data => {

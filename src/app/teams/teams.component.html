@@ -20,7 +20,7 @@
 
 <h2>Teams to Join</h2>
 <div *ngFor="let team of publicTeams" >
-	<form [formGroup]="joinTeamForm" class = "form" (ngSubmit)="joinTeam(teamForm.value, teamForm.valid, team)">
+	<form [formGroup]="joinTeamForm" class = "form" (ngSubmit)="joinTeam(joinTeamForm.value, joinTeamForm.valid, team)">
 		<div class = "form-group">
 		  <strong style="min-width: 200px !important; display: inline-block;">&nbsp; &nbsp;{{team.teamName}}&nbsp; &nbsp;</strong>
 		  <label for = "">Password</label>
