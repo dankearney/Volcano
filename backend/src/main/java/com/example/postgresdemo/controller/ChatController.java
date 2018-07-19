@@ -22,7 +22,7 @@ public class ChatController {
 
     @GetMapping("/team/{teamId}/chats")
     public List<Chat> getTeamScopedChats(@PathVariable("teamId") Long teamId) {
-        List<Chat> chats = chatRepository.findByTeamId(teamId);
+        List<Chat> chats = chatRepository.findByTeamIdOrderByChatId(teamId);
         return chats;
     }
 
