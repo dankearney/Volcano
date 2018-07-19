@@ -25,6 +25,7 @@ import { CreateStoryComponent } from './create-story/create-story.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginNavComponent } from './login-nav/login-nav.component';
 import { TeamsComponent } from './teams/teams.component';
+import { StoryDetailPageComponent } from './story-detail-page/story-detail-page.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     ErrorPageComponent,
     LoginNavComponent,
     TeamsComponent,
+    StoryDetailPageComponent,
   ],
   imports: [
     BrowserModule,
