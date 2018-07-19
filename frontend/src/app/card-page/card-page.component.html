@@ -41,7 +41,7 @@
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
     <p>
 	<span *ngFor="let card of cards" >
-		<span *ngIf="card.resolution == 'Completed'">
+		<span *ngIf="card.resolution == 'Complete'">
     		<app-card [card]="card"></app-card>
     	</span>
     </span>
