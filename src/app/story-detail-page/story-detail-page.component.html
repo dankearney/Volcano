@@ -1,0 +1,36 @@
+<h1>Story Detail</h1>
+
+<br />
+<div class="card" >
+  <h2 class="card-header">
+    <strong>{{story.storyName}}</strong>
+  </h2>
+  <div class="card-body">
+    <p class="card-text">
+      <a class="btn btn-info btn-sm" style='color: white'>{{story.storyId}}</a>
+      &nbsp;
+      <a class="btn btn-danger btn-sm" style='color: white'>{{story.resolution}}</a>
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{story.description}}</a>
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{story.teamId}}</a>
+      <br />
+      <br />
+      {{story.description}}
+    </p>
+  </div>
+  <div class="card-footer">
+    <p><strong>Assigned to: </strong> {{story.creatorId}}</p>
+    <!--<p><strong>ticket: </strong> {{card.story}}</p>
+    <p><strong>btns: </strong> {{card.labels}}</p>-->
+    <a href="#" class="btn btn-success">Edit Story</a>
+      &nbsp;<a href="#" class="btn btn-primary">
+        Mark as Completed
+      </a>
+  </div>
+</div>
+
+<nav>
+  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/stories">Go Back</a></button>
+</nav>
+

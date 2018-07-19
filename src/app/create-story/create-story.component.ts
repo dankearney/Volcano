@@ -40,16 +40,22 @@ export class CreateStoryComponent implements OnInit {
     });
   }
 
-    createStory( model: Story, isValid: boolean) {
+
+
+
+  createStory( model: Story, isValid: boolean) {
       console.log("CODE RUNNING");
       this.http.post("https://volcano-backend.herokuapp.com/stories", model, Util.getReqConfig() ).subscribe(
-        data => {
-          Util.writeSuccess("Creation successful! Story Name, " + model.storyName);
-        },
-        err => {
-          Util.writeError("Story creation failed.");
-        }
-      );
-  }
-}
 
+      
+          data => {
+            Util.writeSuccess("Creation successful! Story Name, " + model.storyName);
+          },
+          err => {
+            Util.writeError("Story creation failed.");
+          }
+        );
+    
+      }
+    }
+  
