@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   sendChatMessage(model: Chat, isValid: boolean) { 
-      this.http.post("https://volcano-backend.herokuapp.com/chat", model, Util.getReqConfig()).subscribe(
+      this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/chat", model, Util.getReqConfig()).subscribe(
       data => {
           this.refreshChats();
       },
@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit {
   }
 
   refreshChats() {
-    this.http.get("https://volcano-backend.herokuapp.com/chats", Util.getReqConfig()).subscribe(
+    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/chats", Util.getReqConfig()).subscribe(
       data => {
         this.chats = data;
         setTimeout(this.setScrollPosition, 50);
