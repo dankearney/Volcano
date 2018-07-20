@@ -22,7 +22,8 @@ export class StoryPageComponent implements OnInit {
 
     this.http.get("https://volcano-backend.herokuapp.com/stories", Util.getReqConfig()).subscribe(
       data => {
-        this.stories = <Story[]>(data["content"]);
+        this.stories = <Story[]>(data);
+        console.log(data);
       },
       err => {
         Util.writeGenericError();

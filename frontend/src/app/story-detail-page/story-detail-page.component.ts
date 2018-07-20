@@ -22,11 +22,11 @@ constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
 ngOnInit() {
   this.storyId = this.route.snapshot.paramMap.get('story-id');
-  //this.getStory();
+  this.getStory();
 }
 
-getCard() {
-  this.http.get("https://volcano-backend.herokuapp.com/cards/" + this.storyId, Util.getReqConfig()).subscribe(
+getStory() {
+  this.http.get("https://volcano-backend.herokuapp.com/stories/" + this.storyId, Util.getReqConfig()).subscribe(
     data => {
       this.story = data;
       console.log(this.story);
