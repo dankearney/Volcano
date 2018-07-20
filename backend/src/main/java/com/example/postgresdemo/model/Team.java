@@ -19,7 +19,7 @@ public class Team extends AuditModel {
 
     @Column(name="name")
     private String teamName;
-    
+
     @Column
     private String password;
 
@@ -28,6 +28,9 @@ public class Team extends AuditModel {
 
     @Transient
     private ArrayList<Story> storiesAttached;
+
+    @Transient
+    private ArrayList<User> usersInTeam;
 
     //getters
     public Long getTeamId() {
@@ -50,6 +53,10 @@ public class Team extends AuditModel {
         return password;
     }
 
+    public ArrayList<User> getUsersInTeam() {
+      return usersInTeam;
+    }
+
 
     //setters
     public void setTeamId(Long id) {
@@ -70,5 +77,9 @@ public class Team extends AuditModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setUsersInTeam(ArrayList<User> usersInTeam) {
+      this.usersInTeam = usersInTeam;
     }
 }

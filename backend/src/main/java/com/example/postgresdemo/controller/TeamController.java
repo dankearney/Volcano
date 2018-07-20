@@ -13,6 +13,7 @@ import java.util.Optional;
 import com.example.postgresdemo.repository.TeamRepository;
 import com.example.postgresdemo.repository.TeamUserMembershipRepository;
 import com.example.postgresdemo.repository.StoryRepository;
+import com.example.postgresdemo.repository.UserRepository;
 import com.example.postgresdemo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,6 +37,9 @@ public class TeamController {
     @Autowired
     private TeamUserMembershipRepository tumRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/teams") //mapped to a table named teams in database
     public List<Team> getTeams() {
         return teamRepository.findAll();
@@ -47,6 +51,15 @@ public class TeamController {
         Team team = teamRepository.findByTeamId(teamId);
         ArrayList<Story> stories = storyRepository.findByTeamId(teamId);
         team.setStoriesAttached(stories);
+
+        ArrayList<TeamUserMembership> tum = tumRepository.findByTeamId(teamId);
+        ArrayList<User> users = new ArrayList<User>();
+
+        for (TeamUserMembership t: tum) {
+          users.add(userRepository.findByUserid(t.getUserId()));
+        }
+
+        team.setUsersInTeam(users);
         return team;
     }
 
