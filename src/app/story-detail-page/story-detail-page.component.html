@@ -1,4 +1,4 @@
-<h1>Story Detail</h1>
+<h1>Project Detail</h1>
 
 <br />
 <div class="card" >
@@ -8,6 +8,8 @@
   <div class="card-body">
     <p class="card-text">
       <a class="btn btn-info btn-sm" style='color: white'>{{story.storyId}}</a>
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{story.storyName}}</a>
       &nbsp;
       <a class="btn btn-danger btn-sm" style='color: white'>{{story.resolution}}</a>
       &nbsp;
@@ -20,7 +22,7 @@
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Assigned to: </strong> {{story.creatorId}}</p>
+    <p><strong>Assigned to: </strong> {{story.teamId}}</p>
     <!--<p><strong>ticket: </strong> {{card.story}}</p>
     <p><strong>btns: </strong> {{card.labels}}</p>-->
     <a href="#" class="btn btn-success">Edit Story</a>

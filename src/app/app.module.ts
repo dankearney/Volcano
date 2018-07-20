@@ -27,6 +27,7 @@ import { LoginNavComponent } from './login-nav/login-nav.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StoryDetailPageComponent } from './story-detail-page/story-detail-page.component';
 
+
 const appRoutes: Routes = [
   { path: 'chat', component: ChatPageComponent },
   { path: 'cards', component: CardPageComponent },
@@ -35,10 +36,12 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', component: DefaultComponent },
   { path: 'cardDetail/:card-id', component: CardDetailPageComponent },
+  { path: 'storyDetail/:story-id', component: StoryDetailPageComponent },
   { path: 'createCard', component: CreateCardComponent},
   { path: 'createStory', component: CreateStoryComponent},
   { path: 'error', component: ErrorPageComponent},
-  { path: 'teams', component: TeamsComponent}
+  { path: 'teams', component: TeamsComponent},
+
 ]
 
 @NgModule({
@@ -54,6 +57,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     CardDetailPageComponent,
+    StoryDetailPageComponent,
     //put create card under rounting Component
      routingComponent,
     ErrorPageComponent,

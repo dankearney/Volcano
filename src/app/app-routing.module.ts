@@ -3,10 +3,12 @@ import {Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
+import { StoryComponent } from './story/story.component';
 
 const routes: Routes = [
   {path: 'create-card', component: CreateCardComponent},
-  {path: 'create-story', component: CreateStoryComponent}
+  {path: 'create-story', component: CreateStoryComponent},
+  
 ];
 
 
@@ -18,4 +20,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 //add more component in array with rout
-export const routingComponent = [CreateCardComponent, CreateStoryComponent]
+export const routingComponent = [CreateCardComponent, CreateStoryComponent,StoryComponent]
