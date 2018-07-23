@@ -20,7 +20,7 @@ export class StoryPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.http.get("https://volcano-backend.herokuapp.com/stories", Util.getReqConfig()).subscribe(
+    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/stories", Util.getReqConfig()).subscribe(
       data => {
         this.stories = <Story[]>(data);
         console.log(data);

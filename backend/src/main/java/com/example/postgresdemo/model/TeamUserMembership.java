@@ -28,8 +28,11 @@ public class TeamUserMembership extends AuditModel {
     @Column()
     private String status; //admin/normal/requesting
 
-    @Transient
+    @Column()
     private String password;
+
+    @Transient
+    private User user;
 
     //getters
 
@@ -53,6 +56,10 @@ public class TeamUserMembership extends AuditModel {
         return password;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     //setters
 
     public void setTeamId(Long teamId) {
@@ -73,6 +80,10 @@ public class TeamUserMembership extends AuditModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
