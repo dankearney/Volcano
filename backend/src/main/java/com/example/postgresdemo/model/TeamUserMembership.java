@@ -7,6 +7,7 @@ import com.example.postgresdemo.repository.TeamUserMembershipRepository;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
+import com.example.postgresdemo.model.User;
 
 
 // TODO: add indexes here for performance. not super relevant on a teeny table

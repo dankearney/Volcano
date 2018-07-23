@@ -6,8 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import com.example.postgresdemo.model.TeamUserMembership;
 
 @Entity
 @Table(name = "teams", indexes = {@Index(name = "team1",  columnList="name", unique = true)})
@@ -26,11 +25,19 @@ public class Team extends AuditModel {
     @Column()
     private Long creatorId;
 
-    @Transient
-    private ArrayList<Story> storiesAttached;
+    @OneToMany(
+        mappedBy = "storyId", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
+    private List<Story> storiesAttached;
 
-    @Transient
-    private ArrayList<User> usersInTeam;
+    @OneToMany(
+        mappedBy = "teamId", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
+    private List<TeamUserMembership> teamUserMemberships;
 
     //getters
     public Long getTeamId() {
@@ -45,7 +52,7 @@ public class Team extends AuditModel {
         return this.creatorId;
     }
 
-    public ArrayList<Story> getStoriesAttached() {
+    public List<Story> getStoriesAttached() {
     	return storiesAttached;
     }
 
@@ -53,8 +60,8 @@ public class Team extends AuditModel {
         return password;
     }
 
-    public ArrayList<User> getUsersInTeam() {
-      return usersInTeam;
+    public List<TeamUserMembership> getTeamUserMemberships() {
+      return teamUserMemberships;
     }
 
 
@@ -71,7 +78,7 @@ public class Team extends AuditModel {
     	this.creatorId = creatorId;
     }
 
-    public void setStoriesAttached(ArrayList<Story> stories) {
+    public void setStoriesAttached(List<Story> stories) {
     	this.storiesAttached = stories;
     }
 
@@ -79,7 +86,8 @@ public class Team extends AuditModel {
         this.password = password;
     }
 
-    public void setUsersInTeam(ArrayList<User> usersInTeam) {
-      this.usersInTeam = usersInTeam;
+    public void setTeamUserMemberships(List<TeamUserMembership> tums) {
+        this.teamUserMemberships = tums;
     }
+
 }
