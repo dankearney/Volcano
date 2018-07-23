@@ -45,22 +45,15 @@ public class TeamController {
         return teamRepository.findAll();
     }
 
-    //returns a team with stories attached
+    // Returns a fully hydrated team object
+    // With stories and team user memberships with user objects
     @GetMapping("/teams/{teamId}")
     public Team getTeam(@PathVariable Long teamId) {
         Team team = teamRepository.findByTeamId(teamId);
-        ArrayList<Story> stories = storyRepository.findByTeamId(teamId);
-        team.setStoriesAttached(stories);
-
-        ArrayList<TeamUserMembership> tum = tumRepository.findByTeamId(teamId);
-        ArrayList<User> users = new ArrayList<User>();
-
-        for (TeamUserMembership t: tum) {
-          users.add(userRepository.findByUserid(t.getUserId()));
+        for (TeamUserMembership tum : team.getTeamUserMemberships() ) {
+            tum.setUser ( userRepository.findByUserid (tum.getUserId() ) );
         }
-
-        team.setUsersInTeam(users);
-        return team;
+        return team;    
     }
 
     // Returns the teams I'm a member of
