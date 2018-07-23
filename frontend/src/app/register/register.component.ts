@@ -36,7 +36,8 @@ export class RegisterComponent implements OnInit {
     } };
     this.http.post("https://volcano-backend.herokuapp.com/register", model, config ).subscribe(
       data => {
-        Util.writeSuccess("Creation successful! Welcome, " + model.username);
+        Util.writeSuccess("Creation successful! Welcome, " + model.username + ". Log in to continue.");
+        this._router.navigate(['login']);
       },
       err => {
         Util.writeError("Account creation failed. Username may be in use.");

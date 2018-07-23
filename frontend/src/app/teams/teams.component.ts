@@ -44,6 +44,10 @@ export class TeamsComponent implements OnInit {
     this.http.get("https://volcano-backend.herokuapp.com/myTeams", Util.getReqConfig()).subscribe(
       data => {
         this.myTeams = data;
+        if (this.myTeams.length == 0) {
+        	document.getElementById("joinableTeams-tab").click();
+        	Util.writeError("You are not a member of any teams, join or create one to continue.");
+        }
         this.publicTeams = [];
         this.http.get("https://volcano-backend.herokuapp.com/teams", Util.getReqConfig()).subscribe(
 	      data2 => {
@@ -53,10 +57,12 @@ export class TeamsComponent implements OnInit {
 	      		myTeamIds.push(this.myTeams[myTeamId]["teamId"]);
 	      	}
 	      	for (var teamIdx in data2) {
-	      		if ( ( myTeamIds.includes(data2[teamIdx]["teamId"] ) ) )  {
+	      		if ( !( myTeamIds.includes(data2[teamIdx]["teamId"] ) ) )  {
 	      			this.publicTeams.push(data2[teamIdx]);
 	      		}
 	      	}
+			Util.setCurrentTeam(this.myTeams[0]);
+   			this.currentTeam = this.myTeams[0];
 	      },
 	      err => {
 	        Util.writeGenericError();
@@ -78,6 +84,8 @@ export class TeamsComponent implements OnInit {
 		this.http.post("https://volcano-backend.herokuapp.com/teams", model, Util.getReqConfig()).subscribe(
 		    data => {
 		      Util.writeSuccess("Team successfully created");
+		  	  Util.setCurrentTeam(model);
+		   	  this.currentTeam = model;
 		      this.loadTeams();
 		    },
 		    err => {
@@ -99,6 +107,8 @@ export class TeamsComponent implements OnInit {
 	this.http.post("https://volcano-backend.herokuapp.com/teamUserMemberships", tum, Util.getReqConfig()).subscribe(
 	    data => {
 	      Util.writeSuccess("Successfully joined " + team.teamName);
+	   	  Util.setCurrentTeam(team);
+	   	  this.currentTeam = team;
 	      this.loadTeams();
 	    },
 	    err => {

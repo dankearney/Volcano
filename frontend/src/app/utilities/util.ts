@@ -34,7 +34,11 @@ export abstract class Util {
 
     // Returns user's currently scoped team
     public static getCurrentTeam() {
-        return JSON.parse(window.localStorage.getItem("team"));
+        var teamStr = window.localStorage.getItem("team");
+        if (teamStr == 'undefined') {
+            teamStr = null;
+        }
+        return JSON.parse(teamStr);
     }
 
     // Returns current team ID, as a string
