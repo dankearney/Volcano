@@ -26,6 +26,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginNavComponent } from './login-nav/login-nav.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StoryDetailPageComponent } from './story-detail-page/story-detail-page.component';
+import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'createStory', component: CreateStoryComponent},
   { path: 'error', component: ErrorPageComponent},
   { path: 'teams', component: TeamsComponent},
+  { path: 'teamDetail/:team-id', component: TeamDetailComponent}
 
 ]
 
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
     LoginNavComponent,
     TeamsComponent,
     StoryDetailPageComponent,
+    TeamDetailComponent,
   ],
   imports: [
     BrowserModule,
