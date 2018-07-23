@@ -23,6 +23,7 @@ export class LoginNavComponent implements OnInit {
     // to pick one
     if (this.user != null && this.team == null && this.router.url != '/teams') {
       this.router.navigate(['teams']);
+      Util.writeSuccess("Login successful!");
     }
   }
 

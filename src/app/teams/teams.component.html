@@ -1,45 +1,58 @@
 <h1>Teams</h1>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="myTeams-tab" data-toggle="pill" href="#myTeams" role="tab" aria-controls="pills-my" aria-selected="true">My Teams</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="joinableTeams-tab" data-toggle="pill" href="#joinableTeams" role="tab" aria-controls="pills-join" aria-selected="false">Teams to Join</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="createTeam-tab" data-toggle="pill" href="#createTeam" role="tab" aria-controls="pills-create" aria-selected="false">Create a Team</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="myTeams" role="tabpanel" aria-labelledby="pills-my">
+  	<br />
 
-<h2>My teams</h2>
-<div *ngFor="let team of myTeams" >
-  <span *ngIf = "currentTeam != null && (currentTeam.teamName == team.teamName); then thenSelect; else elseSelect">
-  </span>
+	<div *ngFor="let team of myTeams" >
+	  <span *ngIf = "currentTeam != null && (currentTeam.teamName == team.teamName); then thenSelect; else elseSelect">
+	  </span>
 
-  <ng-template #thenSelect>
-    <button class="btn btn-sm btn-primary" (click)="selectTeam(team)">Selected</button>&nbsp;
-  </ng-template>
+	  <ng-template #thenSelect>
+	    <button class="btn btn-sm btn-primary" (click)="selectTeam(team)">Logged In</button>&nbsp;
+	  </ng-template>
 
-  <ng-template #elseSelect>
-    <button class="btn btn-sm" (click)="selectTeam(team)">Select</button>&nbsp;
-  </ng-template>
+	  <ng-template #elseSelect>
+	    <button class="btn btn-sm" (click)="selectTeam(team)">Log in</button>&nbsp;
+	  </ng-template>
 
-  <strong>{{team.teamName}}</strong>
-  <br /> <br /> 
-</div>
-<br />
-
-<h2>Teams to Join</h2>
-<div *ngFor="let team of publicTeams" >
-	<form [formGroup]="joinTeamForm" class = "form" (ngSubmit)="joinTeam(joinTeamForm.value, joinTeamForm.valid, team)">
-		<div class = "form-group">
-		  <strong style="min-width: 200px !important; display: inline-block;">&nbsp; &nbsp;{{team.teamName}}&nbsp; &nbsp;</strong>
-		  <label for = "">Password</label>
-		  <input style="display: inline; width: 200px; margin: 5px;" formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
-		  &nbsp;
-		  <button type = "submit" class = "btn btn-primary" style="margin-bottom: 5px;">Join</button>
-		</div>
-	</form> 
- 	</div>
-<br />
-
-<h2>Create new team</h2>
-<form [formGroup]="teamForm" class = "form" (ngSubmit)="createTeam(teamForm.value, teamForm.valid)">
-	<div class = "form-group">
-	  <label for = "">Team Name</label>
-	  <input formControlName = "teamName" name = "teamName" type = "text" class = "form-control rounded-0" required>
-	  <br />
-	  <label for = "">Password</label>
-	  <input formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
+	  <strong>{{team.teamName}}</strong>
+	  <br /> <br /> 
 	</div>
-	<button type = "submit" class = "btn btn-primary float-right">Create</button>
-</form>
+  </div>
+  <div class="tab-pane fade" id="joinableTeams" role="tabpanel" aria-labelledby="pills-join">
+	<div *ngFor="let team of publicTeams" >
+		<form [formGroup]="joinTeamForm" class = "form" (ngSubmit)="joinTeam(joinTeamForm.value, joinTeamForm.valid, team)">
+			<div class = "form-group">
+			  <strong style="min-width: 200px !important; display: inline-block;">&nbsp; &nbsp;{{team.teamName}}&nbsp; &nbsp;</strong>
+			  <label for = "">Password</label>
+			  <input style="display: inline; width: 200px; margin: 5px;" formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
+			  &nbsp;
+			  <button type = "submit" class = "btn btn-primary" style="margin-bottom: 5px;">Join</button>
+			</div>
+		</form> 
+	 	</div>
+  </div>
+  <div class="tab-pane fade" id="createTeam" role="tabpanel" aria-labelledby="pills-create">
+	<form [formGroup]="teamForm" class = "form" (ngSubmit)="createTeam(teamForm.value, teamForm.valid)">
+		<div class = "form-group">
+		  <label for = "">Team Name</label>
+		  <input formControlName = "teamName" name = "teamName" type = "text" class = "form-control rounded-0" required>
+		  <br />
+		  <label for = "">Password</label>
+		  <input formControlName = "password" name = "password" type = "password" class = "form-control rounded-0" required>
+		</div>
+		<button type = "submit" class = "btn btn-primary float-right">Create</button>
+	</form>
+  </div>
+</div>
