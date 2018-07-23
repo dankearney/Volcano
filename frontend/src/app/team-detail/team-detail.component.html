@@ -1,0 +1,16 @@
+<div *ngIf="team != null">
+  <h1>{{team.teamName}}</h1>
+  <h2>Members</h2>
+  <br >
+  <div *ngFor="let tum of team.teamUserMemberships" >
+    <span *ngIf="tum.user != null">
+    	<strong style='display: inline-block; min-width: 80px'>{{tum.status}}</strong>
+    	<span style='display: inline-block; min-width: 120px'> {{tum.user.username}} </span>
+    	<button class="btn btn-sm">Remove</button>
+    	&nbsp; &nbsp;
+    	<button class = "btn btn-sm btn-primary" *ngIf="tum.status != 'Admin'">Promote to Admin</button>
+    	<br /> 
+    	<hr />
+    </span>
+  </div>
+</div>
