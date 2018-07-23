@@ -14,6 +14,7 @@ export class TeamDetailComponent implements OnInit {
 
   teamId;
   team = null;
+  isAdmin = false;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
