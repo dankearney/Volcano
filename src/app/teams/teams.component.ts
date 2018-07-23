@@ -50,10 +50,10 @@ export class TeamsComponent implements OnInit {
 	      	// Only show teams I'm not part of as options to join
 	      	let myTeamIds = [];
 	      	for (var myTeamId in this.myTeams) {
-	      		myTeamIds.push(this.myTeams[myTeamId].teamId);
+	      		myTeamIds.push(this.myTeams[myTeamId]["teamId"]);
 	      	}
 	      	for (var teamIdx in data2) {
-	      		if (!myTeamIds.includes(data2[teamIdx].teamId)) {
+	      		if ( ( myTeamIds.includes(data2[teamIdx]["teamId"] ) ) )  {
 	      			this.publicTeams.push(data2[teamIdx]);
 	      		}
 	      	}
