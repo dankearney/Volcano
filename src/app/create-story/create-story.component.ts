@@ -40,12 +40,9 @@ export class CreateStoryComponent implements OnInit {
     });
   }
 
-
-
-
   createStory( model: Story, isValid: boolean) {
       console.log("CODE RUNNING");
-      this.http.post("https://volcano-backend.herokuapp.com/stories", model, Util.getReqConfig() ).subscribe(
+      this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/stories", model, Util.getReqConfig() ).subscribe(
 
       
           data => {
