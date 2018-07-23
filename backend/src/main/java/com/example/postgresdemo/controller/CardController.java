@@ -34,10 +34,7 @@ public class CardController {
         return cardRepository.findById(cardId).get();
     }
 
-    @GetMapping("/cards") //name of the card table
-    public List<Card> getCards() {
-        List<Card> cards = cardRepository.findAll();
-
+    public List<Card> hydrateCards(List<Card> cards) {
         // Cache the user ID <=> user object to avoid lots of
         // Requests to the User DB.
 
@@ -71,11 +68,33 @@ public class CardController {
         return cards;
     }
 
+    @GetMapping("/cards")
+    public List<Card> getCards() {
+        List<Card> cards = cardRepository.findAll();
+        return hydrateCards(cards);
+    }
+
+    // Returns cards scoped to a specific team
+    @GetMapping("/team/{teamId}/cards")
+    public List<Card> getTeamScopedCards(@PathVariable("teamId") Long teamId) {
+        List<Card> cards = cardRepository.findByTeamId(teamId);
+        return hydrateCards(cards);
+    }
+
     @PostMapping("/cards")
     public Card createCard(@Valid @RequestBody Card card) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
         card.setCreatorId(userId);
+        return cardRepository.save(card);
+    }
+
+    @PostMapping("/team/{teamId}/cards")
+    public Card createCardInTeam(@Valid @RequestBody Card card, @PathVariable("teamId") Long teamId) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        card.setCreatorId(userId);
+        card.setTeamId(teamId);
         return cardRepository.save(card);
     }
 
@@ -105,7 +124,7 @@ public class CardController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
     }
     */
-    
+
     @DeleteMapping("/cards/{cardId}")
     public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
         return cardRepository.findById(cardId)
