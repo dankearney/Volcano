@@ -41,6 +41,25 @@ public class ChatController {
         chat.setTeamId(teamId);
         return chatRepository.save(chat);
     }
+//Start here for private chat idea
+    @GetMapping ("user/{userId}/chat")
+    public List<Chat> getUserScopedChats(@PathVariable("userId") Long userId){
+        // This needs to return the list of chats to a given user
+        List<Chat> chats = chatRepository.findByTeamIdOrderByChatId(userId);
+        return  chats;
+    }
+
+    @PostMapping("/user/{userId}/chat")
+    public Chat createPrivateChat(@Valid @RequestBody Chat chat, @PathVariable("userId") Long UserId) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
+        String userName = ((VolcanoUserPrincipal)principal).getUser().getUsername();
+        chat.setCreatorId(userId);
+        chat.setCreatorNameSnapshot(userName);
+        // May not need...
+        //chat.setTeamId(teamId);
+        return chatRepository.save(chat);
+    }
 
     @PostMapping("/chat")
     public Chat createChat(@Valid @RequestBody Chat chat) {

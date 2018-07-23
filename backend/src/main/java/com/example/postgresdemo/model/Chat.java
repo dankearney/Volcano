@@ -27,6 +27,8 @@ public class Chat extends AuditModel {
     private Long teamId; //only got setters, as teamId should not be changed once set
     @Column()
     private String creatorNameSnapshot; // Let's just dump the username here for perf
+    @Column()
+    private Long privateMessageID; // The Id of the user that sent the message
 
     //getters
     public Long getCreatorId() {
