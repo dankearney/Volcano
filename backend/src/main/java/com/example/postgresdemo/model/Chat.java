@@ -8,6 +8,8 @@ import com.example.postgresdemo.repository.UserRepository;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "chat")
@@ -47,6 +49,17 @@ public class Chat extends AuditModel {
       return teamId;
     }
 
+    public String getTimeSent() {
+       // Calendar calendar = Calendar.getInstance();
+
+       // java.util.Date now = calendar.getTime();
+
+        //java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
+
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+        return timeStamp;
+    }
+
     //setters
     public void setCreatorNameSnapshot(String name) {
         this.creatorNameSnapshot = name;
@@ -57,7 +70,7 @@ public class Chat extends AuditModel {
     }
   
     public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+        this.teamId = teamId;        
     }
 
 }

@@ -4,7 +4,6 @@
     <div *ngFor="let chat of chats" >
       <strong>{{chat.creatorNameSnapshot}}:</strong> {{chat.message}}
       <button class = "button3 btn btn-small"  style = 'float: right; margin-left: 5px;'>Delete</button>
-      <button class = "button2 btn btn-small" style = 'float: right' >Edit</button>
       <p><p>
     </div>
 
@@ -15,6 +14,9 @@
           <label for = "">Message</label>
           <input formControlName = "message" name = "name" type = "text" class = "form-control rounded-0" required>
         </div>
+        <a class="clear" ngSubmit="searchAll = null">
+          <span class="glyphicon glyphicon-remove"></span>
+      </a>
         <div class="chat-button">
         <button type = "submit" class = "btn btn-primary float-right">Send</button>
       </div>

@@ -49,6 +49,7 @@ public class ChatController {
         String userName = ((VolcanoUserPrincipal)principal).getUser().getUsername();
         chat.setCreatorId(userId);
         chat.setCreatorNameSnapshot(userName);
+        chat.getTimeSent();
         return chatRepository.save(chat);
     }
 /*
