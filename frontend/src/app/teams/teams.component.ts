@@ -40,18 +40,28 @@ export class TeamsComponent implements OnInit {
   }
 
   loadTeams() {
-    this.http.get("https://volcano-backend.herokuapp.com/teams", Util.getReqConfig()).subscribe(
-      data => {
-        this.publicTeams = data;
-      },
-      err => {
-        Util.writeGenericError();
-      }
-    );
 
     this.http.get("https://volcano-backend.herokuapp.com/myTeams", Util.getReqConfig()).subscribe(
       data => {
         this.myTeams = data;
+        this.publicTeams = [];
+        this.http.get("https://volcano-backend.herokuapp.com/teams", Util.getReqConfig()).subscribe(
+	      data2 => {
+	      	// Only show teams I'm not part of as options to join
+	      	let myTeamIds = [];
+	      	for (var myTeamId in this.myTeams) {
+	      		myTeamIds.push(this.myTeams[myTeamId].teamId);
+	      	}
+	      	for (var teamIdx in data2) {
+	      		if (!myTeamIds.includes(data2[teamIdx].teamId)) {
+	      			this.publicTeams.push(data2[teamIdx]);
+	      		}
+	      	}
+	      },
+	      err => {
+	        Util.writeGenericError();
+	      }
+	    );
       },
       err => {
         Util.writeGenericError();
