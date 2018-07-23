@@ -34,7 +34,10 @@ public class CardController {
         return cardRepository.findById(cardId).get();
     }
 
-    public List<Card> hydrateCards(List<Card> cards) {
+    @GetMapping("/cards") //name of the card table
+    public List<Card> getCards() {
+        List<Card> cards = cardRepository.findAll();
+
         // Cache the user ID <=> user object to avoid lots of
         // Requests to the User DB.
 
@@ -68,19 +71,6 @@ public class CardController {
         return cards;
     }
 
-    @GetMapping("/cards")
-    public List<Card> getCards() {
-        List<Card> cards = cardRepository.findAll();
-        return hydrateCards(cards);
-    }
-
-    // Returns cards scoped to a specific team
-    @GetMapping("/team/{teamId}/cards")
-    public List<Card> getTeamScopedCards(@PathVariable("teamId") Long teamId) {
-        List<Card> cards = cardRepository.findByTeamId(teamId);
-        return hydrateCards(cards);
-    }
-
     @PostMapping("/cards")
     public Card createCard(@Valid @RequestBody Card card) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -89,30 +79,19 @@ public class CardController {
         return cardRepository.save(card);
     }
 
-    @PostMapping("/team/{teamId}/cards")
-    public Card createCardInTeam(@Valid @RequestBody Card card, @PathVariable("teamId") Long teamId) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long userId = ((VolcanoUserPrincipal)principal).getUser().getUserid();
-        card.setCreatorId(userId);
-        card.setTeamId(teamId);
-        return cardRepository.save(card);
-    }
-
     @PutMapping("/cards/{cardId}")
-    public Card update(@PathVariable Long cardId,
-                                   @Valid @RequestBody Card cardRequest) {
-        return cardRepository.findById(cardId)
-                .map(card -> {
-                    card.setCardName(cardRequest.getCardName());
-                    card.setType(cardRequest.getType());
-                    card.setPriority(cardRequest.getPriority());
-                    card.setLabel(cardRequest.getLabel());
-                    card.setStatus(cardRequest.getStatus());
-                    card.setResolution(cardRequest.getResolution());
-                    card.setDescription(cardRequest.getDescription());
-                    card.setAttachment(cardRequest.getAttachment());
-                    return cardRepository.save(card);
-                }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
+    public Card update(@PathVariable Long cardId,  @Valid @RequestBody Card cardRequest) {
+        Card card = cardRepository.findById(cardId).get();
+        card.setCardName(cardRequest.getCardName());
+        card.setType(cardRequest.getType());
+        card.setPriority(cardRequest.getPriority());
+        card.setLabel(cardRequest.getLabel());
+        card.setStatus(cardRequest.getStatus());
+        card.setResolution(cardRequest.getResolution());
+        card.setDescription(cardRequest.getDescription());
+        card.setAttachment(cardRequest.getAttachment());
+        card.setAssigneeId(cardRequest.getAssigneeId());
+        return cardRepository.save(card);
     }
 
     /*
@@ -126,7 +105,7 @@ public class CardController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
     }
     */
-
+    
     @DeleteMapping("/cards/{cardId}")
     public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
         return cardRepository.findById(cardId)

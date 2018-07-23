@@ -158,6 +158,10 @@ public class Card extends AuditModel {
         assignee = user;
     }
 
+    public void setAssigneeId(Long assigneeId) {
+        this.assigneeId = assigneeId;
+    }
+
     public void setCreator(User user) {
         creator = user;
     }
