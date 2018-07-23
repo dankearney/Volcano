@@ -20,22 +20,44 @@
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Assigned to: </strong> {{card.creatorId}}</p>
-    <!--<p><strong>ticket: </strong> {{card.story}}</p>
-    <p><strong>btns: </strong> {{card.labels}}</p>-->
-    <a href="#" class="btn btn-success">Edit Card</a>
-      &nbsp;<a href="#" class="btn btn-primary">
-        Mark as Completed
-      </a>
+    <p><strong>Assigned to: </strong>
+
+          <span *ngIf="card.assignee != null">
+            {{card.assignee.name}}
+          </span>
+          <span *ngIf="card.assignee == null">
+            Cannot be found
+          </span>
+
+    </p>
+    <p><strong>Created by: </strong>
+
+          <span *ngIf="card.creator != null">
+            {{card.creator.name}}
+          </span>
+          <span *ngIf="card.creator == null">
+            Cannot be found
+          </span>
+
+    </p>
+
+      <button class="btn btn-success" data-toggle="collapse" attr.data-target="#{{card.cardId}}">Edit Card</button>
+
+      <div id='{{card.cardId}}' class="collapse">
+      <p><br />
+        Edit card form here
+      </p>
+      </div>
+
   </div>
 </div>
 
-<!--<nav>
+<nav>
   &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/cards">Go Back</a></button>
 </nav>
 
       <div class = "card-body">
-        <form [formGroup]="createCardForm" class = "form" (ngSubmit)="updateCard(createCardForm.value, createCardForm.valid)">
+        <form [formGroup]="updateCardForm" class = "form" (ngSubmit)="updateCard(updateCardForm.value, updateCardForm.valid)">
           <div class = "form-group">
             <label for = "">Ticket Name</label>
             <input formControlName = "cardName" name = "cardName" type = "text" value = {{card.cardName}} class = "form-control rounded-4" required>
@@ -49,6 +71,11 @@
               <option>Feature</option>
 
             </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Description</label>
+            <input formControlName = "description" name = "description" type = "text" value= {{card.description}} class = "form-control rounded-4" required>
           </div>
 
           <div class = "form-group">
@@ -68,12 +95,7 @@
             </select>
           </div>
 
-          <!--<div class = "form-group">
-            <label for="">Status</label>
-            <input formControlName = "status" name = "status" type = "text" class = "form-control rounded-0" required>
-          </div>-->
-
-          <!--<div class = "form-group">
+          <div class = "form-group">
             <label for="">Resolution</label>
             <select formControlName = "resolution" name = "resolution" class="form-control" value = {{card.resolution}} id="resolution">
               <option>Incomplete</option>
@@ -84,19 +106,6 @@
           </div>
 
           <div class = "form-group">
-            <label for="">Description</label>
-            <input formControlName = "description" name = "description" type = "text" value= {{card.description}} class = "form-control rounded-4" required>
-          </div>-->
-
-<!--          <div class = "form-group">
-            <label for="">Attachment</label>
-            <input formControlName = "attachment" name = "attachment" type = "text" class = "form-control rounded-0" required>
-          </div>
-          <div class = "form-group">
-            <label for="">Creator ID</label>
-            <input formControlName = "creatorId" name = "creatorId" type = "text" class = "form-control rounded-0" required>
-          </div>-->
-          <!--<div class = "form-group">
             <label for="">Assigned To</label><br />
             <select formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
               <option value=1>Dan</option>
@@ -107,6 +116,6 @@
             </select>
           </div>
 
-            <button type = "submit" class = "btn btn-primary float-right">Create a Card</button>
+            <button type = "submit" class = "btn btn-primary float-right">Edit Card</button>
         </form>
-      </div>-->
+      </div>
