@@ -31,7 +31,9 @@ public class CardController {
 
     @GetMapping("/cards/{cardId}")
     public Card getCard(@PathVariable Long cardId) {
-        return cardRepository.findById(cardId).get();
+        ArrayList<Card> cards = new ArrayList<Card>();
+        cards.add(cardRepository.findById(cardId).get());
+        return hydrateCards(cards).get(0);
     }
 
     public List<Card> hydrateCards(List<Card> cards) {
