@@ -24,7 +24,7 @@ public class Card extends AuditModel {
     @Column()
     private Long storyId; //wrote getters, but not setters
     @Column()
-    private Long teamId; 
+    private Long teamId;
     @Column()
     private String priority;
     @Column()
@@ -97,17 +97,29 @@ public class Card extends AuditModel {
         return creatorId;
     }
 
-    public void setCreatorId(Long creatorId) {
-        this.creatorId = creatorId;
-    }
-
     public Long getAssigneeId() {
         return assigneeId;
+    }
+
+    public User getCreator() {
+      return creator;
+    }
+
+    public User getAssignee() {
+      return assignee;
     }
 
     //setters
     public void setCardId(Long cardId) {
         this.cardId = cardId;
+    }
+
+    public void setCreator(User user) {
+      this.creator = user;
+    }
+
+    public void setAssignee(User user) {
+      this.assignee = user;
     }
 
     public void setCardName(String cardName) {
@@ -117,7 +129,7 @@ public class Card extends AuditModel {
     public void setTeamId(Long teamId) {
       this.teamId = teamId;
     }
-    
+
     public void setType(String type) {
         this.type = type;
     }
@@ -128,6 +140,10 @@ public class Card extends AuditModel {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public void setCreatorId(Long creatorId) {
+        this.creatorId = creatorId;
     }
 
     public void setStatus(String[] status) {
@@ -146,24 +162,8 @@ public class Card extends AuditModel {
         this.attachment = attachment;
     }
 
-    public User getCreator() {
-        return creator;
-    }
-
-    public User getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(User user) {
-        assignee = user;
-    }
-
     public void setAssigneeId(Long assigneeId) {
         this.assigneeId = assigneeId;
-    }
-
-    public void setCreator(User user) {
-        creator = user;
     }
 
 }

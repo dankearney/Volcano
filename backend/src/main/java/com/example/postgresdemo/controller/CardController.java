@@ -65,6 +65,12 @@ public class CardController {
                card.setAssignee(userIdCache.get(card.getAssigneeId() ) );
             }
         }
+
+        for (Card card: cards) {
+          card.setCreator(userRepository.findByUserid(card.getCreatorId()));
+          card.setAssignee(userRepository.findByUserid(card.getAssigneeId()));
+        }
+        
         return cards;
     }
 
