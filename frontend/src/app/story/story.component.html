@@ -1,7 +1,7 @@
 <div class="card volcano-story" >
   <h2 class="card-header volcano-story-header">
       <strong><a href="/storyDetail/{{story.storyId}}">{{story.storyName}}</a></strong>
-   
+
   </h2>
 
 
@@ -22,7 +22,10 @@
 
       <div id='{{story.storyId}}' class="collapse">
       <p><br />
-        Show all story's cards here
+            <span *ngIf="story.storyId == 474">
+              <span *ngFor="let card of story.cardsAttached" >
+                <app-card [card]="card"></app-card>
+            </span></span>
       </p>
       </div>
   </div>

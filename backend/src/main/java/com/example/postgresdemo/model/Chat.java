@@ -28,7 +28,7 @@ public class Chat extends AuditModel {
     @Column()
     private String creatorNameSnapshot; // Let's just dump the username here for perf
     @Column()
-    private String privateMessageID; // The Id of the user that sent the message
+    private String privateMessageID; // The Id of the user that sent the message (userId1+userid2)
 
     //getters
     public Long getCreatorId() {
