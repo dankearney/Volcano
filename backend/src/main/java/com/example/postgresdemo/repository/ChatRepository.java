@@ -10,7 +10,9 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
     List<Chat> findAll();
 
     List<Chat> findByTeamIdOrderByChatId(Long teamId);
-    
-    Long findByChatId(Long chatId);    
+
+    List<Chat> findByCreatorId(Long creatorId);
+
+    Long findByChatId(Long chatId);
 }
 

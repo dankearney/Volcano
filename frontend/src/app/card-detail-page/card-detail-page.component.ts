@@ -52,11 +52,12 @@ export class CardDetailPageComponent implements OnInit {
     );
   }
 
-  updateCard( model: Card, isValid: boolean) {
-    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig()).subscribe(
+  updateCard(model: Card, isValid: boolean) {
+    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
       data => {
         this.card = data;
-        Util.writeSuccess("Card has been edited! Card Name, " + model.cardName);
+
+        Util.writeSuccess("Card has successfully been edited! Card Name, " + model.cardName);
       },
       err => {
         Util.writeGenericError();
@@ -73,6 +74,10 @@ export class CardDetailPageComponent implements OnInit {
         Util.writeError("Card creation failed.");
       }
     );
+
+  }
+
+  deletecard( model: Card, isValid: boolean) {
 
   }
 

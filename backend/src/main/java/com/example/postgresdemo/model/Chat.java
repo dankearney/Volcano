@@ -28,7 +28,7 @@ public class Chat extends AuditModel {
     @Column()
     private String creatorNameSnapshot; // Let's just dump the username here for perf
     @Column()
-    private Long privateMessageID; // The Id of the user that sent the message
+    private String privateMessageID; // The Id of the user that sent the message
 
     //getters
     public Long getCreatorId() {
@@ -70,9 +70,9 @@ public class Chat extends AuditModel {
     public void setCreatorId(Long userId) {
         this.creatorId = creatorId;
     }
-  
+
     public void setTeamId(Long teamId) {
-        this.teamId = teamId;        
+        this.teamId = teamId;
     }
 
 }
