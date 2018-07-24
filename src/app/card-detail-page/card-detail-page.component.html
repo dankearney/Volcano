@@ -1,71 +1,20 @@
 <h1>Ticket Detail</h1>
-
-<br />
-<div class="card" >
-  <h2 class="card-header">
-    <strong>{{card.cardName}}</strong>
-  </h2>
-  <div class="card-body">
-    <p class="card-text">
-      <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
-      &nbsp;
-      <a class="btn btn-danger btn-sm" style='color: white'>{{card.label}}</a>
-      &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{card.resolution}}</a>
-      &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
-      <br />
-      <br />
-      {{card.description}}
-    </p>
-  </div>
-  <div class="card-footer">
-    <p><strong>Assigned to: </strong>
-
-          <span *ngIf="card.assignee != null">
-            {{card.assignee.name}}
-          </span>
-          <span *ngIf="card.assignee == null">
-            Cannot be found
-          </span>
-
-    </p>
-    <p><strong>Created by: </strong>
-
-          <span *ngIf="card.creator != null">
-            {{card.creator.name}}
-          </span>
-          <span *ngIf="card.creator == null">
-            Cannot be found
-          </span>
-
-    </p>
-
-      <button class="btn btn-success" data-toggle="collapse" attr.data-target="#{{card.cardId}}">Edit Card</button>
-
-      <div id='{{card.cardId}}' class="collapse">
-      <p><br />
-        Edit card form here
-      </p>
+<div class = "row pt-5">
+  <div class = "col-md-6 mx-auto">
+    <div class ="card rounded-0">
+      <div class = "card-header">
+        <h3 class = "mb-0">Edit Ticket</h3>
       </div>
-
-  </div>
-</div>
-
-<nav>
-  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/cards">Go Back</a></button>
-</nav>
-
       <div class = "card-body">
         <form [formGroup]="updateCardForm" class = "form" (ngSubmit)="updateCard(updateCardForm.value, updateCardForm.valid)">
           <div class = "form-group">
             <label for = "">Ticket Name</label>
-            <input formControlName = "cardName" name = "cardName" type = "text" value = {{card.cardName}} class = "form-control rounded-4" required>
+            <input formControlName = "cardName" name = "cardName" type = "text" class = "form-control rounded-4" required>
           </div>
 
           <div class = "form-group">
             <label for="">Type</label>
-            <select formControlName = "type" name = "type" value = {{card.type}} class="form-control" id="type">
+            <select formControlName = "type" name = "type"  class="form-control" id="type">
               <option>Task</option>
               <option>Bug</option>
               <option>Feature</option>
@@ -75,12 +24,12 @@
 
           <div class = "form-group">
             <label for="">Description</label>
-            <input formControlName = "description" name = "description" type = "text" value= {{card.description}} class = "form-control rounded-4" required>
+            <input formControlName = "description" name = "description" type = "text" class = "form-control rounded-4" required>
           </div>
 
           <div class = "form-group">
             <label for="">Priority</label>
-            <select formControlName = "priority" name = "priority" value = {{card.priority}} class="form-control" id="priority">
+            <select formControlName = "priority" name = "priority" class="form-control" id="priority">
               <option>High</option>
               <option>Normal</option>
               <option>Low</option>
@@ -89,7 +38,7 @@
 
           <div class = "form-group">
             <label for="">Label</label>
-            <select formControlName = "label" name = "label" class="form-control" value = {{card.label}} id="lavel">
+            <select formControlName = "label" name = "label" class="form-control" id="lavel">
               <option>Frontend</option>
               <option>Backend</option>
             </select>
@@ -97,7 +46,7 @@
 
           <div class = "form-group">
             <label for="">Resolution</label>
-            <select formControlName = "resolution" name = "resolution" class="form-control" value = {{card.resolution}} id="resolution">
+            <select formControlName = "resolution" name = "resolution" class="form-control" id="resolution">
               <option>Incomplete</option>
               <option>In Progress</option>
               <option>Complete</option>
@@ -119,3 +68,6 @@
             <button type = "submit" class = "btn btn-primary float-right">Edit Card</button>
         </form>
       </div>
+  </div>
+</div>
+</div>

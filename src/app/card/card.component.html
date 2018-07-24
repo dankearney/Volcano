@@ -1,6 +1,6 @@
 <div class="card volcano-card" >
   <h2 class="card-header volcano-card-header">
-    <strong><a href="/cardDetail/{{card.cardId}}">{{card.cardName}}</a></strong>
+    <strong><a routerLink="/cardDetail/{{card.cardId}}" routerlinkactive="active" >{{card.cardName}}</a></strong>
   </h2>
   <div class="card-body">
     <p class="card-text">
@@ -25,27 +25,9 @@
     </p>
   </div>
   <div class="card-footer">
-    <!---->
+    <p><strong>Assigned to: </strong> {{card.assignee.name}}</p>
     <!--<p><strong>story id: </strong> {{card.storyId}}</p>-->
-          <span *ngIf="card.assignee != null">
-            <p><strong>Assigned to: </strong> {{card.assignee.name}}</p>
-          </span>
-          <span *ngIf="card.assignee == null">
-            <p><strong>Assigned to: </strong> Cannot be found</p>
-          </span>
-
     <p><strong>Label(s): </strong> {{card.label}}</p>
-
-          <span *ngIf="card.creator != null">
-            <p><strong>Created by: </strong> {{card.creator.name}}</p>
-          </span>
-          <span *ngIf="card.creator == null">
-            <p><strong>Created by: </strong> Cannot be found</p>
-          </span>
-
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-primary">
-        Mark as Completed
-      </a>
+    <p><strong>Created by: </strong> {{card.creator.name}}</p>
   </div>
 </div>

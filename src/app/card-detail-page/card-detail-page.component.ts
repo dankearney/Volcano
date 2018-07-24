@@ -38,13 +38,22 @@ export class CardDetailPageComponent implements OnInit {
         assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
 
     });
+
   }
 
   getCard() {
     this.http.get("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig()).subscribe(
       data => {
         this.card = data;
-        console.log(this.card);
+
+        // Populate form values
+        this.updateCardForm.patchValue({cardName: this.card.cardName});
+        this.updateCardForm.patchValue({type: this.card.type});
+        this.updateCardForm.patchValue({priority: this.card.priority});
+        this.updateCardForm.patchValue({label: this.card.label});
+        this.updateCardForm.patchValue({resolution: this.card.resolution});
+        this.updateCardForm.patchValue({description: this.card.description});
+        this.updateCardForm.patchValue({assigneeId: this.card.assigneeId});
       },
       err => {
         Util.writeGenericError();
