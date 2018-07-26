@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { Util } from '../utilities/util';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-detail',
@@ -16,7 +17,7 @@ export class TeamDetailComponent implements OnInit {
   team = null;
   isAdmin = false;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private _router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   refresh() {
   	this.teamId = this.route.snapshot.paramMap.get('team-id');
@@ -46,6 +47,19 @@ export class TeamDetailComponent implements OnInit {
       data => {
         Util.writeSuccess("Removed from team");
         this.refresh();
+      },
+      err => {
+        Util.writeGenericError();
+      }
+    );
+  }
+
+
+  leaveTeam() {
+  	this.http.delete("https://volcano-backend.herokuapp.com/teamUserMemberships/team/" + this.teamId + "/user/" + (Util.getLoggedInUser()["userid"]).toString(), Util.getReqConfig()).subscribe(
+      data => {
+        Util.writeSuccess("Left team successfully.");
+        this._router.navigate(["/teams"]);;
       },
       err => {
         Util.writeGenericError();

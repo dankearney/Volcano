@@ -59,6 +59,10 @@ export abstract class Util {
     public static logOut() {
         window.localStorage.setItem("authToken", null);
         window.localStorage.setItem("userPrincipal", null)
+        Util.logOutTeam();
+    }
+
+    public static logOutTeam() {
         window.localStorage.setItem("team", null);
     }
 

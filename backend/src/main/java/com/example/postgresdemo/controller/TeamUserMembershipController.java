@@ -92,9 +92,15 @@ public class TeamUserMembershipController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
     }
     */
-@DeleteMapping("/teamUserMemberships/team/{teamId}/user/{userId}")
+    @DeleteMapping("/teamUserMemberships/team/{teamId}/user/{userId}")
     public void deleteTeam(@PathVariable Long teamId, @PathVariable Long userId) {
         teamUserMembershipRepository.deleteByTeamIdAndUserId(teamId, userId);
     }
-    
+
+    @PutMapping("/teamUserMemberships/team/{teamId}/user/{userId}/promote")
+    public void promoteToAdmin(@PathVariable Long teamId, @PathVariable Long userId) {
+        TeamUserMembership tum = teamUserMembershipRepository.findOneByTeamIdAndUserId(teamId, userId);
+        tum.setStatus("Admin");
+    }
+
 }
