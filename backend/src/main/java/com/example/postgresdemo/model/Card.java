@@ -17,23 +17,31 @@ public class Card extends AuditModel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long cardId; //primary id
 
-    @Column(name="name")
+    @Column(name="name", columnDefinition="TEXT")
     private String cardName;
+
     @Column()
     private String type;
+
     @Column()
     private Long storyId; //wrote getters, but not setters
+
     @Column()
     private Long teamId;
+
     @Column()
     private String priority;
+
     @Column()
     private String label;
+
     @Column()
     private String[] status;
+
     @Column()
     private String resolution;
-    @Column()
+
+    @Column(columnDefinition="TEXT")
     private String description;
     @Column()
     private String attachment;

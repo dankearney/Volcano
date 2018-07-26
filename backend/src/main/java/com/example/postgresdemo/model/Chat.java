@@ -19,7 +19,7 @@ public class Chat extends AuditModel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long chatId; //primary id
 
-    @Column()
+    @Column(columnDefinition="TEXT")
     private String message;
     @Column()
     private Long creatorId;
