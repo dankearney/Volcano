@@ -18,7 +18,7 @@ export class TeamDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
-  ngOnInit() {
+  refresh() {
   	this.teamId = this.route.snapshot.paramMap.get('team-id');
     this.http.get("https://volcano-backend.herokuapp.com/teams/" + this.teamId, Util.getReqConfig()).subscribe(
       data => {
@@ -35,11 +35,22 @@ export class TeamDetailComponent implements OnInit {
         Util.writeGenericError();
       }
     );
-
   }
 
-  removeFromTeam(teamUserMembershipId : string) {
-  	alert(teamUserMembershipId);
+  ngOnInit() {
+  	this.refresh();
+  }
+
+  removeFromTeam(userId : string) {
+  	this.http.delete("https://volcano-backend.herokuapp.com/teamUserMemberships/team/" + this.teamId + "/user/" + userId, Util.getReqConfig()).subscribe(
+      data => {
+        Util.writeSuccess("Removed from team");
+        this.refresh();
+      },
+      err => {
+        Util.writeGenericError();
+      }
+    );
   }
 
 }
