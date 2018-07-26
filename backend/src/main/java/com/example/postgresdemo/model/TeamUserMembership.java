@@ -32,9 +32,9 @@ public class TeamUserMembership extends AuditModel {
     @Column()
     private String password;
 
-    @Transient
+    @Transient  
     private User user;
-
+    
     //getters
 
     public Long getTeamUserMembershipId() {

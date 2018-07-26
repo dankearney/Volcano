@@ -6,12 +6,18 @@
     <span *ngIf="tum.user != null">
     	<strong style='display: inline-block; min-width: 80px'>{{tum.status}}</strong>
     	<span style='display: inline-block; min-width: 120px'> {{tum.user.username}} </span>
-    	<button class="btn btn-sm">Remove</button>
-    	&nbsp; &nbsp;
-    	<button class = "btn btn-sm btn-primary" *ngIf="tum.status != 'Admin'">Promote to Admin</button>
+    	<span *ngIf = "isAdmin">
+    		<button class="btn btn-sm" (click)="removeFromTeam(tum.teamUserMembershipId)">Remove</button>
+    		&nbsp; &nbsp;
+    		<button class = "btn btn-sm btn-primary" *ngIf="tum.status != 'Admin'">Promote to Admin</button>
+    	</span>
     	<br /> 
     	<hr />
     </span>
   </div>
-<button class = "btn btn-danger">Delete Team</button>
+  <button class = "btn btn-danger">Leave Team</button>
+  &nbsp;
+  <span *ngIf = "isAdmin">
+  	<button class = "btn btn-danger">Delete Team</button>
+  </span>
 </div>

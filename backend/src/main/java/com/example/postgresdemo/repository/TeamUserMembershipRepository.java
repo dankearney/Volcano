@@ -11,4 +11,5 @@ public interface TeamUserMembershipRepository extends JpaRepository<TeamUserMemb
 
     ArrayList<TeamUserMembership> findByTeamId(Long teamId);
     ArrayList<TeamUserMembership> findByUserId(long userId);
+    Long deleteByTeamIdAndUserId(Long userId, Long teamId);
 }

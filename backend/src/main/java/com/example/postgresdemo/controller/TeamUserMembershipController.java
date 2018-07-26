@@ -20,8 +20,11 @@ import javax.validation.Valid;
 import com.example.postgresdemo.security.VolcanoUserPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
+import org.springframework.context.annotation.*;
+import org.springframework.transaction.annotation.*;
 
 @RestController
+@Transactional
 public class TeamUserMembershipController {
 
     @Autowired
@@ -88,14 +91,10 @@ public class TeamUserMembershipController {
                     return teamRepository.save(team);
                 }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
     }
-
-    @DeleteMapping("/teams/{teamId}")
-    public ResponseEntity<?> deleteTeam(@PathVariable Long teamId) {
-        return teamRepository.findById(teamId)
-                .map(team -> {
-                    teamRepository.delete(team);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
-    }
     */
+@DeleteMapping("/teamUserMemberships/team/{teamId}/user/{userId}")
+    public void deleteTeam(@PathVariable Long teamId, @PathVariable Long userId) {
+        teamUserMembershipRepository.deleteByTeamIdAndUserId(teamId, userId);
+    }
+    
 }
