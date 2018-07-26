@@ -61,8 +61,10 @@ export class TeamsComponent implements OnInit {
 	      			this.publicTeams.push(data2[teamIdx]);
 	      		}
 	      	}
-			Util.setCurrentTeam(this.myTeams[0]);
-   			this.currentTeam = this.myTeams[0];
+	      	if (Util.getCurrentTeam() == null) {
+				Util.setCurrentTeam(this.myTeams[0]);
+   				this.currentTeam = this.myTeams[0];
+   			}
 	      },
 	      err => {
 	        Util.writeGenericError();
