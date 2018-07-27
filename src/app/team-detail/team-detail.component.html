@@ -9,7 +9,7 @@
     	<span *ngIf = "isAdmin">
     		<button class="btn btn-sm" (click)="removeFromTeam(tum.teamUserMembershipId)">Remove</button>
     		&nbsp; &nbsp;
-    		<button class = "btn btn-sm btn-primary" *ngIf="tum.status != 'Admin'">Promote to Admin</button>
+    		<button class = "btn btn-sm btn-primary" *ngIf="tum.status != 'Admin'" (click)="promoteToAdmin(tum.userId)">Promote to Admin</button>
     	</span>
     	<br /> 
     	<hr />
