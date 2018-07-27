@@ -23,7 +23,9 @@ export class ChatComponent implements OnInit {
   sendChatMessage(model: Chat, isValid: boolean) { 
       this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/chat", model, Util.getReqConfig()).subscribe(
       data => {
-          this.refreshChats();
+          this.chats.push(data);
+          // Clear the input
+          document.getElementById("sendMessage")["value"] = "";
       },
       err => {
         Util.writeGenericError();
