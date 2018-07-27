@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface TeamRepository extends JpaRepository<Team, Long> {
     Team findByTeamId(Long teamId);
     ArrayList<Team> findByTeamIdIn(ArrayList<Long> teamIds);
+    Long deleteByTeamId(Long teamId);
 }

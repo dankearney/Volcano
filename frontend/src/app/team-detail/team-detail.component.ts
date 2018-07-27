@@ -67,4 +67,8 @@ export class TeamDetailComponent implements OnInit {
     );
   }
 
+  deleteTeam() {
+  	alert("Call our support hotline at 1-800-867-5309 to discuss deleting this team.");
+  }
+
 }

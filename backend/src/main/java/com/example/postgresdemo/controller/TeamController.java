@@ -99,11 +99,7 @@ public class TeamController {
     }
 
     @DeleteMapping("/teams/{teamId}")
-    public ResponseEntity<?> deleteTeam(@PathVariable Long teamId) {
-        return teamRepository.findById(teamId)
-                .map(team -> {
-                    teamRepository.delete(team);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Team not found with id " + teamId));
+    public void deleteTeam(@PathVariable Long teamId) {
+        teamRepository.deleteByTeamId(teamId);
     }
 }
