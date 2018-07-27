@@ -14,4 +14,6 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     ArrayList<Card> findByStoryId(Long storyId);
     ArrayList<Card> findByTeamId(Long teamId);
+    void deleteByCardId(Long cardId);
 }
+

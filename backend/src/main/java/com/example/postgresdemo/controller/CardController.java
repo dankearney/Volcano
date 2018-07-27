@@ -19,8 +19,11 @@ import java.util.Optional;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
+import org.springframework.transaction.annotation.*;
+import org.springframework.context.annotation.*;
 
 @RestController
+@Transactional
 public class CardController {
 
     @Autowired
@@ -134,12 +137,8 @@ public class CardController {
     */
 
     @DeleteMapping("/cards/{cardId}")
-    public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
-        return cardRepository.findById(cardId)
-                .map(card -> {
-                    cardRepository.delete(card);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Card not found with id " + cardId));
+    public void deleteCard(@PathVariable Long cardId) {
+        cardRepository.deleteByCardId(cardId);
     }
 
 }
