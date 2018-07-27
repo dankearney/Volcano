@@ -11,21 +11,21 @@
       &nbsp;
       <a class="btn btn-danger btn-sm" style='color: white'>{{story.resolution}}</a>
       &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{story.teamId}}</a>
       <br />
       <br />
-      {{story.storyName}}
+      {{story.description}}
     </p>
   </div>
   <div class="card-footer">
     <p><strong>Created by: </strong> {{story.creatorId}}</p>
-    <p><strong>Assigned to: </strong> {{story.teamId}}</p>
     <a href="#" class="btn btn-success">Edit Story</a>
       &nbsp;<a href="#" class="btn btn-primary">
         Mark as Completed
       </a>
   </div>
 </div>
+
+
 
 <nav>
   &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/stories">Go Back</a></button>
