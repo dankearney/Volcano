@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit {
           this.chats.push(data);
           // Clear the input
           document.getElementById("sendMessage")["value"] = "";
-          this.this.setScrollPosition();
+          this.setScrollPosition();
       },
       err => {
         Util.writeGenericError();
