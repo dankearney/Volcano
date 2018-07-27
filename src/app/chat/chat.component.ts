@@ -36,8 +36,11 @@ export class ChatComponent implements OnInit {
   refreshChats() {
     this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/chats", Util.getReqConfig()).subscribe(
       data => {
-        this.chats = data;
-        setTimeout(this.setScrollPosition, 50);
+        // Refresh UI initially, and if there are new chats.
+        if (this.chats == null || this.chats["length"] != data["length"]) {
+          this.chats = data;
+          setTimeout(this.setScrollPosition, 50);
+        }
       },
       err => {
         Util.writeGenericError();
