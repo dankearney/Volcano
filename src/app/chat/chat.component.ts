@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit {
           this.chats.push(data);
           // Clear the input
           document.getElementById("sendMessage")["value"] = "";
+          this.refreshChats();
       },
       err => {
         Util.writeGenericError();
