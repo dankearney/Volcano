@@ -61,10 +61,16 @@ public class Story extends AuditModel {
 
     @Transient
     private ArrayList<Card> cardsAttached;
+    @Transient
+    private User creator;
 
     //getters
     public Long getStoryId() {
         return storyId;
+    }
+
+    public User getCreator() {
+      return creator;
     }
 
     public Long getCreatorId() {
@@ -129,6 +135,10 @@ public class Story extends AuditModel {
 
     //setters
 
+    public void setCreator(User user) {
+      this.creator = user;
+    }
+    
     public void setStoryId(Long storyId) {
         this.storyId = storyId;
     }

@@ -3,10 +3,14 @@ package com.example.postgresdemo.controller;
 import com.example.postgresdemo.exception.ResourceNotFoundException;
 import com.example.postgresdemo.model.Story;
 import com.example.postgresdemo.model.Card;
+import com.example.postgresdemo.model.User;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.HashMap;
+import java.util.HashSet;
 import com.example.postgresdemo.security.VolcanoUserPrincipal;
+import com.example.postgresdemo.repository.UserRepository;
 import com.example.postgresdemo.repository.StoryRepository;
 import com.example.postgresdemo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +21,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.*;
+import org.springframework.context.annotation.*;
 
 @RestController
+@Transactional
+
 public class StoryController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private StoryRepository storyRepository;
@@ -36,17 +47,19 @@ public class StoryController {
     @GetMapping("/stories/{storyId}") //name of the card table
     public Story getStory(@PathVariable Long storyId) {
         Story story = storyRepository.findByStoryId(storyId);
-        ArrayList<Card> cards = cardRepository.findByStoryId(storyId);
-
-        story.setCardsAttached(cards);
+        hydrateStory(story);
         return story;
+    }
+
+    public void hydrateStory(Story story) {
+      ArrayList<Card> cards = cardRepository.findByStoryId(story.getStoryId());
+      story.setCreator(userRepository.findByUserid(story.getCreatorId()));
+      story.setCardsAttached(hydrateCards(cards));
     }
 
     public List<Story> hydrateStories(List<Story> stories) {
         for (Story story: stories) {
-          Long storyId = story.getStoryId();
-          ArrayList<Card> cards = cardRepository.findByStoryId(storyId);
-          story.setCardsAttached(cards);
+          hydrateStory(story);
         }
         return stories;
     }
@@ -99,5 +112,46 @@ public class StoryController {
                     storyRepository.delete(story);
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Story not found with id " + storyId));
+    }
+
+    //helper function
+    public ArrayList<Card> hydrateCards(ArrayList<Card> cards) {
+        // Cache the user ID <=> user object to avoid lots of
+        // Requests to the User DB.
+
+        // Initialize it empty.
+        HashMap<Long, User> userIdCache = new HashMap<Long, User>();
+        HashSet<Long> userIds = new HashSet<Long>();
+
+        for ( Card card : cards ) {
+            userIds.add(card.getCreatorId());
+            userIds.add(card.getAssigneeId());
+        }
+        userIds.remove(null);
+        System.out.println(cards);
+        System.out.println(new ArrayList(userIds));
+
+        // Look up all the users in batch and fill the cache.
+        List<User> users = userRepository.findByUseridIn(new ArrayList(userIds));
+        for ( User user : users ) {
+            userIdCache.put(user.getUserid(), user);
+        }
+
+        // Hydrate the assignee, creator with actual User objects from the cache.
+        for ( Card card : cards ) {
+            if ( card.getCreatorId() != null ) {
+                card.setCreator( userIdCache.get(card.getCreatorId()  ) );
+            }
+            if ( card.getAssigneeId() != null ) {
+               card.setAssignee(userIdCache.get(card.getAssigneeId() ) );
+            }
+        }
+
+        for (Card card: cards) {
+          card.setCreator(userRepository.findByUserid(card.getCreatorId()));
+          card.setAssignee(userRepository.findByUserid(card.getAssigneeId()));
+        }
+
+        return cards;
     }
 }
