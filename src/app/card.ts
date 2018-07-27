@@ -13,5 +13,5 @@ export class Card {
   assigneeId: number;
   creator: any;
   assignee: any;
-  
+  dueDate: any;
 }

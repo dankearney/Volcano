@@ -28,6 +28,7 @@
     <p><strong>Assigned to: </strong> <span *ngIf="card.assignee != null"> {{card.assignee.name}}</span></p>
     <!--<p><strong>story id: </strong> {{card.storyId}}</p>-->
     <p><strong>Label(s): </strong> {{card.label}}</p>
+    <p *ngIf="card.dueDateString != null"><strong>Due Date: </strong> {{ card.dueDateString }}</p>
     <p><strong>Created by: </strong><span *ngIf="card.assignee != null"> {{card.creator.name}}</span></p>
   </div>
 </div>

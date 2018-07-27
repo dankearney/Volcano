@@ -36,7 +36,7 @@ export class CardDetailPageComponent implements OnInit {
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-
+        dueDate: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
     });
 
   }
@@ -46,6 +46,8 @@ export class CardDetailPageComponent implements OnInit {
       data => {
         this.card = data;
 
+        console.log(this.card.dueDate);
+
         // Populate form values
         this.updateCardForm.patchValue({cardName: this.card.cardName});
         this.updateCardForm.patchValue({type: this.card.type});
@@ -54,6 +56,10 @@ export class CardDetailPageComponent implements OnInit {
         this.updateCardForm.patchValue({resolution: this.card.resolution});
         this.updateCardForm.patchValue({description: this.card.description});
         this.updateCardForm.patchValue({assigneeId: this.card.assigneeId});
+        this.updateCardForm.patchValue({assigneeId: this.card.assigneeId});
+        if (this.card.dueDate != null) {
+          this.updateCardForm.patchValue({dueDate: (new Date(this.card.dueDate)).toISOString().split('T')[0]});
+        }
       },
       err => {
         Util.writeGenericError();
