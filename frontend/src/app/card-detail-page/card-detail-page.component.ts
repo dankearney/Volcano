@@ -85,10 +85,10 @@ export class CardDetailPageComponent implements OnInit {
 
   }
 
-  deletecard( model: Card, isValid: boolean) {
-   this.http.delete("https://volcano-backend.herokuapp.com/" + this.cardId, Util.getReqConfig() ).subscribe(
+  deleteCard( model: Card, isValid: boolean) {
+   this.http.delete("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig() ).subscribe(
       data => {
-        Util.writeSuccess("Card deleted successfully, " + model.cardName);
+        Util.writeSuccess("Card deleted successfully");
         this._router.navigate(["/cards"]);
       },
       err => {
