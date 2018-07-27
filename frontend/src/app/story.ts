@@ -11,4 +11,5 @@ export class Story {
     userId: number;
     teamId: number;
     creator: string;
+    creatorNameSnapshot: string;
   }
