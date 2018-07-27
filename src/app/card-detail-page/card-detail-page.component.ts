@@ -22,7 +22,7 @@ export class CardDetailPageComponent implements OnInit {
 
     updateCardForm : FormGroup;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private _router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.cardId = this.route.snapshot.paramMap.get('card-id');
@@ -65,7 +65,6 @@ export class CardDetailPageComponent implements OnInit {
     this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
       data => {
         this.card = data;
-
         Util.writeSuccess("Card has successfully been edited! Card Name, " + model.cardName);
       },
       err => {
@@ -87,7 +86,15 @@ export class CardDetailPageComponent implements OnInit {
   }
 
   deletecard( model: Card, isValid: boolean) {
-
+   this.http.delete("https://volcano-backend.herokuapp.com/" + this.cardId, Util.getReqConfig() ).subscribe(
+      data => {
+        Util.writeSuccess("Card deleted successfully, " + model.cardName);
+        this._router.navigate(["/cards"]);
+      },
+      err => {
+        Util.writeError("Card creation failed.");
+      }
+    );
   }
 
 }
