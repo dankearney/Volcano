@@ -45,9 +45,6 @@ export class CardDetailPageComponent implements OnInit {
     this.http.get("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig()).subscribe(
       data => {
         this.card = data;
-
-        console.log(this.card.dueDate);
-
         // Populate form values
         this.updateCardForm.patchValue({cardName: this.card.cardName});
         this.updateCardForm.patchValue({type: this.card.type});
