@@ -30,6 +30,7 @@ export class CreateCardComponent implements OnInit {
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        dueDate: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
     });
     this.createCardForm.patchValue({type: 'Bug'});
     this.createCardForm.patchValue({priority: 'Normal'});
@@ -50,6 +51,5 @@ export class CreateCardComponent implements OnInit {
     );
 
   }
-
 
 }
