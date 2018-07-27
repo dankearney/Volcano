@@ -8,6 +8,7 @@ import com.example.postgresdemo.repository.UserRepository;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
+import java.util.Date;
 
 @Entity
 @Table(name = "cards", indexes = {@Index(name = "card1",  columnList="name", unique = false)})
