@@ -12,9 +12,14 @@ export class CardComponent implements OnInit {
 
   @Input() public card : Card;
 
+  dueDateString;
+
   constructor() { }
   
   ngOnInit() {
+  	if (this.card.dueDate != null) {
+  		this.card.dueDateString = (new Date(this.card.dueDate)).toISOString().split('T')[0] ;
+  	}
   }
 
 }

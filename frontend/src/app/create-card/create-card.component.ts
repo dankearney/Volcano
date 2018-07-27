@@ -37,7 +37,8 @@ export class CreateCardComponent implements OnInit {
     this.createCardForm.patchValue({label: 'Frontend'});
     this.createCardForm.patchValue({resolution: 'Incomplete'});
     this.createCardForm.patchValue({resolution: 'Incomplete'});
-    this.createCardForm.patchValue({assigneeId : 1 })
+    this.createCardForm.patchValue({assigneeId : 1 });
+    this.createCardForm.patchValue({dueDate : (new Date()).toISOString().split('T')[0] });
   }
 
   createCard( model: Card, isValid: boolean) {
