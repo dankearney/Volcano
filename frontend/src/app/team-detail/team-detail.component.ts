@@ -68,7 +68,19 @@ export class TeamDetailComponent implements OnInit {
   }
 
   deleteTeam() {
-  	alert("Call our support hotline at 1-800-867-5309 to discuss deleting this team.");
+  	alert("Call our support hotline at 1-800-867-5309 to discuss deleting this.");
+  }
+
+  promoteToAdmin(userId : string) {
+	this.http.put("https://volcano-backend.herokuapp.com/teamUserMemberships/team/" + this.teamId + "/user/" + userId.toString() + "/promote", {}, Util.getReqConfig()).subscribe(
+      data => {
+        Util.writeSuccess("Promoted to admin.");
+        this.refresh();
+      },
+      err => {
+        Util.writeGenericError();
+      }
+    );
   }
 
 }
