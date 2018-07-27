@@ -41,12 +41,18 @@ public class Card extends AuditModel {
     @Column()
     private String resolution;
 
+    @Column()
+    private Date dueDate;
+
     @Column(columnDefinition="TEXT")
     private String description;
+
     @Column()
     private String attachment;
+
     @Column()
     private Long creatorId;
+
     @Column()
     private Long assigneeId;
 
@@ -117,6 +123,10 @@ public class Card extends AuditModel {
       return assignee;
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
     //setters
     public void setCardId(Long cardId) {
         this.cardId = cardId;
@@ -172,6 +182,10 @@ public class Card extends AuditModel {
 
     public void setAssigneeId(Long assigneeId) {
         this.assigneeId = assigneeId;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
 }
