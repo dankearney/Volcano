@@ -11,6 +11,7 @@ export const MOCK_STORY: Story =
   resolution: '',
   description: 'First iteration of the frontend has the following requirements.\r\nBe responsive. Less than 200 ms lag.',
   attachment: '',
+  creator: '',
   userId: 1,
   teamId: 5,
 };

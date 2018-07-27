@@ -10,4 +10,5 @@ export class Story {
     attachment: string;
     userId: number;
     teamId: number;
+    creator: string;
   }
