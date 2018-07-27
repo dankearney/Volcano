@@ -22,10 +22,9 @@
 
       <div id='{{story.storyId}}' class="collapse">
       <p><br />
-            <span *ngIf="story.storyId == 474">
               <span *ngFor="let card of story.cardsAttached" >
                 <app-card [card]="card"></app-card>
-            </span></span>
+            </span>
       </p>
       </div>
   </div>
