@@ -12,7 +12,7 @@
       <form [formGroup]="chatForm" class = "form" (ngSubmit)="sendChatMessage(chatForm.value, chatForm.valid)">
         <div class = "form-group">
           <label for = "">Message</label>
-          <input  id = "sendMessage" formControlName = "message" name = "name" type = "text" class = "form-control rounded-0" required>
+          <input  maxlength="255"  id = "sendMessage" formControlName = "message" name = "name" type = "text" class = "form-control rounded-0" required>
         </div>
         <a class="clear" ngSubmit="searchAll = null">
           <span class="glyphicon glyphicon-remove"></span>

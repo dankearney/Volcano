@@ -9,7 +9,7 @@
         <form [formGroup]="updateCardForm" class = "form" (ngSubmit)="updateCard(updateCardForm.value, updateCardForm.valid)">
           <div class = "form-group">
             <label for = "">Ticket Name</label>
-            <input formControlName = "cardName" name = "cardName" type = "text" class = "form-control rounded-4" required>
+            <input formControlName = "cardName" name = "cardName" type = "text" class = "form-control rounded-4" maxlength="255" required>
           </div>
 
           <div class = "form-group">
@@ -24,7 +24,7 @@
 
           <div class = "form-group">
             <label for="">Description</label>
-            <input formControlName = "description" name = "description" type = "text" class = "form-control rounded-4" required>
+            <input maxlength="255" formControlName = "description" name = "description" type = "text" class = "form-control rounded-4" required>
           </div>
 
           <div class = "form-group">
@@ -63,6 +63,13 @@
             <label for="">Assigned To</label><br />
             <select *ngIf = "assignees != null" formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
               <option *ngFor="let tum of assignees" [value]="tum.userId">{{tum.user.name}}</option>
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Project</label><br />
+            <select *ngIf = "stories != null" formControlName = "storyId" name = "storyId" class="form-control" id="storyId">
+              <option *ngFor="let story of stories" [value]="story.storyId">{{story.storyName}}</option>
             </select>
           </div>
 

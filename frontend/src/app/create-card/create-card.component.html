@@ -77,6 +77,13 @@
               <option *ngFor="let tum of assignees" [value]="tum.userId">{{tum.user.name}}</option>
             </select>
           </div>
+
+          <div class = "form-group">
+            <label for="">Project</label><br />
+            <select *ngIf = "stories != null" formControlName = "storyId" name = "storyId" class="form-control" id="storyId">
+              <option *ngFor="let story of stories" [value]="story.storyId">{{story.storyName}}</option>
+            </select>
+          </div>
             <button type = "submit" class = "btn btn-primary float-right">Create a Card</button>
         </form>
       </div>

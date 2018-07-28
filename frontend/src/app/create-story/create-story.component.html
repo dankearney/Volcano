@@ -8,7 +8,7 @@
           <form [formGroup]="createStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createStoryForm.valid)">
             <div class = "form-group">
               <label for = "">storyId</label>
-              <input formControlName = "storyId" name = "storyId" type = "text" class = "form-control rounded-0" required>
+              <input maxlength="255" formControlName = "storyId" name = "storyId" type = "text" class = "form-control rounded-0" required>
             </div>
             <div class = "form-group">
                 <label for="">storyName</label>
@@ -62,7 +62,7 @@
 
             <div class = "form-group">
               <label for="">Description</label>
-              <input formControlName = "description" name = "description" type = "text" class = "form-control rounded-0" required>
+              <input maxlength="255" formControlName = "description" name = "description" type = "text" class = "form-control rounded-0" required>
             </div>
            <!--   <div class = "form-group">
               <label for="">Attachment</label>
