@@ -58,6 +58,7 @@ export class TeamDetailComponent implements OnInit {
   leaveTeam() {
   	this.http.delete("https://volcano-backend.herokuapp.com/teamUserMemberships/team/" + this.teamId + "/user/" + (Util.getLoggedInUser()["userid"]).toString(), Util.getReqConfig()).subscribe(
       data => {
+        Util.logOutTeam();
         Util.writeSuccess("Left team successfully.");
         this._router.navigate(["/teams"]);;
       },
