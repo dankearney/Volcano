@@ -13,8 +13,11 @@ export class LoginNavComponent implements OnInit {
 
   user: Object;
   team: Object;
+  currentRoute = '';
 
-  constructor(public router: Router) { }
+  constructor(public router: Router) { 
+    this.router = router;
+  }
 
   refreshNavBar() {
   	this.user = Util.getLoggedInUser();
@@ -25,6 +28,12 @@ export class LoginNavComponent implements OnInit {
       this.router.navigate(['teams']);
       Util.writeSuccess("Login successful!");
     }
+
+    // Clear the system output when you switch routes
+    if ( String(this.router.url).valueOf() != String(this.currentRoute).valueOf() ) {
+      document.getElementById("systemOutput").style.display = 'none';
+    } 
+    this.currentRoute = this.router.url;
   }
 
 

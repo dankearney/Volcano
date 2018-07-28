@@ -18,6 +18,8 @@ export class CreateCardComponent implements OnInit {
 
   createCardForm : FormGroup;
 
+  assignees;
+
   constructor(private _router: Router, private http: HttpClient) { }
 
   ngOnInit() {
@@ -37,19 +39,34 @@ export class CreateCardComponent implements OnInit {
     this.createCardForm.patchValue({label: 'Frontend'});
     this.createCardForm.patchValue({resolution: 'Incomplete'});
     this.createCardForm.patchValue({resolution: 'Incomplete'});
-    this.createCardForm.patchValue({assigneeId : 1 });
     this.createCardForm.patchValue({dueDate : (new Date()).toISOString().split('T')[0] });
+    this.createCardForm.patchValue({assigneeId : 1 });
+    this.http.get("https://volcano-backend.herokuapp.com/teams/" + Util.getCurrentTeamId(), Util.getReqConfig() ).subscribe(
+      data => {
+        this.assignees = data['teamUserMemberships'];
+        this.createCardForm.patchValue({assigneeId : this.assignees[0]['userId']})
+      },
+      err => {
+        Util.writeError("could not read team members.");
+      }
+    );
   }
 
   createCard( model: Card, isValid: boolean) {
-    this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", model, Util.getReqConfig() ).subscribe(
-      data => {
-        Util.writeSuccess("Creation successful! Card Name, " + model.cardName);
-      },
-      err => {
-        Util.writeError("Card creation failed.");
-      }
-    );
+    if (model.cardName.length == 0) {
+      Util.writeError("Ticket name cannot be empty.");
+    }
+    else
+    {
+      this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", model, Util.getReqConfig() ).subscribe(
+        data => {
+          Util.writeSuccess("Creation successful! Card Name, " + model.cardName);
+        },
+        err => {
+          Util.writeError("Card creation failed.");
+        }
+      );
+    }
 
   }
 

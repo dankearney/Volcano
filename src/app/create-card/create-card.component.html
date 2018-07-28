@@ -73,15 +73,10 @@
           </div>-->
           <div class = "form-group">
             <label for="">Assigned To</label><br />
-            <select formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
-              <option value=1>Dan</option>
-              <option value=5>Qian</option>
-              <option value=158>Nicholas</option>
-              <option value=159>Heng Guang</option>
-              <option value=160>Terence</option>
+            <select *ngIf = "assignees != null" formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
+              <option *ngFor="let tum of assignees" [value]="tum.userId">{{tum.user.name}}</option>
             </select>
           </div>
-
             <button type = "submit" class = "btn btn-primary float-right">Create a Card</button>
         </form>
       </div>

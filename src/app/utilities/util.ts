@@ -32,6 +32,14 @@ export abstract class Util {
         }
     }
 
+    public static hideSystemOutput() {
+        document.getElementById("systemOutput").style.display = 'none';
+    }
+
+    public static showSystemOutput() {
+        document.getElementById("systemOutput").style.display = 'block';
+    }
+
     // Returns user's currently scoped team
     public static getCurrentTeam() {
         var teamStr = window.localStorage.getItem("team");
@@ -76,6 +84,7 @@ export abstract class Util {
             <strong>Error: </strong>
         ` + error + "</div>";
         document.getElementById("systemOutput").innerHTML = message;
+        Util.showSystemOutput();
     }
 
     // Writes a success message
@@ -88,6 +97,7 @@ export abstract class Util {
             <strong>Success: </strong>
         ` + success + "</div>";        
         document.getElementById("systemOutput").innerHTML = message;
+        Util.showSystemOutput();
     }
 
     // Writes a generic error message
