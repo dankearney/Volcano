@@ -20,6 +20,8 @@ export class CreateCardComponent implements OnInit {
 
   assignees;
 
+  stories;
+
   constructor(private _router: Router, private http: HttpClient) { }
 
   ngOnInit() {
@@ -32,7 +34,8 @@ export class CreateCardComponent implements OnInit {
         resolution: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
-        dueDate: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
+        dueDate: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        storyId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
     });
     this.createCardForm.patchValue({type: 'Bug'});
     this.createCardForm.patchValue({priority: 'Normal'});
@@ -40,7 +43,6 @@ export class CreateCardComponent implements OnInit {
     this.createCardForm.patchValue({resolution: 'Incomplete'});
     this.createCardForm.patchValue({resolution: 'Incomplete'});
     this.createCardForm.patchValue({dueDate : (new Date()).toISOString().split('T')[0] });
-    this.createCardForm.patchValue({assigneeId : 1 });
     this.http.get("https://volcano-backend.herokuapp.com/teams/" + Util.getCurrentTeamId(), Util.getReqConfig() ).subscribe(
       data => {
         this.assignees = data['teamUserMemberships'];
@@ -48,6 +50,15 @@ export class CreateCardComponent implements OnInit {
       },
       err => {
         Util.writeError("could not read team members.");
+      }
+    );
+    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/stories", Util.getReqConfig() ).subscribe(
+      data => {
+        this.stories = data;
+        this.createCardForm.patchValue({storyId : this.stories[0]['storyId']})
+      },
+      err => {
+        Util.writeError("could not read stories.");
       }
     );
   }

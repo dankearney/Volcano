@@ -13,11 +13,12 @@ import { Util } from '../utilities/util';
 export class CardPageComponent implements OnInit {
 
   cards = [];
+  myUserId;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    console.log(Util.getCurrentTeamId());
+  	this.myUserId = Util.getLoggedInUser()['userid'];
     this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", Util.getReqConfig()).subscribe(
       data => {
         this.cards = <any[]>data;

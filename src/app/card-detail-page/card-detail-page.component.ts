@@ -20,6 +20,7 @@ export class CardDetailPageComponent implements OnInit {
     cards = [];
     card = null;
     assignees;
+    stories;
 
     updateCardForm : FormGroup;
 
@@ -38,6 +39,7 @@ export class CardDetailPageComponent implements OnInit {
         description: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         assigneeId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
         dueDate: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+        storyId: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
     });
 
   }
@@ -62,11 +64,21 @@ export class CardDetailPageComponent implements OnInit {
 	        Util.writeError("could not read team members.");
 	      }
 	    );
+	    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/stories", Util.getReqConfig() ).subscribe(
+	      data => {
+	        this.stories = data;
+	        this.updateCardForm.patchValue({storyId : this.card.storyId})
+	      },
+	      err => {
+	        Util.writeError("could not read stories.");
+	      }
+	    );
         if (this.card.dueDate != null) {
           this.updateCardForm.patchValue(
           	{dueDate: (new Date(this.card.dueDate)).toISOString().split('T')[0]}
           );
         }
+
       },
       err => {
         Util.writeGenericError();
@@ -83,7 +95,7 @@ export class CardDetailPageComponent implements OnInit {
 	    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
 	      data => {
 	        this.card = data;
-	        Util.writeSuccess("Card has successfully been edited! Card Name, " + model.cardName);
+	        Util.writeSuccess("Ticket edited successfully.");
 	      },
 	      err => {
 	        Util.writeGenericError();
@@ -95,10 +107,10 @@ export class CardDetailPageComponent implements OnInit {
   createCard( model: Card, isValid: boolean) {
     this.http.post("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/cards", model, Util.getReqConfig() ).subscribe(
       data => {
-        Util.writeSuccess("Creation successful! Card Name, " + model.cardName);
+        Util.writeSuccess("Ticket created successfully.");
       },
       err => {
-        Util.writeError("Card creation failed.");
+        Util.writeError("Ticket creation failed.");
       }
     );
 

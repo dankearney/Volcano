@@ -21,31 +21,46 @@
 </ul>
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    <p>
-    <span *ngFor="let card of cards" >
-		<span *ngIf="card.resolution == 'Incomplete'">
-    		<app-card [card]="card"></app-card>
-    	</span>
-	</span>
-	</p>
+      <h3>Assigned to Me</h3>
+      <span *ngFor="let card of cards" >
+        <span *ngIf="card.resolution == 'Incomplete' && card.assigneeId == myUserId">
+            <app-card [card]="card"></app-card>
+        </span>
+      </span>
+      <h3>Assigned to Others</h3>
+      <span *ngFor="let card of cards" >
+        <span *ngIf="card.resolution == 'Incomplete' && card.assigneeId != myUserId">
+            <app-card [card]="card"></app-card>
+        </span>
+      </span>
   </div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <p>
-    <span *ngFor="let card of cards" >
-		<span *ngIf="card.resolution == 'In Progress'">
-    	<app-card [card]="card"></app-card>
-    	</span>
-	</span>
-    </p>
+      <h3>Assigned to Me</h3>
+      <span *ngFor="let card of cards" >
+        <span *ngIf="card.resolution == 'In Progress' && card.assigneeId == myUserId">
+            <app-card [card]="card"></app-card>
+        </span>
+      </span>
+      <h3>Assigned to Others</h3>
+      <span *ngFor="let card of cards" >
+        <span *ngIf="card.resolution == 'In Progress' && card.assigneeId != myUserId">
+            <app-card [card]="card"></app-card>
+        </span>
+      </span>
   </div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-    <p>
-	<span *ngFor="let card of cards" >
-		<span *ngIf="card.resolution == 'Complete'">
-    		<app-card [card]="card"></app-card>
-    	</span>
-    </span>
-    </p>
+      <h3>Assigned to Me</h3>
+    	<span *ngFor="let card of cards" >
+    		<span *ngIf="card.resolution == 'Complete' && card.assigneeId == myUserId">
+        		<app-card [card]="card"></app-card>
+        </span>
+      </span>
+      <h3>Assigned to Others</h3>
+      <span *ngFor="let card of cards" >
+        <span *ngIf="card.resolution == 'Complete' && card.assigneeId != myUserId">
+            <app-card [card]="card"></app-card>
+        </span>
+      </span>
   </div>
 </div>
 
