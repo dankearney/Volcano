@@ -19,6 +19,7 @@ export class CardDetailPageComponent implements OnInit {
     cardId;
     cards = [];
     card = null;
+    assignees;
 
     updateCardForm : FormGroup;
 
@@ -52,10 +53,19 @@ export class CardDetailPageComponent implements OnInit {
         this.updateCardForm.patchValue({label: this.card.label});
         this.updateCardForm.patchValue({resolution: this.card.resolution});
         this.updateCardForm.patchValue({description: this.card.description});
-        this.updateCardForm.patchValue({assigneeId: this.card.assigneeId});
-        this.updateCardForm.patchValue({assigneeId: this.card.assigneeId});
+	    this.http.get("https://volcano-backend.herokuapp.com/teams/" + Util.getCurrentTeamId(), Util.getReqConfig() ).subscribe(
+	      data => {
+	        this.assignees = data['teamUserMemberships'];
+	        this.updateCardForm.patchValue({assigneeId : this.card.assigneeId})
+	      },
+	      err => {
+	        Util.writeError("could not read team members.");
+	      }
+	    );
         if (this.card.dueDate != null) {
-          this.updateCardForm.patchValue({dueDate: (new Date(this.card.dueDate)).toISOString().split('T')[0]});
+          this.updateCardForm.patchValue(
+          	{dueDate: (new Date(this.card.dueDate)).toISOString().split('T')[0]}
+          );
         }
       },
       err => {
@@ -65,15 +75,21 @@ export class CardDetailPageComponent implements OnInit {
   }
 
   updateCard(model: Card, isValid: boolean) {
-    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
-      data => {
-        this.card = data;
-        Util.writeSuccess("Card has successfully been edited! Card Name, " + model.cardName);
-      },
-      err => {
-        Util.writeGenericError();
-      }
-    );
+    if (model.cardName.length == 0) {
+      Util.writeError("Ticket name cannot be empty.");
+    }
+    else
+    {
+	    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
+	      data => {
+	        this.card = data;
+	        Util.writeSuccess("Card has successfully been edited! Card Name, " + model.cardName);
+	      },
+	      err => {
+	        Util.writeGenericError();
+	      }
+	    );
+    }
   }
 
   createCard( model: Card, isValid: boolean) {
@@ -91,11 +107,10 @@ export class CardDetailPageComponent implements OnInit {
   deleteCard() {
    this.http.delete("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig() ).subscribe(
       data => {
-        Util.writeSuccess("Card deleted successfully");
         this._router.navigate(["/cards"]);
       },
       err => {
-        Util.writeError("Card creation failed.");
+        Util.writeError("Card deletion failed.");
       }
     );
   }
