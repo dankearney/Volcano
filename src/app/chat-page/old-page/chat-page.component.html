@@ -4,6 +4,20 @@
     <h3>Private Chat</h3>
     <ul>
       <li><a href="#">Create</a></li> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tum of team.teamUserMemberships">
+              <td>{{tum.user.username}}</td>
+              <td>{{tum.user.name}}</td>
+              <td>     
     </ul>
   </div>
   <div class="col-sm-9">
