@@ -43,7 +43,7 @@ public class ChatController {
     }
 //Start here for private chat idea
     @GetMapping ("user/{userId}/chat")
-    public List<Chat> getUserScopedChats(@PathVariable("userId") Long userId){
+    public List<Chat> getUserScopedChats(@PathVariable("userId") Long userId, @PathVariable ('')){
         // This needs to return the list of chats to a given user
         List<Chat> chats = chatRepository.findByTeamIdOrderByChatId(userId);
         return  chats;

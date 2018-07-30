@@ -28,9 +28,11 @@ public class Chat extends AuditModel {
     @Column()
     private String creatorNameSnapshot; // Let's just dump the username here for perf
     @Column()
-    private Long privateMessageID; // The Id of the user that sent the message (userId1+userid2)
+    private String privateMessageID; // The Id of the user that sent the message (userId1+userid2)
+    @Column()
+    private Long receiverID; // The ID of the user that will get the messages (userid2)
 
-    //getters
+    //getter
     public Long getCreatorId() {
         return this.creatorId;
     }
@@ -49,6 +51,10 @@ public class Chat extends AuditModel {
 
     public Long getTeamId() {
       return teamId;
+    }
+
+    public Long getRecieverID(){
+        return receiverID;
     }
 
     public String getTimeSent() {
@@ -75,4 +81,11 @@ public class Chat extends AuditModel {
         this.teamId = teamId;
     }
 
+    public void setPrivateMessageID(String privateMessageID){
+        this.privateMessageID = privateMessageID;
+    }
+
+    public void setRecieverID(Long recieverID){
+        this.receiverID = recieverID;
+    }
 }
