@@ -61,7 +61,7 @@ export class CardDetailPageComponent implements OnInit {
 	        this.updateCardForm.patchValue({assigneeId : this.card.assigneeId})
 	      },
 	      err => {
-	        Util.writeError("could not read team members.");
+	        Util.writeError("Could not read team members.");
 	      }
 	    );
 	    this.http.get("https://volcano-backend.herokuapp.com/team/" + Util.getCurrentTeamId() + "/stories", Util.getReqConfig() ).subscribe(
@@ -70,7 +70,7 @@ export class CardDetailPageComponent implements OnInit {
 	        this.updateCardForm.patchValue({storyId : this.card.storyId})
 	      },
 	      err => {
-	        Util.writeError("could not read stories.");
+	        Util.writeError("Could not read Projects.");
 	      }
 	    );
         if (this.card.dueDate != null) {
@@ -95,7 +95,7 @@ export class CardDetailPageComponent implements OnInit {
 	    this.http.put("https://volcano-backend.herokuapp.com/cards/" + this.cardId, model, Util.getReqConfig() ).subscribe(
 	      data => {
 	        this.card = data;
-	        Util.writeSuccess("Ticket edited successfully.");
+	        Util.writeSuccess("Ticket updated successfully.");
 	      },
 	      err => {
 	        Util.writeGenericError();
@@ -119,12 +119,14 @@ export class CardDetailPageComponent implements OnInit {
   deleteCard() {
    this.http.delete("https://volcano-backend.herokuapp.com/cards/" + this.cardId, Util.getReqConfig() ).subscribe(
       data => {
+        Util.writeSuccess("Ticket delete successfully.");
         this._router.navigate(["/cards"]);
       },
       err => {
-        Util.writeError("Card deletion failed.");
+        Util.writeError("Ticket deletion failed.");
       }
     );
   }
 
 }
+
