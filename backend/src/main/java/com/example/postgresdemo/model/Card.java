@@ -189,4 +189,7 @@ public class Card extends AuditModel {
         this.dueDate = dueDate;
     }
 
+    public void setStoryId(Long storyId) {
+        this.storyId = storyId;
+    }
 }

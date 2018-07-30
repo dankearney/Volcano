@@ -122,6 +122,7 @@ public class CardController {
         card.setAttachment(cardRequest.getAttachment());
         card.setAssigneeId(cardRequest.getAssigneeId());
         card.setDueDate(cardRequest.getDueDate());
+        card.setStoryId(cardRequest.getStoryId());
         return cardRepository.save(card);
     }
 
