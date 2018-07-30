@@ -86,7 +86,7 @@ export class TeamsComponent implements OnInit {
 		this.http.post("https://volcano-backend.herokuapp.com/teams", model, Util.getReqConfig()).subscribe(
 		    data => {
 		      Util.writeSuccess("Team successfully created");
-		  	  Util.setCurrentTeam(model);
+		  	  Util.setCurrentTeam(data);
 		   	  this.currentTeam = model;
 		      this.loadTeams();
 		    },
