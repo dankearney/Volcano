@@ -25,7 +25,8 @@ export class ChatComponent implements OnInit {
       data => {
           this.chats.push(data);
           // Clear the input
-          document.getElementById("sendMessage")["value"] = "";
+          //document.getElementById("sendMessage")["value"] = "";
+          this.chatForm.reset();
           setTimeout(this.setScrollPosition, 50);
       },
       err => {
