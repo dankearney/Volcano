@@ -7,11 +7,11 @@
         <div class = "card-body">
           <form [formGroup]="createStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createStoryForm.valid)">
             <div class = "form-group">
-              <label for = "">storyId</label>
+              <label for = "">Project ID</label>
               <input maxlength="255" formControlName = "storyId" name = "storyId" type = "text" class = "form-control rounded-0" required>
             </div>
             <div class = "form-group">
-                <label for="">storyName</label>
+                <label for="">Project Name</label>
                 <input formControlName = "storyName" name = "storyName" type = "text" class = "form-control rounded-0" required>
               </div>
            <!-- <div class = "form-group">
@@ -79,16 +79,17 @@
                     <option value=160>160-Terence</option>
 
                 </select>
-              </div>-->
-
-                
-            <div class = "form-group">
+              </div>  
+              <div class = "form-group">
               <label for="">teamId</label>
               <input formControlName = "teamId" name = "teamId" type = "text" class = "form-control rounded-0" required>
               
-            </div>
+            </div>-->
+
+                
+          
            
-            <button type = "submit" class = "btn btn-primary float-right">Create a Story</button>
+            <button type = "submit" class = "btn btn-primary float-right">Submit</button>
           </form>
         </div>
       </div>

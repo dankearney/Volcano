@@ -8,9 +8,9 @@
 
   <div class="card-body">
     <p class="card-text">
-      <a class="btn btn-info btn-sm" style='color: white'>{{story.priority}}</a>
+      <a class="btn btn-success btn-sm" style='color: white'>{{story.storyId}}</a>
       &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{story.label}}</a>
+      <a class="btn btn-info btn-sm" style='color: white'>{{story.resolution}}</a>
       <br />
       <br />
       {{story.description}}
@@ -18,7 +18,7 @@
   </div>
   <div class="card-footer">
     <p><strong>Created by: </strong> {{story.creator.name}}</p>
-      <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Cards</button>
+      <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Tickets</button>
 
       <div id='{{story.storyId}}' class="collapse">
       <p><br />
