@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
-import { Util } from '../utilities/util';
+import { Util } from '../../utilities/util';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
