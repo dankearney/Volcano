@@ -20,7 +20,7 @@ export class StoryComponent implements OnInit {
   	console.log(this.story);
   	if (this.story.cardsAttached != null) {
   	  	for ( var i = 0; i<this.story.cardsAttached.length; i++ ) {
-  	  		var cardStatus = (this.story.cardsAttached[i])['resolution'];
+  	  		var cardStatus = (this.story['cardsAttached'][i])['resolution'];
   	  		console.log(cardStatus);
   	  		if (new String(cardStatus).valueOf() == new String('Incomplete').valueOf()) {
   	  			this.ticketsIncomplete += 1;
