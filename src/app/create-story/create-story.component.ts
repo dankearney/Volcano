@@ -34,7 +34,7 @@ export class CreateStoryComponent implements OnInit {
 
   createStory( model: Story, isValid: boolean) {
   	  if (!isValid) {
-  	      Util.writeError("Something went wrong. Project name & description cannot be blank.");
+  	      Util.writeError("Something went wrong. Project name and description cannot be blank.");
   	  }
   	  else
   	  {
