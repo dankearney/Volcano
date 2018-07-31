@@ -25,9 +25,9 @@ export class CreateStoryComponent implements OnInit {
   ngOnInit() {
 
     this.createStoryForm = new FormGroup({
-       storyName: new FormControl('', [<any>Validators.required, <any>]),
-       resolution: new FormControl('', [<any>Validators.required, <any>]),
-       description: new FormControl('', [<any>Validators.required, <any>]),
+       storyName: new FormControl('', [<any>Validators.required, <any><any>Validators.minLength(3)]),
+       resolution: new FormControl('', [<any>Validators.required, <any><any>Validators.minLength(3)]),
+       description: new FormControl('', [<any>Validators.required, <any><any>Validators.minLength(3)]),
     });
     this.createStoryForm.patchValue( { "resolution" : "Incomplete" } );
   }
