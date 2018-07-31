@@ -4,9 +4,19 @@
   </h2>
   <div class="card-body">
     <p class="card-text">
-      <!--<a class="btn btn-info btn-sm" style='color: white'>{{card.resolution}}</a> &nbsp;-->
+      <span *ngIf="card.resolution == 'Incomplete'">
+        <a class="btn btn-warning btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>
+      <span *ngIf="card.resolution == 'In Progress'">
+        <a class="btn btn-primary btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>
+      <span *ngIf="card.resolution == 'Complete'">
+        <a class="btn btn-success btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>      
+      &nbsp;
       <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
       &nbsp;
+      
       <!--<a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
       &nbsp;-->
       <span *ngIf="card.priority == 'Low'">

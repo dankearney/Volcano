@@ -9,7 +9,11 @@
     </p>
   </div>
   <div class="card-footer">
-    <p><strong>Created by: </strong> {{story.creator.name}}</p>
+    <p>
+      <strong>{{ticketsIncomplete}}</strong> ticket(s) incomplete | 
+      <strong>{{ticketsInProgress}}</strong> ticket(s) in progress |
+      <strong>{{ticketsComplete}}</strong> ticket(s) complete
+    </p>
       <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Tickets</button>
       <div id='{{story.storyId}}' class="collapse">
       <p><br />
