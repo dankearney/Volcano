@@ -1,30 +1,21 @@
 <div class="card volcano-story" >
   <h2 class="card-header volcano-story-header">
-      <strong><a href="/storyDetail/{{story.storyId}}">{{story.storyName}}</a></strong>
-
+      <strong><a routerLink="/storyDetail/{{story.storyId}}" routerlinkactive="active">{{story.storyName}}</a></strong>
   </h2>
-
-
 
   <div class="card-body">
     <p class="card-text">
-      <a class="btn btn-success btn-sm" style='color: white'>{{story.storyId}}</a>
-      &nbsp;
-      <a class="btn btn-info btn-sm" style='color: white'>{{story.resolution}}</a>
-      <br />
-      <br />
       {{story.description}}
     </p>
   </div>
   <div class="card-footer">
     <p><strong>Created by: </strong> {{story.creator.name}}</p>
       <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Tickets</button>
-
       <div id='{{story.storyId}}' class="collapse">
       <p><br />
-              <span *ngFor="let card of story['cardsAttached']" >
-                <app-card [card]="card"></app-card>
-            </span>
+        <span *ngFor="let card of story['cardsAttached']" >
+            <app-card [card]="card"></app-card>
+        </span>
       </p>
       </div>
   </div>
