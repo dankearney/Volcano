@@ -20,7 +20,7 @@ export class ChatPageComponent implements OnInit {
 
   refresh() {
   	this.teamId = this.route.snapshot.paramMap.get('team-id');
-    this.http.get("https://volcano-backend.herokuapp.com/teams/" + this.teamId, Util.getReqConfig()).subscribe(
+    this.http.get("https://volcano-backend.herokuapp.com/teams/" + Util.getCurrentTeamId(), Util.getReqConfig()).subscribe(
       data => {
         this.team = data;
         let loggedInUserId = Util.getLoggedInUser()["userid"];
