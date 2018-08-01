@@ -9,13 +9,11 @@
       <thead>
         <tr>
           <th>Username</th>
-          <th>Name</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let tum of team.teamUserMemberships">
-            <td>{{tum.user.username}}</td>
-            <td>{{tum.user.name}}</td>
+            <td><a>{{tum.user.username}}</a></td>
         </tr>
       </tbody>
     </table>
