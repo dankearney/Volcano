@@ -5,6 +5,20 @@
     <ul>
       <li><a href="#">Create</a></li> 
     </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tum of team.teamUserMemberships">
+            <td>{{tum.user.username}}</td>
+            <td>{{tum.user.name}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="col-sm-9">
     <app-chat></app-chat>
