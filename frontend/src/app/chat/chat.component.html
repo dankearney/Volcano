@@ -2,10 +2,10 @@
   <h3>Public Chat</h3>
   <div class = "chat-container" id="chatcontainer">
     <div *ngFor="let chat of chats" >
-      <span style="display: inline-block; width: 600px">
+      <span class="message">
         <strong>{{chat.creatorNameSnapshot}}:</strong> {{chat.message}}
       </span>
-      <em style="float: right">{{chat.createdAt | date:'medium'}}</em>
+      <em class="timestamp">{{chat.createdAt | date:'medium'}}</em>
       <p><p>
     </div>
 

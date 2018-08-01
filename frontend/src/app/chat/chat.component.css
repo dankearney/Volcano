@@ -1,7 +1,7 @@
 .chat-container {
 	width: 100%;
 	text-align: left;
-	height: 500px;
+	height: 400px;
 	overflow-y: scroll;
 }
 
@@ -13,3 +13,13 @@
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
+
+.message {
+	display: inline-block;
+	width: 600px;
+}
+
+.timestamp {
+	float: right;
+	padding-right: 5px;
+}
