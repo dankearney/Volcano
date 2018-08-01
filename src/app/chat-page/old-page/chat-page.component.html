@@ -5,12 +5,12 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Username</th>
+          <th>Team mates</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let tum of team.teamUserMemberships">
-            <td><a href="#">{{tum.user.username}}</a></td>
+            <td><a href=tum.user.userid>{{tum.user.username}}</a></td>
         </tr>
       </tbody>
     </table>
