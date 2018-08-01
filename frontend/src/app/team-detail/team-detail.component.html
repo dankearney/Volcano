@@ -1,0 +1,35 @@
+<div *ngIf="team != null">
+  <h1>{{team.teamName}}</h1>
+  <h2>Members</h2>
+  <br >
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tum of team.teamUserMemberships">
+          <td>{{tum.status}}</td>
+          <td>{{tum.user.username}}</td>
+          <td>{{tum.user.name}}</td>
+          <td>     
+            <span *ngIf = "isAdmin && tum.status != 'Admin'">
+              <button class="btn btn-sm" (click)="removeFromTeam(tum.userId)">Remove</button>
+              &nbsp; &nbsp;
+              <button class = "btn btn-sm btn-primary" (click)="promoteToAdmin(tum.userId)">Promote to Admin</button>
+            </span>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class = "btn btn-danger" (click)="leaveTeam()">Leave Team</button>
+  &nbsp; &nbsp;
+  <span *ngIf = "isAdmin">
+  	<button class = "btn btn-danger" (click)="deleteTeam()">Delete Team</button>
+  </span>
+</div>

@@ -1,0 +1,12 @@
+.volcano-story {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  width: 100%;
+}
+
+.volcano-story-header {
+  font-size: x-large;
+  height: 60px;
+
+}

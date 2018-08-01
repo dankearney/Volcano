@@ -1,0 +1,99 @@
+<div class = "row pt-5">
+    <div class = "col-md-6 mx-auto">
+      <div class ="card rounded-0">
+        <div class = "card-header">
+          <h3 class = "mb-0">Create a Project</h3>
+        </div>
+        <div class = "card-body">
+          <form [formGroup]="createStoryForm" class = "form" (ngSubmit)="createStory(createStoryForm.value, createStoryForm.valid)">
+
+            <div class = "form-group">
+                <label for="">Project Name</label>
+                <input formControlName = "storyName" name = "storyName" type = "text" class = "form-control rounded-0" required>
+              </div>
+           <!-- <div class = "form-group">
+              <label for="">number</label>
+              <input formControlName = "number" name = "number" type = "text" class = "form-control rounded-0" required>
+            </div>
+            <div class = "form-group">
+              <label for="">storyName</label>
+              <input formControlName = "storyName" name = "storyName" type = "text" class = "form-control rounded-0" required>
+            </div>
+
+            div class = "form-group">
+              <label for="">Type</label>
+              <select formControlName = "type" name = "type" class="form-control" id="type">
+                <option>Task</option>
+                <option>Bug</option>
+                <option>Feature</option>
+  
+              </select>
+            </div>-->
+          
+             <!-- <div class = "form-group">
+                <label for="">Priority</label>
+                <select formControlName = "priority" name = "priority" class="form-control" id="priority">
+                  <option>High</option>
+                  <option>Normal</option>
+                  <option>Low</option>
+                </select>
+              </div>-->
+
+             <!-- <div class = "form-group">
+                <label for="">Label</label>
+                <select formControlName = "label" name = "label" class="form-control" id="lavel">
+                  <option>Frontend</option>
+                  <option>Backend</option>
+                </select>
+              </div>-->
+
+            <div class = "form-group">
+              <label for="">Resolution</label>
+              <select formControlName = "resolution" name = "resolution" class="form-control" id="resolution">
+                <option>Incomplete</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+  
+              </select>
+            </div>
+
+            <div class = "form-group">
+              <label for="">Description</label>
+              <input maxlength="255" formControlName = "description" name = "description" type = "text" class = "form-control rounded-0" required>
+            </div>
+           <!--   <div class = "form-group">
+              <label for="">Attachment</label>
+              <input formControlName = "attachment" name = "attachment" type = "text" class = "form-control rounded-0" required>
+            </div>
+
+            <div class = "form-group">
+                <label for="">userId</label><br />
+                <select formControlName = "userId" name = "userId" class="userId" id="userId">
+                    <option value=1>1-Dan</option>
+                    <option value=5>5-Qian</option>
+                    <option value=158>158-Nicholas</option>
+                    <option value=159>159-Heng Guang</option>
+                    <option value=160>160-Terence</option>
+
+                </select>
+              </div>  
+              <div class = "form-group">
+              <label for="">teamId</label>
+              <input formControlName = "teamId" name = "teamId" type = "text" class = "form-control rounded-0" required>
+              
+            </div>-->
+
+                
+          
+           
+            <button type = "submit" class = "btn btn-primary float-right">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<nav>
+  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/stories">Go Back</a></button>
+</nav>
+

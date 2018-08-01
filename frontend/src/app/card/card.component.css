@@ -1,0 +1,10 @@
+.volcano-card {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+.volcano-card-header {
+  font-size: x-large;
+}

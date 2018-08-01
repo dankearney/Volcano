@@ -1,0 +1,44 @@
+<div class="card volcano-card" >
+  <h2 class="card-header volcano-card-header">
+    <strong><a routerLink="/cardDetail/{{card.cardId}}" routerlinkactive="active" >{{card.cardName}}</a></strong>
+  </h2>
+  <div class="card-body">
+    <p class="card-text">
+      <span *ngIf="card.resolution == 'Incomplete'">
+        <a class="btn btn-warning btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>
+      <span *ngIf="card.resolution == 'In Progress'">
+        <a class="btn btn-primary btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>
+      <span *ngIf="card.resolution == 'Complete'">
+        <a class="btn btn-success btn-sm" style='color: white'>{{card.resolution}}</a>
+      </span>      
+      &nbsp;
+      <a class="btn btn-info btn-sm" style='color: white'>{{card.type}}</a>
+      &nbsp;
+      
+      <!--<a class="btn btn-danger btn-sm" style='color: white'>{{card.status}}</a>
+      &nbsp;-->
+      <span *ngIf="card.priority == 'Low'">
+        <a class="btn btn-info btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+      <span *ngIf="card.priority == 'Normal'">
+        <a class="btn btn-warning btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+      <span *ngIf="card.priority == 'High'">
+        <a class="btn btn-danger btn-sm" style='color: white'>{{card.priority}}</a>
+      </span>
+
+      <br />
+      <br />
+      {{card.description}}
+    </p>
+  </div>
+  <div class="card-footer">
+    <p><strong>Assigned to: </strong> <span *ngIf="card.assignee != null"> {{card.assignee.name}}</span></p>
+    <!--<p><strong>story id: </strong> {{card.storyId}}</p>-->
+    <p><strong>Label(s): </strong> {{card.label}}</p>
+    <p *ngIf="card.dueDateString != null"><strong>Due Date: </strong> {{ card.dueDateString }}</p>
+    <p><strong>Created by: </strong><span *ngIf="card.assignee != null"> {{card.creator.name}}</span></p>
+  </div>
+</div>

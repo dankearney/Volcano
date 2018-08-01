@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Frontend</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Volcano</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/cards">Cards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/stories">Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/chat">Chat</a>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <app-root></app-root>
+
+    <!-- Footer -->
+  <footer class="py-5 bg-dark" style='position: fixed; bottom: 0px; width: 100%'>
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Y.H.D.T.N.Q 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class = "navbar-brand" href = "#"> Volcano </a>
+  <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">>
+    <span class = "navbar-toggler-icon"></span>
+  </button>
+
+  <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+    <ul class = "navbar-nav mr-auto">
+      <li class ="nav-item">
+        <a class = "nav-link" routerLink = "/cards" routerLinkActive = "active">Cards</a>
+      </li>
+      <li class = "nav-item">
+        <a class = "nav-link" routerLink = "/stories" routerLinkActive = "active">Stories</a>
+      </li>
+      <li class = "nav-item">
+        <a class = "nav-link" routerLink = "/chat" routerLinkActive = "active">Chat</a>
+      </li>
+    </ul>
+    <ul class ="navbar-nav">
+      <a class = "nav-link" routerLink = "/login" routerLinkActive = "active"> Login</a>
+      <a class = "nav-link" routerLink = "/register" routerLinkActive = "active"> Register</a>
+    </ul>
+  </div>
+</nav>
+
+<div class = "container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark" style='position: fixed; bottom: 0px; width: 1    00%'>
+     <div class="container">
+       <p class="m-0 text-center text-white">Copyright &copy; Y.H.D.T.N.Q 201    8</p>
+     </div>
+     <!-- /.container -->
+</footer>
+
+
+
+<div class = "row pt-5">
+  <div class = "col-md-6 mx-auto">
+    <div class ="card rounded-0">
+      <div class = "card-header">
+        <h3 class = "mb-0">Login</h3>
+      </div>
+      <div class = "card-body">
+        <form class = "form">
+          <div class = "form-group">
+            <label for = "">Email</label>
+            <input type = "text" class = "form-control rounded-0" required>
+          </div>
+          <div class = "form-group">
+            <label for="">Password</label>
+            <input type = "password" class = "form-control rounded-0" required>
+          </div>
+          <button class = "nav-link" routerLink = "/cards" routerLinkActive = "active" type = "button" class = "btn btn-success float-right">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

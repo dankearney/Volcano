@@ -1,0 +1,100 @@
+<div class = "row pt-5">
+  <div class = "col-md-6 mx-auto">
+    <div class ="card rounded-0">
+      <div class = "card-header">
+        <h3 class = "mb-0">Create a Ticket</h3>
+      </div>
+      <div class = "card-body">
+        <form [formGroup]="createCardForm" class = "form" (ngSubmit)="createCard(createCardForm.value, createCardForm.valid)">
+          <div class = "form-group">
+            <label for = "">Ticket Name</label>
+            <input formControlName = "cardName" name = "cardName" type = "text" class = "form-control rounded-0" required>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Due Date</label>
+            <input formControlName = "dueDate" name = "dueDate" type = "date" class = "form-control rounded-0" required>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Type</label>
+            <select formControlName = "type" name = "type" class="form-control" id="type">
+              <option>Task</option>
+              <option>Bug</option>
+              <option>Feature</option>
+
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Priority</label>
+            <select formControlName = "priority" name = "priority" class="form-control" id="priority">
+              <option>High</option>
+              <option>Normal</option>
+              <option>Low</option>
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Label</label>
+            <select formControlName = "label" name = "label" class="form-control" id="lavel">
+              <option>Frontend</option>
+              <option>Backend</option>
+            </select>
+          </div>
+
+          <!--<div class = "form-group">
+            <label for="">Status</label>
+            <input formControlName = "status" name = "status" type = "text" class = "form-control rounded-0" required>
+          </div>-->
+
+          <div class = "form-group">
+            <label for="">Resolution</label>
+            <select formControlName = "resolution" name = "resolution" class="form-control" id="resolution">
+              <option>Incomplete</option>
+              <option>In Progress</option>
+              <option>Complete</option>
+
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Description</label>
+            <input formControlName = "description" name = "description" type = "text" class = "form-control rounded-0" required>
+          </div>
+
+<!--          <div class = "form-group">
+            <label for="">Attachment</label>
+            <input formControlName = "attachment" name = "attachment" type = "text" class = "form-control rounded-0" required>
+          </div>
+          <div class = "form-group">
+            <label for="">Creator ID</label>
+            <input formControlName = "creatorId" name = "creatorId" type = "text" class = "form-control rounded-0" required>
+          </div>-->
+          <div class = "form-group">
+            <label for="">Assigned To</label><br />
+            <select *ngIf = "assignees != null" formControlName = "assigneeId" name = "assigneeId" class="form-control" id="assigneeId">
+              <option *ngFor="let tum of assignees" [value]="tum.userId">{{tum.user.name}}</option>
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="">Project</label><br />
+            <select *ngIf = "stories != null" formControlName = "storyId" name = "storyId" class="form-control" id="storyId">
+              <option *ngFor="let story of stories" [value]="story.storyId">{{story.storyName}}</option>
+            </select>
+          </div>
+            <button type = "submit" class = "btn btn-primary float-right">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav>
+  &nbsp; &nbsp; <button href="#" type="button" class="btn btn-light btn-block"><a routerLink ="/cards">Go Back</a></button>
+</nav>
+

@@ -1,0 +1,28 @@
+<div class="card volcano-story" >
+  <h2 class="card-header volcano-story-header">
+      <strong><a routerLink="/storyDetail/{{story.storyId}}" routerlinkactive="active">{{story.storyName}}</a></strong>
+  </h2>
+
+  <div class="card-body">
+    <p class="card-text">
+      {{story.description}}
+    </p>
+  </div>
+  <div class="card-footer">
+    <p>
+      <strong>{{ticketsIncomplete}}</strong> ticket(s) incomplete | 
+      <strong>{{ticketsInProgress}}</strong> ticket(s) in progress |
+      <strong>{{ticketsComplete}}</strong> ticket(s) complete
+    </p>
+      <button class="btn btn-primary" data-toggle="collapse" attr.data-target="#{{story.storyId}}">+ Show Tickets</button>
+      <div id='{{story.storyId}}' class="collapse">
+      <p><br />
+        <span *ngFor="let card of story['cardsAttached']" >
+            <app-card [card]="card"></app-card>
+        </span>
+      </p>
+      </div>
+  </div>
+</div>
+
+
