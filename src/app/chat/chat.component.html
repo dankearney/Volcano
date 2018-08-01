@@ -4,7 +4,7 @@
     <div *ngFor="let chat of chats" >
       <strong>{{chat.creatorNameSnapshot}}:</strong> {{chat.message}}
       <br />
-      {{chat.timeSent}}
+      <Label>Sent:</Label>{{chat.createdAt}}
       <p><p>
     </div>
 
