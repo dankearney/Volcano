@@ -1,0 +1,8 @@
+div.jumbotron{
+    color:#fff;
+    background:url('https://images.unsplash.com/photo-1519986918269-2b5d41fb1830?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=84e5955a97f348555478b344940f3c9d&auto=format&fit=crop&w=968&q=80');
+    background-size:cover;
+    background-position:center;
+    min-height: 400px;
+    
+}
