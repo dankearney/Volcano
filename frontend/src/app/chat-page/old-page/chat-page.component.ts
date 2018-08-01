@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat-page',
-  templateUrl: './chat-page.component.html'
+  templateUrl: './chat-page.component.html',
+  styleUrls: ['./chat-page.component.css']
 })
 export class ChatPageComponent implements OnInit {
 
