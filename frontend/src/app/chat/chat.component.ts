@@ -52,7 +52,7 @@ export class ChatComponent implements OnInit {
 
   setScrollPosition() {
     var objDiv = document.getElementById("chatcontainer");
-    objDiv.scrollTop = 10000;
+    objDiv.scrollTop = 100000;
   }
 
   ngOnInit() {
