@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
     this.http.get("https://volcano-backend.herokuapp.com/login", Util.getReqConfig() ).subscribe(
       data => {
         let userPrincipal = data["principal"]["user"];
-        Util.writeSuccess("Login successful! Welcome, " + userPrincipal.username + "!");
         window.localStorage.setItem("authToken", token);
         window.localStorage.setItem("userPrincipal", JSON.stringify(userPrincipal));
       },

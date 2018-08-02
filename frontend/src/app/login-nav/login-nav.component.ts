@@ -45,7 +45,6 @@ export class LoginNavComponent implements OnInit {
   logout() {
   	Util.logOut();
   	this.refreshNavBar();
-  	Util.writeSuccess("Logged out successfully");
   }
 
 }

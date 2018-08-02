@@ -46,7 +46,6 @@ export class TeamsComponent implements OnInit {
         this.myTeams = data;
         if (this.myTeams.length == 0) {
         	document.getElementById("joinableTeams-tab").click();
-        	Util.writeError("You are not a member of any teams, join or create one to continue.");
         }
         this.publicTeams = [];
         this.http.get("https://volcano-backend.herokuapp.com/teams", Util.getReqConfig()).subscribe(
