@@ -1,16 +1,11 @@
 <h1>Chat</h1>
 <div class="row">
   <div class="col-sm-3">
-    <h3>Private Chat</h3>
+    <h3>Team Members</h3>
     <table class="table" *ngIf = "team != null">
-      <thead>
-        <tr>
-          <th>Team mates</th>
-        </tr>
-      </thead>
       <tbody>
         <tr *ngFor="let tum of team.teamUserMemberships">
-            <td><a href="{{tum.user.userid}}">{{tum.user.username}}</a></td>
+            <td><strong>{{tum.user.username}}</strong></td>
         </tr>
       </tbody>
     </table>
